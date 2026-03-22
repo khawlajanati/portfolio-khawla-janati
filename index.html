@@ -1,85 +1,193 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <title>Portfolio - Khawla Janati</title>
-    <style>
-        body {
-            font-family: Arial;
-            margin: 0;
-            background-color: #f4f4f4;
-        }
-        header {
-            background-color: #0a192f;
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-        section {
-            padding: 30px;
-        }
-        h2 {
-            color: #0a192f;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 15px 0;
-            border-radius: 10px;
-        }
-    </style>
-</head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio - Khawla Janati</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-color: #f5f7fb;
+      color: #1f2937;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 60px 20px 40px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 2.5rem;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+    }
+
+    nav {
+      background-color: white;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      z-index: 1000;
+    }
+
+    nav a {
+      display: inline-block;
+      margin: 8px;
+      padding: 10px 18px;
+      text-decoration: none;
+      color: white;
+      background-color: #2563eb;
+      border-radius: 25px;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      background-color: #1d4ed8;
+    }
+
+    section {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
+    }
+
+    .card {
+      background-color: white;
+      padding: 25px;
+      border-radius: 16px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+      margin-bottom: 25px;
+    }
+
+    h2 {
+      color: #0f172a;
+      margin-bottom: 15px;
+      font-size: 1.8rem;
+    }
+
+    h3 {
+      color: #1e3a8a;
+      margin-top: 0;
+    }
+
+    ul {
+      padding-left: 20px;
+    }
+
+    .highlight {
+      color: #2563eb;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background-color: #0f172a;
+      color: white;
+      margin-top: 40px;
+    }
+
+    @media (max-width: 768px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      nav a {
+        display: block;
+        width: 90%;
+        margin: 10px auto;
+      }
+    }
+  </style>
+</head>
 <body>
 
-<header>
+  <header>
     <h1>Khawla Janati</h1>
-    <p>Alternance Systèmes, Réseaux & Cybersécurité</p>
-</header>
+    <p>Portfolio - Systèmes, Réseaux et Cybersécurité</p>
+  </header>
 
-<section>
-    <h2>👩‍💻 À propos</h2>
+  <nav>
+    <a href="#apropos">À propos</a>
+    <a href="#parcours">Mon parcours</a>
+    <a href="#experiences">Expériences</a>
+    <a href="#projets">Projets</a>
+    <a href="#veille">Veille technologique</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section id="apropos">
+    <h2>À propos de moi</h2>
     <div class="card">
-        <p>Étudiante en informatique passionnée par les systèmes, réseaux et la cybersécurité, je recherche une alternance afin de développer mes compétences en environnement professionnel.</p>
+      <p>
+        Je m’appelle <span class="highlight">Khawla Janati</span> et je suis à la recherche
+        d’une alternance en <span class="highlight">systèmes, réseaux et cybersécurité</span>
+        pour ma 3ᵉ année.
+      </p>
+      <p>
+        Je m’intéresse particulièrement à l’administration des systèmes, aux infrastructures
+        réseau et à la sécurité informatique. À travers mes études et mes stages, j’ai pu
+        découvrir le fonctionnement d’environnements professionnels et développer mon intérêt
+        pour les métiers techniques de l’informatique.
+      </p>
+      <p>
+        Ce portfolio me permet de présenter mon parcours, mes expériences professionnelles,
+        mes projets ainsi que mon travail de veille technologique.
+      </p>
     </div>
-</section>
+  </section>
 
-<section>
-    <h2>💼 Expériences</h2>
+  <section id="parcours">
+    <h2>Mon parcours</h2>
     <div class="card">
-        <p><strong>Technicien Systèmes & Réseaux - FILORDI</strong><br>
-        Support utilisateurs, installation et dépannage</p>
+      <h3>Formation</h3>
+      <ul>
+        <li><strong>BTS Services Informatiques aux Organisations</strong> - 2024 à 2026</li>
+        <li><strong>DUT Gestion des Organisations et des Destinations Touristiques</strong> - 2021 à 2023</li>
+        <li><strong>Baccalauréat Sciences Physiques / Chimie</strong> - 2019 à 2020</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="experiences">
+    <h2>Expériences professionnelles</h2>
+
+    <div class="card">
+      <h3>Stage Technicien Systèmes et Réseaux - FILORDI</h3>
+      <p><strong>Période :</strong> Janvier 2026 - Février 2026</p>
+      <ul>
+        <li>Assistance technique auprès de clients professionnels et particuliers</li>
+        <li>Diagnostic et résolution d’incidents matériels et logiciels</li>
+        <li>Installation, configuration et mise en service de postes informatiques</li>
+        <li>Support utilisateurs et accompagnement</li>
+      </ul>
     </div>
 
     <div class="card">
-        <p><strong>Stage - Conseil Départemental</strong><br>
-        Déploiement de switchs, GLPI, optimisation réseau</p>
+      <h3>Stage Technicien Systèmes et Réseaux - Conseil Départemental</h3>
+      <p><strong>Période :</strong> Juin 2025 - Juillet 2025</p>
+      <ul>
+        <li>Remplacement et déploiement de switchs réseau dans des collèges</li>
+        <li>Gestion des incidents et support utilisateurs via GLPI</li>
+        <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
+      </ul>
     </div>
-</section>
 
-<section>
-    <h2>🚀 Projets</h2>
     <div class="card">
-        <p><strong>Projet VeTechno</strong><br>
-        Projet informatique autour des systèmes et réseaux</p>
-    </div>
-</section>
-
-<section>
-    <h2>🛠️ Compétences</h2>
-    <div class="card">
-        <p>Réseaux : TCP/IP, VLAN, DHCP<br>
-        Systèmes : Windows Server, Linux<br>
-        Virtualisation : Proxmox</p>
-    </div>
-</section>
-
-<section>
-    <h2>📞 Contact</h2>
-    <div class="card">
-        <p>Email : khawlajanati2003@gmail.com</p>
-    </div>
-</section>
-
-</body>
-</html>
+      <h3>Expériences commerciales
