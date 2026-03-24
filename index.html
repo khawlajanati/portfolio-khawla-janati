@@ -464,6 +464,144 @@
         padding: 26px;
       }
     }
+
+  .exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+  margin-top: 40px;
+}
+
+.exp-card {
+  position: relative;
+  padding: 28px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.22);
+  backdrop-filter: blur(10px);
+  transition: 0.35s ease;
+  overflow: hidden;
+}
+
+.exp-card::before {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  top: -90px;
+  right: -90px;
+  border-radius: 50%;
+  background: rgba(139, 92, 246, 0.12);
+  filter: blur(55px);
+}
+
+.exp-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  bottom: -70px;
+  left: -60px;
+  border-radius: 50%;
+  background: rgba(236, 72, 153, 0.10);
+  filter: blur(50px);
+}
+
+.exp-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(236, 72, 153, 0.30);
+  box-shadow: 0 22px 50px rgba(0,0,0,0.28);
+}
+
+.exp-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.exp-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 18px;
+  flex-wrap: wrap;
+}
+
+.exp-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
+}
+
+.exp-badge.soft {
+  background: rgba(255,255,255,0.08);
+  color: #f5d0fe;
+  border: 1px solid rgba(255,255,255,0.10);
+  box-shadow: none;
+}
+
+.exp-date {
+  font-size: 0.92rem;
+  color: #d8d7e6;
+}
+
+.exp-card h3 {
+  margin: 0 0 10px;
+  font-size: 1.55rem;
+  color: #ffffff;
+}
+
+.exp-role {
+  margin-bottom: 18px;
+  color: #c4b5fd;
+  font-weight: 500;
+}
+
+.exp-card ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.exp-card li {
+  color: #ececf6;
+  margin-bottom: 12px;
+  line-height: 1.6;
+}
+
+.exp-card li:last-child {
+  margin-bottom: 0;
+}
+
+.exp-card.wide {
+  grid-column: 1 / -1;
+}
+
+.exp-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+@media (max-width: 900px) {
+  .exp-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-card.wide {
+    grid-column: auto;
+  }
+
+  .exp-columns {
+    grid-template-columns: 1fr;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -598,3 +736,63 @@
 </section>
 </body>
 </html>
+<section id="experiences" class="section">
+  <h2 class="section-title">Mes expériences professionnelles</h2>
+  <p class="section-intro">
+    Mes stages en systèmes et réseaux ainsi que mes expériences commerciales et aéroportuaires.
+  </p>
+
+  <div class="exp-grid">
+    <article class="exp-card featured">
+      <div class="exp-top">
+        <span class="exp-badge">Stage IT</span>
+        <span class="exp-date">Janv. – Févr. 2026</span>
+      </div>
+      <h3>FILORDI</h3>
+      <p class="exp-role">Stage technicienne systèmes et réseaux</p>
+      <ul>
+        <li>Assistance et dépannage informatique pour professionnels et particuliers</li>
+        <li>Installation et configuration de postes de travail</li>
+        <li>Support aux utilisateurs et conseils techniques</li>
+      </ul>
+    </article>
+
+    <article class="exp-card featured">
+      <div class="exp-top">
+        <span class="exp-badge">Stage IT</span>
+        <span class="exp-date">Juin – Juil. 2025</span>
+      </div>
+      <h3>Conseil Départemental de la Nièvre</h3>
+      <p class="exp-role">Stage technicienne systèmes et réseaux</p>
+      <ul>
+        <li>Préparation et remplacement de switchs dans des collèges</li>
+        <li>Réalisation de recâblage réseau</li>
+        <li>Utilisation de GLPI pour la gestion des tickets et le support utilisateurs</li>
+        <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
+      </ul>
+    </article>
+
+    <article class="exp-card wide">
+      <div class="exp-top">
+        <span class="exp-badge soft">Expérience regroupée</span>
+        <span class="exp-date">2022 – 2023</span>
+      </div>
+      <h3>Expériences commerciales & aéroportuaires</h3>
+      <p class="exp-role">GIFI (France) | Royal Air Maroc & ONDA – Essaouira, Maroc</p>
+
+      <div class="exp-columns">
+        <ul>
+          <li>Accueil, conseil et accompagnement des clients et passagers</li>
+          <li>Gestion des opérations d’enregistrement et d’embarquement</li>
+          <li>Utilisation de logiciels de réservation et d’enregistrement</li>
+        </ul>
+
+        <ul>
+          <li>Participation aux activités commerciales et à l’organisation du point de vente</li>
+          <li>Contribution à la fluidité des opérations et à la qualité du service client</li>
+          <li>Développement de compétences en relation client, organisation et gestion du stress</li>
+        </ul>
+      </div>
+    </article>
+  </div>
+</section>
