@@ -10,74 +10,60 @@
       padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
-      .timeline {
-  position: relative;
+      .parcours-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
   margin-top: 40px;
-  padding-left: 30px;
 }
 
-.timeline::before {
-  content: "";
-  position: absolute;
-  left: 8px;
-  top: 0;
-  width: 2px;
-  height: 100%;
-  background: linear-gradient(#8b5cf6, #ec4899);
-}
-
-.timeline-item {
-  position: relative;
-  margin-bottom: 40px;
-}
-
-.timeline-dot {
-  position: absolute;
-  left: -2px;
-  top: 5px;
-  width: 18px;
-  height: 18px;
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  border-radius: 50%;
-  box-shadow: 0 0 10px rgba(236, 72, 153, 0.6);
-}
-
-.timeline-content {
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  border-radius: 20px;
+.parcours-card {
+  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+  border-radius: 25px;
   padding: 25px;
-  margin-left: 30px;
-  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.08);
   transition: 0.3s;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
 }
 
-.timeline-content:hover {
-  transform: translateY(-5px);
-  border-color: rgba(236, 72, 153, 0.4);
-  box-shadow: 0 10px 30px rgba(236, 72, 153, 0.15);
+.parcours-card:hover {
+  transform: translateY(-8px);
+  border-color: rgba(236, 72, 153, 0.5);
+  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.15);
 }
 
-.timeline-content h3 {
-  margin: 10px 0;
-  color: #ffffff;
+.card-year {
+  display: inline-block;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  margin-bottom: 15px;
 }
 
-.timeline-content .date {
-  font-size: 0.9rem;
-  color: #f9a8d4;
-  font-weight: bold;
-}
-
-.timeline-content .school {
-  font-size: 0.95rem;
-  color: #c7c9d3;
+.parcours-card h3 {
+  color: white;
   margin-bottom: 10px;
 }
 
-.timeline-content p {
+.parcours-card .school {
+  color: #c7c9d3;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+}
+
+.parcours-card p {
   color: #e5e7eb;
-  font-size: 1rem;
+  font-size: 0.95rem;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .parcours-grid {
+    grid-template-columns: 1fr;
+  }
 }
     }
 
@@ -483,49 +469,40 @@
 <section id="parcours" class="section">
   <h2 class="section-title">Mon parcours</h2>
   <p class="section-intro">
-    Mon parcours académique, du baccalauréat à ma formation actuelle en systèmes et réseaux.
+    Mon parcours académique et les étapes importantes de ma formation.
   </p>
 
-  <div class="timeline">
+  <div class="parcours-grid">
 
     <!-- BTS -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <span class="date">2024 – 2026</span>
-        <h3>BTS SIO (SISR)</h3>
-        <p class="school">Lycée Jacques Brel, Vénissieux</p>
-        <p>
-          Spécialisation en administration des systèmes et des réseaux :
-          gestion des infrastructures, virtualisation et sécurisation des environnements informatiques.
-        </p>
-      </div>
+    <div class="parcours-card">
+      <div class="card-year">2024 – 2026</div>
+      <h3>BTS SIO (SISR)</h3>
+      <p class="school">Lycée Jacques Brel, Vénissieux</p>
+      <p>
+        Spécialisation en administration des systèmes et des réseaux :
+        gestion des infrastructures, virtualisation et sécurisation des environnements informatiques.
+      </p>
     </div>
 
     <!-- DUT -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <span class="date">2021 – 2023</span>
-        <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
-        <p class="school">École Supérieure de Technologie, Essaouira</p>
-        <p>
-          Développement de compétences en organisation, communication et travail en équipe.
-        </p>
-      </div>
+    <div class="parcours-card">
+      <div class="card-year">2021 – 2023</div>
+      <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
+      <p class="school">École Supérieure de Technologie, Essaouira</p>
+      <p>
+        Développement de compétences en organisation, communication et travail en équipe.
+      </p>
     </div>
 
-    <!-- Bac -->
-    <div class="timeline-item">
-      <div class="timeline-dot"></div>
-      <div class="timeline-content">
-        <span class="date">2020</span>
-        <h3>Baccalauréat Sciences Physiques et Chimie</h3>
-        <p class="school">Lycée Akenssos, Essaouira</p>
-        <p>
-          Acquisition de bases scientifiques solides, utiles pour l’analyse et la logique technique.
-        </p>
-      </div>
+    <!-- BAC -->
+    <div class="parcours-card">
+      <div class="card-year">2020</div>
+      <h3>Baccalauréat Sciences Physiques et Chimie</h3>
+      <p class="school">Lycée Akenssos, Essaouira</p>
+      <p>
+        Acquisition de bases scientifiques solides, utiles pour l’analyse et la logique technique.
+      </p>
     </div>
 
   </div>
