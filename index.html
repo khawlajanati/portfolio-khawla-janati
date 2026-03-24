@@ -6,20 +6,55 @@
   <title>Portfolio - Khawla Janati</title>
   <style>
     * {
+      margin: 0;
+      padding: 0;
       box-sizing: border-box;
       scroll-behavior: smooth;
     }
 
     body {
-      margin: 0;
-      font-family: "Segoe UI", Arial, sans-serif;
-      background: #0b0b14;
-      color: #f5f5f7;
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      background:
+        radial-gradient(circle at top left, rgba(168, 85, 247, 0.20), transparent 30%),
+        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 30%),
+        linear-gradient(135deg, #0b1020, #11162a 45%, #0a0f1d);
+      color: #f8f7ff;
       line-height: 1.7;
+      overflow-x: hidden;
     }
 
-    a {
+    nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      background: rgba(10, 15, 29, 0.65);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    .nav-container {
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 20px;
+      display: flex;
+      justify-content: center;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      color: #f3e8ff;
       text-decoration: none;
+      font-size: 0.95rem;
+      padding: 10px 18px;
+      border-radius: 999px;
+      transition: all 0.3s ease;
+    }
+
+    nav a:hover {
+      background: rgba(255,255,255,0.08);
+      color: #ffffff;
     }
 
     header {
@@ -27,425 +62,355 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 40px 20px;
-      background:
-        linear-gradient(135deg, rgba(137, 92, 246, 0.18), rgba(59, 130, 246, 0.12)),
-        #0b0b14;
+      padding: 120px 20px 60px;
+      position: relative;
     }
 
     .hero {
-      max-width: 1100px;
+      max-width: 1200px;
       width: 100%;
       display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 40px;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 50px;
       align-items: center;
     }
 
+    .hero-text {
+      animation: fadeUp 1s ease;
+    }
+
+    .hero-text .hello {
+      display: inline-block;
+      font-size: 0.95rem;
+      color: #f9a8d4;
+      background: rgba(236, 72, 153, 0.10);
+      border: 1px solid rgba(236, 72, 153, 0.25);
+      padding: 8px 14px;
+      border-radius: 999px;
+      margin-bottom: 18px;
+      letter-spacing: 0.3px;
+    }
+
     .hero-text h1 {
-      margin: 0 0 12px;
-      font-size: 3.2rem;
-      letter-spacing: 2px;
+      font-size: 4.2rem;
+      line-height: 1.05;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 18px;
       color: #ffffff;
+      text-shadow: 0 0 20px rgba(255,255,255,0.05);
     }
 
     .hero-text h2 {
-      margin: 0 0 25px;
-      font-size: 1.2rem;
+      font-size: 1.45rem;
+      font-weight: 500;
+      color: #ddd6fe;
+      margin-bottom: 12px;
+      max-width: 720px;
+    }
+
+    .hero-text h3 {
+      font-size: 1.15rem;
       font-weight: 400;
-      color: #d7c8ff;
-      max-width: 700px;
+      color: #c4b5fd;
+      margin-bottom: 28px;
     }
 
     .hero-text p {
-      margin: 0 0 18px;
-      color: #d9d9e6;
-      font-size: 1.05rem;
+      font-size: 1.12rem;
+      color: #e5e7eb;
+      max-width: 700px;
+      margin-bottom: 34px;
     }
 
     .hero-buttons {
-      margin-top: 30px;
       display: flex;
+      gap: 18px;
       flex-wrap: wrap;
-      gap: 14px;
     }
 
     .btn {
-      display: inline-block;
-      padding: 12px 22px;
+      text-decoration: none;
+      padding: 15px 26px;
       border-radius: 999px;
       font-weight: 600;
-      transition: 0.3s ease;
+      transition: all 0.3s ease;
+      font-size: 1rem;
+      display: inline-block;
     }
 
     .btn-primary {
       background: linear-gradient(90deg, #8b5cf6, #ec4899);
       color: white;
-      box-shadow: 0 8px 25px rgba(236, 72, 153, 0.18);
+      box-shadow: 0 12px 28px rgba(236, 72, 153, 0.22);
     }
 
     .btn-primary:hover {
-      transform: translateY(-2px);
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(236, 72, 153, 0.28);
     }
 
     .btn-secondary {
-      border: 1px solid #7c3aed;
-      color: #e9ddff;
-      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(196, 181, 253, 0.4);
+      color: #f5f3ff;
+      background: rgba(255,255,255,0.03);
     }
 
     .btn-secondary:hover {
-      background: rgba(124, 58, 237, 0.12);
+      transform: translateY(-3px);
+      background: rgba(139, 92, 246, 0.12);
+      border-color: rgba(236, 72, 153, 0.35);
     }
 
-    .hero-card {
-      background: linear-gradient(180deg, rgba(139,92,246,0.18), rgba(17,24,39,0.65));
+    .hero-visual {
+      position: relative;
+      min-height: 420px;
+      animation: fadeUp 1.2s ease;
+    }
+
+    .glow-card {
+      position: absolute;
+      inset: 0;
+      border-radius: 30px;
+      background:
+        linear-gradient(145deg, rgba(139, 92, 246, 0.18), rgba(17, 24, 39, 0.35)),
+        rgba(255,255,255,0.03);
       border: 1px solid rgba(255,255,255,0.08);
-      border-radius: 28px;
-      padding: 28px;
-      box-shadow: 0 12px 40px rgba(0,0,0,0.28);
-    }
-
-    .hero-card h3 {
-      margin-top: 0;
-      color: #f3e8ff;
-      font-size: 1.2rem;
-    }
-
-    .hero-card ul {
-      padding-left: 18px;
-      margin: 0;
-      color: #e5e7eb;
-    }
-
-    nav {
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      background: rgba(11, 11, 20, 0.88);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        inset 0 1px 0 rgba(255,255,255,0.05);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(255,255,255,0.06);
-      text-align: center;
-      padding: 14px 10px;
     }
 
-    nav a {
-      color: #f3f4f6;
-      margin: 0 8px;
-      padding: 10px 16px;
-      border-radius: 999px;
-      display: inline-block;
-      transition: 0.3s ease;
-      font-size: 0.95rem;
+    .floating-box {
+      position: absolute;
+      border-radius: 24px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.22);
+      padding: 22px;
+      color: #f8f7ff;
     }
 
-    nav a:hover {
-      background: rgba(139, 92, 246, 0.16);
-      color: #f5d0fe;
+    .box-one {
+      top: 40px;
+      left: 30px;
+      width: 220px;
     }
 
-    .container {
-      max-width: 1150px;
-      margin: auto;
-      padding: 70px 20px;
+    .box-two {
+      top: 170px;
+      right: 30px;
+      width: 220px;
     }
 
-    .section-title {
-      font-size: 2.2rem;
-      margin-bottom: 30px;
+    .box-three {
+      bottom: 35px;
+      left: 80px;
+      width: 260px;
+    }
+
+    .floating-box span {
+      display: block;
+      font-size: 0.85rem;
+      color: #f9a8d4;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .floating-box strong {
+      font-size: 1.1rem;
       color: #ffffff;
     }
 
-    .section-subtitle {
-      color: #c7c9d3;
-      max-width: 750px;
-      margin-bottom: 35px;
+    .section {
+      max-width: 1200px;
+      margin: auto;
+      padding: 100px 20px;
     }
 
-    .about-box {
-      background: #121221;
-      border: 1px solid rgba(255,255,255,0.06);
-      border-radius: 22px;
-      padding: 30px;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+    .section-title {
+      font-size: 2.5rem;
+      margin-bottom: 12px;
+      color: #ffffff;
     }
 
-    .about-box p {
-      color: #e7e7ef;
-      margin-bottom: 18px;
+    .section-intro {
+      color: #d1d5db;
+      max-width: 760px;
+      margin-bottom: 40px;
+      font-size: 1.05rem;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+    .about-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 28px;
+      padding: 40px;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.22);
     }
 
-    .card {
-      background: #11111c;
-      border-radius: 22px;
-      padding: 22px;
-      border: 1px solid rgba(255,255,255,0.06);
-      transition: 0.3s ease;
-      min-height: 260px;
-      box-shadow: 0 10px 28px rgba(0,0,0,0.16);
+    .about-card p {
+      font-size: 1.08rem;
+      color: #ececf6;
+      margin-bottom: 20px;
     }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(236, 72, 153, 0.28);
-      box-shadow: 0 14px 35px rgba(236, 72, 153, 0.10);
+    .about-card p:last-child {
+      margin-bottom: 0;
     }
 
-    .card .tag {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      background: rgba(139, 92, 246, 0.18);
-      color: #e9d5ff;
+    .highlight {
+      color: #f9a8d4;
+      font-weight: 600;
     }
 
-    .card h3 {
-      margin: 0 0 14px;
-      font-size: 1.4rem;
-      color: #fff;
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(35px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
     }
 
-    .card p {
-      margin: 0 0 10px;
-      color: #d6d6df;
-    }
-
-    .preview-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-    }
-
-    .preview-box {
-      background: linear-gradient(180deg, rgba(17,17,28,1), rgba(24,24,40,1));
-      border-radius: 22px;
-      padding: 26px;
-      border: 1px solid rgba(255,255,255,0.06);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.18);
-    }
-
-    .preview-box h3 {
-      margin-top: 0;
-      color: #fff;
-      font-size: 1.5rem;
-    }
-
-    .preview-box p {
-      color: #d7d9e2;
-    }
-
-    .preview-box ul {
-      color: #ececf2;
-      padding-left: 18px;
-    }
-
-    footer {
-      padding: 30px 20px;
-      text-align: center;
-      color: #b8b9c5;
-      border-top: 1px solid rgba(255,255,255,0.06);
-    }
-
-    @media (max-width: 900px) {
+    @media (max-width: 980px) {
       .hero {
         grid-template-columns: 1fr;
       }
 
-      .cards,
-      .preview-grid {
-        grid-template-columns: 1fr;
+      .hero-text h1 {
+        font-size: 3rem;
       }
 
+      .hero-text h2 {
+        font-size: 1.2rem;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .box-one, .box-two, .box-three {
+        width: auto;
+        left: 20px;
+        right: 20px;
+        position: absolute;
+      }
+
+      .box-one {
+        top: 25px;
+      }
+
+      .box-two {
+        top: 135px;
+      }
+
+      .box-three {
+        bottom: 25px;
+      }
+    }
+
+    @media (max-width: 640px) {
       .hero-text h1 {
         font-size: 2.4rem;
+      }
+
+      .hero-text p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+
+      .about-card {
+        padding: 26px;
       }
     }
   </style>
 </head>
 <body>
 
+  <nav>
+    <div class="nav-container">
+      <a href="#accueil">Accueil</a>
+      <a href="#apropos">À propos</a>
+      <a href="#parcours">Mon parcours</a>
+      <a href="#experiences">Stages</a>
+      <a href="#projets">Projets</a>
+      <a href="#veille">Veille technologique</a>
+    </div>
+  </nav>
+
   <header id="accueil">
     <div class="hero">
       <div class="hero-text">
+        <div class="hello">Portfolio professionnel</div>
         <h1>KHAWLA JANATI</h1>
-        <h2>Technicienne supérieure en Services Informatiques aux Organisations — option Solutions d’Infrastructure, Systèmes et Réseaux</h2>
-
-        <p>
-          Actuellement en 2ᵉ année de BTS Services Informatiques aux Organisations,
-          option Solutions d’Infrastructure, Systèmes et Réseaux (SISR) au lycée Jacques Brel,
-          je m’intéresse particulièrement à l’administration système, aux infrastructures réseau
-          et à la cybersécurité.
-        </p>
-
-        <p>
-          Curieuse et motivée, j’aime comprendre le fonctionnement des systèmes et des réseaux,
-          ainsi que participer à leur mise en place et à leur sécurisation.
-        </p>
-
-        <p>
-          Au cours de ma formation et de mes stages, j’ai développé des compétences en administration
-          systèmes, configuration d’équipements réseau, support utilisateurs, virtualisation et gestion
-          des incidents. Je souhaite intégrer une alternance afin de renforcer mes compétences techniques,
-          acquérir une expérience concrète en entreprise et évoluer vers un profil spécialisé en systèmes,
-          réseaux et cybersécurité, avec pour objectif de poursuivre mes études jusqu’à un niveau Bac +5.
-        </p>
+        <h2>Technicienne supérieure en Services Informatiques aux Organisations</h2>
+        <h3>Option Solutions d’Infrastructure, Systèmes et Réseaux</h3>
+        <p>À la recherche d’une alternance en systèmes, réseaux et cybersécurité.</p>
 
         <div class="hero-buttons">
-          <a href="#parcours" class="btn btn-primary">Voir mon parcours</a>
-          <a href="#experiences" class="btn btn-secondary">Voir mes stages</a>
+          <a href="#apropos" class="btn btn-primary">À propos de moi</a>
+          <a href="#parcours" class="btn btn-secondary">Voir mon parcours</a>
         </div>
       </div>
 
-      <div class="hero-card">
-        <h3>Domaines d’intérêt</h3>
-        <ul>
-          <li>Administration systèmes</li>
-          <li>Infrastructures réseau</li>
-          <li>Virtualisation</li>
-          <li>Support utilisateurs</li>
-          <li>Cybersécurité</li>
-        </ul>
+      <div class="hero-visual">
+        <div class="glow-card"></div>
+
+        <div class="floating-box box-one">
+          <span>Spécialité</span>
+          <strong>Systèmes, Réseaux & Cybersécurité</strong>
+        </div>
+
+        <div class="floating-box box-two">
+          <span>Objectif</span>
+          <strong>Alternance puis poursuite d’études jusqu’à Bac +5</strong>
+        </div>
+
+        <div class="floating-box box-three">
+          <span>Profil</span>
+          <strong>Curieuse, motivée, impliquée et attirée par les environnements techniques</strong>
+        </div>
       </div>
     </div>
   </header>
 
-  <nav>
-    <a href="#accueil">Accueil</a>
-    <a href="#apropos">À propos</a>
-    <a href="#parcours">Mon parcours</a>
-    <a href="#experiences">Stages</a>
-    <a href="#projets">Projets</a>
-  </nav>
-
-  <section id="apropos" class="container">
+  <section id="apropos" class="section">
     <h2 class="section-title">À propos de moi</h2>
-    <p class="section-subtitle">
-      Une présentation de mon parcours, de mes centres d’intérêt techniques et de mon projet professionnel.
+    <p class="section-intro">
+      Cette section présente mon profil, mes centres d’intérêt techniques et mes objectifs professionnels.
     </p>
 
-    <div class="about-box">
+    <div class="about-card">
       <p>
-        Je suis étudiante en BTS SIO option SISR et je souhaite évoluer dans les domaines des systèmes,
-        des réseaux et de la cybersécurité. Mon parcours m’a permis de découvrir des environnements techniques
-        concrets et de développer une vraie motivation pour les métiers de l’infrastructure informatique.
+        Actuellement en <span class="highlight">2ᵉ année de BTS Services Informatiques aux Organisations</span>,
+        option <span class="highlight">Solutions d’Infrastructure, Systèmes et Réseaux (SISR)</span> au lycée Jacques Brel,
+        je m’intéresse particulièrement à l’administration système, aux infrastructures réseau et à la cybersécurité.
       </p>
 
       <p>
-        J’accorde une importance particulière à la qualité du support, à la stabilité des services,
-        à la configuration des équipements réseau et à la sécurisation des environnements informatiques.
-        Mon objectif est de continuer à progresser à travers une alternance, puis de poursuivre mes études
-        jusqu’à Bac +5.
+        Curieuse et motivée, j’aime comprendre le fonctionnement des systèmes et des réseaux, ainsi que participer
+        à leur mise en place et à leur sécurisation.
+      </p>
+
+      <p>
+        Au cours de ma formation et de mes stages, j’ai développé des compétences en administration systèmes,
+        configuration d’équipements réseau, support utilisateurs, virtualisation et gestion des incidents.
+        Je souhaite intégrer une alternance afin de renforcer mes compétences techniques, acquérir une expérience
+        concrète en entreprise et évoluer vers un profil spécialisé en systèmes, réseaux et cybersécurité, avec pour
+        objectif de poursuivre mes études jusqu’à un niveau Bac +5.
       </p>
     </div>
   </section>
-
-  <section id="parcours" class="container">
-    <h2 class="section-title">Mon parcours</h2>
-    <p class="section-subtitle">
-      Voici une première version visuelle de mon cursus, avec un style cartes moderne.
-    </p>
-
-    <div class="cards">
-      <div class="card">
-        <span class="tag">2024 – 2026</span>
-        <h3>BTS SIO (SISR)</h3>
-        <p><strong>Lycée Jacques Brel, Vénissieux</strong></p>
-        <p>
-          Spécialisation en administration des systèmes et des réseaux :
-          gestion des infrastructures, virtualisation et sécurisation des environnements informatiques.
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="tag">2021 – 2023</span>
-        <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
-        <p><strong>École Supérieure de Technologie, Essaouira</strong></p>
-        <p>
-          Développement de compétences en organisation, communication
-          et travail en équipe.
-        </p>
-      </div>
-
-      <div class="card">
-        <span class="tag">2020</span>
-        <h3>Baccalauréat Sciences Physiques et Chimie</h3>
-        <p><strong>Lycée Akenssos, Essaouira</strong></p>
-        <p>
-          Acquisition de bases scientifiques solides, utiles pour l’analyse
-          et la logique technique.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <section id="experiences" class="container">
-    <h2 class="section-title">Mes stages</h2>
-    <p class="section-subtitle">
-      Voici le début de la section expériences professionnelles avec un design cohérent avec le reste du portfolio.
-    </p>
-
-    <div class="preview-grid">
-      <div class="preview-box">
-        <h3>FILORDI</h3>
-        <p><strong>Stage Technicienne Systèmes et Réseaux</strong></p>
-        <p>Janvier 2026 – Février 2026</p>
-        <ul>
-          <li>Assistance technique auprès de clients professionnels et particuliers</li>
-          <li>Diagnostic et résolution d’incidents matériels et logiciels</li>
-          <li>Installation, configuration et mise en service de postes informatiques</li>
-          <li>Support utilisateurs</li>
-        </ul>
-      </div>
-
-      <div class="preview-box">
-        <h3>Conseil Départemental</h3>
-        <p><strong>Stage Technicienne Systèmes et Réseaux</strong></p>
-        <p>Juin 2025 – Juillet 2025</p>
-        <ul>
-          <li>Remplacement et déploiement de switchs réseau dans des collèges</li>
-          <li>Gestion des incidents et support utilisateurs via GLPI</li>
-          <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
-        </ul>
-      </div>
-    </div>
-  </section>
-
-  <section id="projets" class="container">
-    <h2 class="section-title">Mes projets</h2>
-    <p class="section-subtitle">
-      Voici le style de départ pour présenter tes projets. On pourra ensuite ajouter les vrais contenus ensemble.
-    </p>
-
-    <div class="preview-grid">
-      <div class="preview-box">
-        <h3>Projet 1</h3>
-        <p>
-          Présentation du projet, objectif, outils utilisés, étapes réalisées
-          et compétences développées.
-        </p>
-      </div>
-
-      <div class="preview-box">
-        <h3>Projet 2</h3>
-        <p>
-          Présentation du deuxième projet avec un style clair, professionnel
-          et visuel.
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <footer>
-    © 2025 - Khawla Janati | Portfolio Systèmes, Réseaux et Cybersécurité
-  </footer>
 
 </body>
 </html>
