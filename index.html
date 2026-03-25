@@ -1022,11 +1022,7 @@
                    Un serveur LAMP hébergeant l’application GSB Frais a d’abord été mis en place, puis un second serveur Linux a été configuré comme serveur de sauvegarde. Un script Bash a ensuite été développé pour automatiser l’ensemble du processus : extraction de la base de données avec <strong>mysqldump</strong>, archivage des fichiers du site avec <strong>tar</strong>, puis transfert des sauvegardes vers le serveur distant via <strong>SFTP</strong>.
 
         </p>
-        <p>
-          Un serveur dédié au stockage des sauvegardes a également été mis en place afin de conserver
-          une copie distante des données. Cette organisation permet d’améliorer la fiabilité de
-          l’infrastructure et de réduire les risques liés à une perte locale d’informations.
-        </p>
+       
       </div>
 
       <div class="project-block">
@@ -1035,11 +1031,7 @@
                    Dans une logique de sécurisation, l’infrastructure a été segmentée entre <strong>LAN</strong> et <strong>DMZ</strong>. Le serveur web a été placé en DMZ tandis que le serveur de sauvegarde est resté en LAN. Le pare-feu <strong>IPFire</strong> a été configuré pour n’autoriser que les flux nécessaires, notamment <strong>SSH (port 22)</strong> pour le transfert des sauvegardes et <strong>ICMP</strong> pour les tests réseau.
 
         </p>
-        <p>
-          Le projet a également pris en compte la sécurisation des accès et la confidentialité
-          des informations sensibles, afin de proposer une solution adaptée à un environnement
-          professionnel.
-        </p>
+       
       </div>
 
       <div class="project-block">
@@ -1048,11 +1040,7 @@
                     Les sauvegardes sont exécutées automatiquement chaque jour grâce à <strong>cron</strong>. Les fichiers générés comprennent des sauvegardes de base de données au format <strong>.sql</strong> ainsi que des archives du site web au format <strong>.tar.gz</strong>. Les tests réalisés ont permis de valider le bon fonctionnement du script, du transfert sécurisé et de l’architecture réseau mise en place.
 
         </p>
-        <p>
-          Ce projet a donc permis de répondre à un besoin concret de sécurisation, d’organisation
-          et de continuité d’activité, tout en apportant une solution durable et adaptée au
-          fonctionnement de l’entreprise.
-        </p>
+       
       </div>
 
       <div class="project-block">
