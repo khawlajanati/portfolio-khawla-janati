@@ -606,6 +606,196 @@
 </head>
 <body>
 
+.project-showcase {
+  margin-top: 40px;
+  display: grid;
+  gap: 28px;
+}
+
+.project-hero-card {
+  position: relative;
+  padding: 38px;
+  border-radius: 32px;
+  background:
+    linear-gradient(145deg, rgba(139, 92, 246, 0.14), rgba(255,255,255,0.04));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 50px rgba(0,0,0,0.28);
+  overflow: hidden;
+}
+
+.project-hero-card::before {
+  content: "";
+  position: absolute;
+  width: 260px;
+  height: 260px;
+  top: -100px;
+  right: -80px;
+  background: rgba(236, 72, 153, 0.14);
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.project-hero-card::after {
+  content: "";
+  position: absolute;
+  width: 220px;
+  height: 220px;
+  bottom: -90px;
+  left: -60px;
+  background: rgba(59, 130, 246, 0.12);
+  border-radius: 50%;
+  filter: blur(70px);
+}
+
+.project-hero-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.project-hero-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.project-label {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  font-size: 0.82rem;
+  font-weight: 700;
+}
+
+.project-type {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.08);
+  color: #e9d5ff;
+  font-size: 0.82rem;
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.project-hero-card h3 {
+  font-size: 2rem;
+  line-height: 1.3;
+  margin-bottom: 18px;
+  color: #ffffff;
+  max-width: 900px;
+}
+
+.project-hero-text {
+  font-size: 1.05rem;
+  color: #ececf6;
+  max-width: 900px;
+  margin-bottom: 24px;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project-tags span {
+  padding: 8px 14px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: #f3e8ff;
+  font-size: 0.86rem;
+  transition: 0.3s ease;
+}
+
+.project-tags span:hover {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+  transform: translateY(-2px);
+}
+
+.project-details-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 24px;
+}
+
+.project-detail-card {
+  padding: 28px;
+  border-radius: 26px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 12px 35px rgba(0,0,0,0.22);
+  transition: 0.3s ease;
+}
+
+.project-detail-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(236, 72, 153, 0.30);
+}
+
+.project-detail-card h4 {
+  margin-bottom: 14px;
+  font-size: 1.2rem;
+  color: #ffffff;
+}
+
+.project-detail-card p {
+  color: #e5e7eb;
+  line-height: 1.75;
+}
+
+.project-bottom-card {
+  display: grid;
+  grid-template-columns: 1.3fr 0.9fr;
+  gap: 24px;
+  padding: 30px;
+  border-radius: 28px;
+  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 14px 38px rgba(0,0,0,0.22);
+}
+
+.project-bottom-card h4 {
+  margin-bottom: 14px;
+  color: #ffffff;
+  font-size: 1.2rem;
+}
+
+.project-bottom-card p {
+  color: #e5e7eb;
+  line-height: 1.75;
+}
+
+.project-tech-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-tech-list li {
+  margin-bottom: 10px;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.05);
+  color: #f3f4f6;
+  border: 1px solid rgba(255,255,255,0.06);
+}
+
+@media (max-width: 980px) {
+  .project-details-grid,
+  .project-bottom-card {
+    grid-template-columns: 1fr;
+  }
+
+  .project-hero-card h3 {
+    font-size: 1.6rem;
+  }
+}
+
 .project-container {
   display: grid;
   gap: 25px;
@@ -854,94 +1044,89 @@
   </div>
 </section>
 
-<section id="projet1" class="section">
-  <h2 class="section-title">Projet 1</h2>
+<section id="projets" class="section">
+  <h2 class="section-title">Mes projets</h2>
   <p class="section-intro">
-    Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais via script Bash.
+    Une sélection de projets réalisés dans le cadre de ma formation, illustrant mes compétences en systèmes, réseaux, automatisation et sécurisation des infrastructures.
   </p>
 
-  <div class="project-container">
+  <div class="project-showcase">
+    <div class="project-hero-card">
+      <div class="project-hero-top">
+        <span class="project-label">Projet 1</span>
+        <span class="project-type">Systèmes • Réseaux • Cybersécurité</span>
+      </div>
 
-    <div class="project-block">
-      <h3>🎯 Objectif</h3>
-      <p>
-        L’objectif de ce projet était de concevoir et mettre en place une solution de sauvegarde
-        automatisée pour un serveur web LAMP hébergeant l’application GSB Frais. Cette solution
-        vise à sécuriser les données, notamment la base de données et les fichiers du site, et à
-        garantir leur disponibilité en cas de panne, d’erreur ou de perte.
-      </p>
-    </div>
+      <h3>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais via script Bash</h3>
 
-    <div class="project-block">
-      <h3>⚙️ Réalisation</h3>
-      <p>
-        Dans un premier temps, un serveur LAMP (Apache, PHP, MariaDB) a été configuré pour héberger
-        l’application GSB Frais. Un second serveur Linux a ensuite été mis en place afin de servir
-        de serveur de sauvegarde dédié.
+      <p class="project-hero-text">
+        Ce projet consistait à concevoir une solution complète de sauvegarde automatique pour un serveur web LAMP hébergeant l’application GSB Frais. L’objectif principal était de sécuriser les données critiques, garantir leur disponibilité et mettre en place une architecture fiable, automatisée et sécurisée.
       </p>
-      <p>
-        Un script Bash a été développé afin d’automatiser le processus de sauvegarde. Ce script
-        permet d’effectuer une sauvegarde de la base de données à l’aide de la commande
-        <strong>mysqldump</strong>, puis de compresser les fichiers du site web grâce à l’outil
-        <strong>tar</strong>. Les fichiers générés sont ensuite transférés vers le serveur de
-        sauvegarde via un protocole sécurisé (<strong>SFTP utilisant SSH</strong>).
-      </p>
-      <p>
-        Enfin, l’exécution du script a été automatisée à l’aide d’un <strong>cron</strong>,
-        permettant de lancer les sauvegardes quotidiennement sans intervention manuelle.
-      </p>
-    </div>
 
-    <div class="project-block">
-      <h3>🔐 Sécurité & Architecture</h3>
-      <p>
-        Dans une optique de sécurisation de l’infrastructure, une architecture réseau segmentée a
-        été mise en place avec une séparation entre le <strong>LAN</strong> et la
-        <strong>DMZ</strong>. Le serveur web a été positionné en DMZ, tandis que le serveur de
-        sauvegarde est resté en LAN.
-      </p>
-      <p>
-        Le pare-feu <strong>IPFire</strong> a été configuré afin d’autoriser uniquement les flux
-        nécessaires entre les deux machines, notamment le protocole <strong>SSH (port 22)</strong>
-        pour le transfert des sauvegardes et <strong>ICMP</strong> pour les tests de connectivité.
-      </p>
-      <p>
-        Par ailleurs, une attention particulière a été portée à la sécurisation des identifiants,
-        en évitant leur stockage en clair dans les scripts, notamment grâce à l’utilisation d’un
-        fichier de configuration sécurisé.
-      </p>
-    </div>
-
-    <div class="project-block">
-      <h3>🧪 Résultats</h3>
-      <p>
-        Les sauvegardes automatiques sont désormais opérationnelles et s’exécutent quotidiennement
-        de manière autonome. Les fichiers générés comprennent des sauvegardes de la base de données
-        au format <strong>.sql</strong> ainsi que des archives du site web au format
-        <strong>.tar.gz</strong>.
-      </p>
-      <p>
-        Les données sont correctement transférées et stockées sur le serveur de sauvegarde distant,
-        assurant ainsi leur protection et leur disponibilité. Les différents tests réalisés ont
-        permis de valider le bon fonctionnement du script, du transfert sécurisé et de l’ensemble
-        de l’architecture mise en place.
-      </p>
-    </div>
-
-    <div class="project-block">
-      <h3>🛠️ Compétences développées</h3>
-      <div class="skills-tags">
-        <span>Administration Linux</span>
+      <div class="project-tags">
+        <span>Linux</span>
         <span>Bash</span>
         <span>mysqldump</span>
         <span>cron</span>
         <span>SFTP / SSH</span>
         <span>IPFire</span>
         <span>LAN / DMZ</span>
-        <span>Sauvegarde automatisée</span>
-        <span>Cybersécurité</span>
+        <span>Sauvegarde</span>
       </div>
     </div>
 
+    <div class="project-details-grid">
+      <article class="project-detail-card">
+        <h4>🎯 Objectif</h4>
+        <p>
+          L’objectif de ce projet était de mettre en place une solution de sauvegarde automatisée pour un serveur web LAMP afin de protéger à la fois la base de données et les fichiers du site. Cette solution devait permettre d’assurer la continuité de service, limiter les risques de perte de données et renforcer la fiabilité de l’infrastructure.
+        </p>
+      </article>
+
+      <article class="project-detail-card">
+        <h4>⚙️ Réalisation</h4>
+        <p>
+          Un serveur LAMP hébergeant l’application GSB Frais a d’abord été mis en place, puis un second serveur Linux a été configuré comme serveur de sauvegarde. Un script Bash a ensuite été développé pour automatiser l’ensemble du processus : extraction de la base de données avec <strong>mysqldump</strong>, archivage des fichiers du site avec <strong>tar</strong>, puis transfert des sauvegardes vers le serveur distant via <strong>SFTP</strong>.
+        </p>
+      </article>
+
+      <article class="project-detail-card">
+        <h4>🔐 Sécurité & architecture</h4>
+        <p>
+          Dans une logique de sécurisation, l’infrastructure a été segmentée entre <strong>LAN</strong> et <strong>DMZ</strong>. Le serveur web a été placé en DMZ tandis que le serveur de sauvegarde est resté en LAN. Le pare-feu <strong>IPFire</strong> a été configuré pour n’autoriser que les flux nécessaires, notamment <strong>SSH (port 22)</strong> pour le transfert des sauvegardes et <strong>ICMP</strong> pour les tests réseau.
+        </p>
+      </article>
+
+      <article class="project-detail-card">
+        <h4>🧪 Résultats</h4>
+        <p>
+          Les sauvegardes sont exécutées automatiquement chaque jour grâce à <strong>cron</strong>. Les fichiers générés comprennent des sauvegardes de base de données au format <strong>.sql</strong> ainsi que des archives du site web au format <strong>.tar.gz</strong>. Les tests réalisés ont permis de valider le bon fonctionnement du script, du transfert sécurisé et de l’architecture réseau mise en place.
+        </p>
+      </article>
+    </div>
+
+    <div class="project-bottom-card">
+      <div class="project-bottom-left">
+        <h4>🛠️ Compétences développées</h4>
+        <p>
+          Ce projet m’a permis de renforcer mes compétences en administration Linux, scripting Bash, gestion des sauvegardes, automatisation des tâches, segmentation réseau, configuration de pare-feu et sécurisation des flux.
+        </p>
+      </div>
+
+      <div class="project-bottom-right">
+        <h4>Technologies utilisées</h4>
+        <ul class="project-tech-list">
+          <li>Apache</li>
+          <li>PHP</li>
+          <li>MariaDB</li>
+          <li>Bash</li>
+          <li>mysqldump</li>
+          <li>tar</li>
+          <li>cron</li>
+          <li>SFTP / SSH</li>
+          <li>IPFire</li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
