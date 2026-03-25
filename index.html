@@ -852,6 +852,29 @@
   color: white;
 }
 
+  
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.project-tags span {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.15);
+  padding: 6px 12px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: #f3e8ff;
+  transition: 0.3s;
+}
+
+.project-tags span:hover {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+}
+
 
 
   <nav>
@@ -1048,20 +1071,45 @@
 <section id="projets" class="section">
   <h2 class="section-title">Mes projets</h2>
   <p class="section-intro">
-    Une sélection de projets réalisés dans le cadre de ma formation, illustrant mes compétences en systèmes, réseaux, automatisation et sécurisation des infrastructures.
+    Projets réalisés dans le cadre de ma formation en systèmes, réseaux et cybersécurité.
   </p>
 
-  <div class="project-showcase">
-    <div class="project-hero-card">
-      <div class="project-hero-top">
-        <span class="project-label">Projet 1</span>
-        <span class="project-type">Systèmes • Réseaux • Cybersécurité</span>
+  <div class="exp-grid">
+
+    <article class="exp-card featured">
+      <div class="exp-top">
+        <span class="exp-badge">Projet 1</span>
+        <span class="exp-date">2025 - 2026</span>
       </div>
 
-      <h3>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais via script Bash</h3>
+      <h3>Sauvegarde automatisée du site et des données GSB Frais</h3>
+      <p class="exp-role">Script Bash • Linux • SFTP • Cron</p>
 
-      <p class="project-hero-text">
-        Ce projet consistait à concevoir une solution complète de sauvegarde automatique pour un serveur web LAMP hébergeant l’application GSB Frais. L’objectif principal était de sécuriser les données critiques, garantir leur disponibilité et mettre en place une architecture fiable, automatisée et sécurisée.
+      <p>
+        Dans le cadre de ce projet, j’ai mis en place une solution de sauvegarde automatisée
+        pour un serveur web LAMP hébergeant l’application GSB Frais. L’objectif était de
+        sécuriser les données du site, notamment la base de données et les fichiers,
+        et de garantir leur disponibilité en cas de panne ou de perte.
+      </p>
+
+      <p>
+        J’ai d’abord configuré un serveur LAMP (Apache, PHP, MariaDB), puis un serveur
+        de sauvegarde Linux dédié. Un script Bash a ensuite été développé afin d’automatiser
+        le processus de sauvegarde, incluant l’extraction de la base de données avec
+        <strong>mysqldump</strong> et l’archivage des fichiers du site avec <strong>tar</strong>.
+      </p>
+
+      <p>
+        Les sauvegardes sont transférées vers le serveur distant via un protocole sécurisé
+        (SFTP utilisant SSH). L’exécution du script est automatisée grâce à un cron,
+        permettant une sauvegarde quotidienne sans intervention manuelle.
+      </p>
+
+      <p>
+        Enfin, une architecture réseau sécurisée a été mise en place avec une segmentation
+        entre le LAN et la DMZ, ainsi qu’une configuration du pare-feu IPFire pour autoriser
+        uniquement les flux nécessaires. Ce projet m’a permis de renforcer mes compétences
+        en administration Linux, scripting Bash, réseaux et cybersécurité.
       </p>
 
       <div class="project-tags">
@@ -1069,65 +1117,12 @@
         <span>Bash</span>
         <span>mysqldump</span>
         <span>cron</span>
-        <span>SFTP / SSH</span>
+        <span>SFTP</span>
         <span>IPFire</span>
         <span>LAN / DMZ</span>
-        <span>Sauvegarde</span>
-      </div>
-    </div>
-
-    <div class="project-details-grid">
-      <article class="project-detail-card">
-        <h4>🎯 Objectif</h4>
-        <p>
-          L’objectif de ce projet était de mettre en place une solution de sauvegarde automatisée pour un serveur web LAMP afin de protéger à la fois la base de données et les fichiers du site. Cette solution devait permettre d’assurer la continuité de service, limiter les risques de perte de données et renforcer la fiabilité de l’infrastructure.
-        </p>
-      </article>
-
-      <article class="project-detail-card">
-        <h4>⚙️ Réalisation</h4>
-        <p>
-          Un serveur LAMP hébergeant l’application GSB Frais a d’abord été mis en place, puis un second serveur Linux a été configuré comme serveur de sauvegarde. Un script Bash a ensuite été développé pour automatiser l’ensemble du processus : extraction de la base de données avec <strong>mysqldump</strong>, archivage des fichiers du site avec <strong>tar</strong>, puis transfert des sauvegardes vers le serveur distant via <strong>SFTP</strong>.
-        </p>
-      </article>
-
-      <article class="project-detail-card">
-        <h4>🔐 Sécurité & architecture</h4>
-        <p>
-          Dans une logique de sécurisation, l’infrastructure a été segmentée entre <strong>LAN</strong> et <strong>DMZ</strong>. Le serveur web a été placé en DMZ tandis que le serveur de sauvegarde est resté en LAN. Le pare-feu <strong>IPFire</strong> a été configuré pour n’autoriser que les flux nécessaires, notamment <strong>SSH (port 22)</strong> pour le transfert des sauvegardes et <strong>ICMP</strong> pour les tests réseau.
-        </p>
-      </article>
-
-      <article class="project-detail-card">
-        <h4>🧪 Résultats</h4>
-        <p>
-          Les sauvegardes sont exécutées automatiquement chaque jour grâce à <strong>cron</strong>. Les fichiers générés comprennent des sauvegardes de base de données au format <strong>.sql</strong> ainsi que des archives du site web au format <strong>.tar.gz</strong>. Les tests réalisés ont permis de valider le bon fonctionnement du script, du transfert sécurisé et de l’architecture réseau mise en place.
-        </p>
-      </article>
-    </div>
-
-    <div class="project-bottom-card">
-      <div class="project-bottom-left">
-        <h4>🛠️ Compétences développées</h4>
-        <p>
-          Ce projet m’a permis de renforcer mes compétences en administration Linux, scripting Bash, gestion des sauvegardes, automatisation des tâches, segmentation réseau, configuration de pare-feu et sécurisation des flux.
-        </p>
       </div>
 
-      <div class="project-bottom-right">
-        <h4>Technologies utilisées</h4>
-        <ul class="project-tech-list">
-          <li>Apache</li>
-          <li>PHP</li>
-          <li>MariaDB</li>
-          <li>Bash</li>
-          <li>mysqldump</li>
-          <li>tar</li>
-          <li>cron</li>
-          <li>SFTP / SSH</li>
-          <li>IPFire</li>
-        </ul>
-      </div>
-    </div>
+    </article>
+
   </div>
 </section>
