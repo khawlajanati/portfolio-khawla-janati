@@ -794,22 +794,33 @@
   }
 }
 
-    .competence-image-box {
-  margin-top: 25px;
+   .competence-box {
+  margin-top: 30px;
   border-radius: 20px;
   overflow: hidden;
   border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 15px 40px rgba(0,0,0,0.3);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
 }
 
-.competence-image-box img {
+.competence-box img {
   width: 100%;
   display: block;
 }
 
-.competence-actions {
-  text-align: center;
-  margin-top: 25px;
+/* bouton */
+.btn-download {
+  padding: 14px 28px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #8b5cf6, #ec4899);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s;
+}
+
+.btn-download:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(236,72,153,0.4);
 }
     
   </style>
@@ -1087,24 +1098,24 @@
     à travers mes projets et mes expériences professionnelles.
   </p>
 
-  <div class="competence-card">
+  <p style="margin-top:20px; font-weight:600;">
+    BTS SIO • E5
+  </p>
 
-    <div class="competence-title-box">
-      <span class="competence-badge">BTS SIO • E5</span>
-      <h3>Tableau de synthèse des réalisations professionnelles</h3>
-    </div>
+  <h3 style="margin-top:10px; text-align:center; font-weight:700;">
+    Tableau de synthèse des réalisations professionnelles
+  </h3>
 
-    <!-- IMAGE -->
-    <div class="competence-image-box">
-      <img src="images/tableau.png" alt="Tableau de compétences BTS SIO">
-    </div>
-
-    <!-- BOUTON -->
-    <div class="competence-actions">
-      <a href="Tableau de Compétence.xlsx" class="btn btn-primary" download>
-        Télécharger le tableau
-      </a>
-    </div>
-
+  <!-- IMAGE -->
+  <div class="competence-box">
+    <img src="tableau1.png" alt="Tableau de compétences BTS SIO">
   </div>
+
+  <!-- BOUTON TELECHARGER -->
+  <div style="text-align:center; margin-top:30px;">
+    <a href="Tableau de Compétence.xlsx" download class="btn-download">
+      Télécharger le tableau
+    </a>
+  </div>
+
 </section>
