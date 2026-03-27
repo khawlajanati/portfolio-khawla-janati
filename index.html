@@ -794,17 +794,17 @@
   }
 }
 
-   .competence-box {
-  margin-top: 30px;
-  border-radius: 20px;
-  overflow: hidden;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+  .competence-box {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
 }
 
 .competence-box img {
-  width: 100%;
-  display: block;
+  width: 65%;
+  border-radius: 20px;
+  border: 1px solid rgba(236,72,153,0.2);
+  box-shadow: 0 10px 30px rgba(236,72,153,0.2);
 }
 
 /* bouton */
@@ -1173,16 +1173,10 @@
     Tableau de synthèse des réalisations professionnelles
   </h3>
 
- <div class="competence-box">
-  <img src="tableau1.png" alt="Tableau de compétences" onclick="openImage(this)">
+<div class="competence-box">
+  <img src="tableau1.png" alt="Tableau de compétences">
 </div>
-
-<!-- MODAL (plein écran) -->
-<div id="imageModal" class="modal">
-  <span class="close" onclick="closeImage()">&times;</span>
-  <img class="modal-content" id="modalImg">
-</div>
-
+  
   <!-- BOUTON TELECHARGER -->
   <div style="text-align:center; margin-top:30px;">
     <a href="Tableau de Compétence.xlsx" download class="btn-download">
