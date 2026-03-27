@@ -822,75 +822,7 @@
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(236,72,153,0.4);
 }
-    /* BOX IMAGE */
-.competence-box {
-  margin-top: 40px;
-  border-radius: 25px;
-  overflow: hidden;
-  position: relative;
-  border: 1px solid rgba(255,255,255,0.1);
-  box-shadow: 0 30px 80px rgba(0,0,0,0.5);
-  transition: 0.4s;
-}
-
-/* IMAGE */
-.competence-box img {
-  width: 100%;
-  display: block;
-  transition: 0.5s;
-  cursor: pointer;
-}
-
-/* HOVER */
-.competence-box:hover img {
-  transform: scale(1.05);
-}
-
-/* GLOW EFFECT */
-.competence-box::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, transparent, rgba(236,72,153,0.2), transparent);
-  opacity: 0;
-  transition: 0.5s;
-}
-
-.competence-box:hover::before {
-  opacity: 1;
-}
-
-/* MODAL */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 999;
-  padding-top: 60px;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  background: rgba(0,0,0,0.9);
-}
-
-/* IMAGE PLEIN ECRAN */
-.modal-content {
-  margin: auto;
-  display: block;
-  width: 90%;
-  max-width: 1000px;
-  border-radius: 15px;
-}
-
-/* BOUTON FERMER */
-.close {
-  position: absolute;
-  top: 20px;
-  right: 40px;
-  color: white;
-  font-size: 40px;
-  cursor: pointer;
-}
+   
     
   </style>
 </head>
