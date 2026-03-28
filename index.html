@@ -822,6 +822,25 @@
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(236,72,153,0.4);
 }
+
+    .infra-box {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+}
+
+.infra-box img {
+  width: 75%;
+  max-width: 900px;
+  border-radius: 18px;
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+}
+
+    .infra-box img {
+  border: 1px solid rgba(236,72,153,0.2);
+  box-shadow: 0 15px 40px rgba(236,72,153,0.2);
+}
    
     
   </style>
@@ -1022,6 +1041,27 @@
     </article>
   </div>
 </section>
+
+
+<section id="infrastructure" class="section">
+
+  <h2 class="section-title">Infrastructure réseau sécurisée et segmentée</h2>
+
+  <p class="section-intro">
+    Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones. 
+    Le LAN regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision. 
+    La DMZ héberge les services exposés comme les serveurs web, afin de limiter les risques pour le réseau interne. 
+    La zone EXT permet l’accès depuis l’extérieur. 
+    L’ensemble est sécurisé par un pare-feu IPFire assurant le filtrage et le contrôle des flux entre les différentes zones.
+  </p>
+
+  <!-- IMAGE -->
+  <div class="infra-box">
+    <img src="infra.png" alt="Infrastructure réseau">
+  </div>
+
+</section>
+
 
 <section id="projets" class="section">
   <h2 class="section-title">Mes projets</h2>
