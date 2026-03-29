@@ -1175,6 +1175,9 @@
         <li>Installation et configuration de postes de travail</li>
         <li>Support aux utilisateurs et conseils techniques</li>
       </ul>
+      <button class="mission-btn" onclick="openMissionFilordi()">
+  Voir une mission
+</button>
     </article>
 
     <article class="exp-card featured">
@@ -1492,6 +1495,71 @@
   </div>
 </div>
 
+  <div id="missionFilordi" class="mission-modal">
+  <div class="mission-modal-content">
+    <button class="mission-close" onclick="closeMissionFilordi()">×</button>
+
+    <h2>Préparation et remise en service d’un parc informatique</h2>
+
+    <div class="mission-section">
+      <h3>Contexte</h3>
+      <p>
+        Dans le cadre de mon stage chez Filordi, j’ai participé à une intervention technique visant
+        à réorganiser et remettre en service le matériel informatique d’une entreprise. Cette mission
+        avait pour objectif d’assurer le bon fonctionnement des équipements et d’améliorer
+        l’organisation de l’infrastructure.
+      </p>
+    </div>
+
+    <div class="mission-section">
+      <h3>Mission réalisée</h3>
+      <p>
+        Au cours de cette intervention, j’ai participé au remplacement et au déplacement de plusieurs
+        équipements informatiques. Cette opération a consisté à déconnecter l’ensemble du matériel,
+        puis à le réinstaller dans un nouvel espace en réalisant un recâblage complet.
+      </p>
+      <p>
+        J’ai également assisté à la préparation d’ordinateurs destinés à être remis en service,
+        notamment par l’installation du système d’exploitation Windows et la configuration des
+        logiciels nécessaires.
+      </p>
+    </div>
+
+    <div class="mission-section">
+      <h3>Activités réalisées</h3>
+      <ul>
+        <li>Débranchement et déplacement du matériel informatique</li>
+        <li>Recâblage des postes et organisation des connexions</li>
+        <li>Installation du système d’exploitation Windows</li>
+        <li>Installation de logiciels de base</li>
+        <li>Nettoyage et optimisation des ordinateurs</li>
+        <li>Vérification du bon fonctionnement des équipements</li>
+      </ul>
+    </div>
+
+    <div class="mission-section">
+      <h3>Compétences développées</h3>
+      <ul>
+        <li>Installation et configuration de postes informatiques</li>
+        <li>Organisation et gestion du matériel</li>
+        <li>Diagnostic simple de pannes</li>
+        <li>Méthodologie d’intervention technique</li>
+        <li>Travail en équipe</li>
+      </ul>
+    </div>
+
+    <div class="mission-section">
+      <h3>Bilan</h3>
+      <p>
+        Cette mission m’a permis de participer à une intervention concrète en entreprise et de mieux
+        comprendre les étapes nécessaires à la remise en service d’un parc informatique. Elle m’a
+        également permis de développer mes compétences techniques de base ainsi que mon sens de
+        l’organisation.
+      </p>
+    </div>
+  </div>
+</div>
+
   <script>
   function openMissionModal() {
     document.getElementById("missionModal").style.display = "block";
@@ -1499,6 +1567,14 @@
 
   function closeMissionModal() {
     document.getElementById("missionModal").style.display = "none";
+  }
+
+     function openMissionFilordi() {
+    document.getElementById("missionFilordi").style.display = "block";
+  }
+
+  function closeMissionFilordi() {
+    document.getElementById("missionFilordi").style.display = "none";
   }
 </script>
 
