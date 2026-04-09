@@ -823,6 +823,34 @@
   box-shadow: 0 10px 30px rgba(236,72,153,0.4);
 }
 
+    .infrastructure-text {
+  max-width: 100%;
+  width: 100%;
+}
+
+    .lan {
+  color: #22c55e; /* vert */
+  font-weight: bold;
+}
+
+.dmz {
+  color: #f97316; /* orange */
+  font-weight: bold;
+}
+
+   .ext {
+  color: #ef4444; /* rouge */
+  font-weight: bold;
+}
+    .firewall {
+  color: #f43f5e; /* rouge différent */
+  font-weight: bold;
+}
+    .lan, .dmz, .ext, .firewall {
+  padding: 2px 6px;
+  border-radius: 6px;
+}
+    
     .infra-box {
   margin-top: 40px;
   display: flex;
@@ -1230,11 +1258,15 @@
   <h2 class="section-title">Infrastructure réseau sécurisée et segmentée</h2>
 
   <p class="section-intro">
-    Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones. 
-    Le LAN regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision. 
-    La DMZ héberge les services exposés comme les serveurs web, afin de limiter les risques pour le réseau interne. 
-    La zone EXT permet l’accès depuis l’extérieur. 
-    L’ensemble est sécurisé par un pare-feu IPFire assurant le filtrage et le contrôle des flux entre les différentes zones.
+Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones.
+
+Le <span class="lan">LAN</span> regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision.
+
+La <span class="dmz">DMZ</span> héberge les services exposés comme les serveurs web, afin de limiter les risques pour le réseau interne.
+
+La zone <span class="ext">EXT</span> permet l’accès depuis l’extérieur.
+
+L’ensemble est sécurisé par un pare-feu <span class="firewall">IPFire</span> assurant le filtrage et le contrôle des flux entre les différentes zones.
   </p>
 
   <!-- IMAGE -->
