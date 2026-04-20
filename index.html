@@ -7,27 +7,28 @@
 
   <style>
     :root {
-      --bg-1: #0b1020;
-      --bg-2: #11162a;
-      --bg-3: #0a0f1d;
+      --bg-1: #090b1f;
+      --bg-2: #111437;
+      --bg-3: #1a1242;
+      --surface: rgba(17, 20, 55, 0.72);
+      --surface-2: rgba(23, 19, 67, 0.72);
+      --surface-3: rgba(13, 24, 63, 0.72);
+      --border: rgba(255, 255, 255, 0.08);
       --text: #f8f7ff;
-      --text-soft: #d8dcf0;
-      --text-muted: #c7c9d3;
-      --white: #ffffff;
+      --text-soft: #d7dbff;
+      --text-muted: #b9bfe8;
       --cyan: #22d3ee;
-      --cyan-2: #38bdf8;
+      --cyan-2: #67e8f9;
       --purple: #8b5cf6;
       --pink: #ec4899;
+      --orange: #fb923c;
+      --blue: #60a5fa;
       --green: #22c55e;
-      --orange: #f97316;
-      --red: #ef4444;
-      --card-bg: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-      --card-border: 1px solid rgba(255,255,255,0.08);
-      --shadow: 0 16px 40px rgba(0,0,0,0.24);
-      --radius-xl: 32px;
-      --radius-lg: 24px;
+      --shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+      --radius-xl: 34px;
+      --radius-lg: 26px;
       --radius-md: 18px;
-      --transition: 0.3s ease;
+      --maxw: 1200px;
     }
 
     * {
@@ -42,12 +43,13 @@
 
     body {
       font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      background:
-        radial-gradient(circle at top left, rgba(168, 85, 247, 0.20), transparent 30%),
-        radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 30%),
-        linear-gradient(135deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
       color: var(--text);
       line-height: 1.7;
+      background:
+        radial-gradient(circle at top left, rgba(236, 72, 153, 0.18), transparent 28%),
+        radial-gradient(circle at top right, rgba(34, 211, 238, 0.12), transparent 25%),
+        radial-gradient(circle at bottom left, rgba(139, 92, 246, 0.16), transparent 30%),
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
       overflow-x: hidden;
     }
 
@@ -57,7 +59,53 @@
     }
 
     a {
+      color: inherit;
       text-decoration: none;
+    }
+
+    .grid-overlay {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+      background-size: 90px 90px;
+      opacity: 0.18;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .glow-orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(90px);
+      pointer-events: none;
+      z-index: 0;
+      opacity: 0.4;
+    }
+
+    .glow-1 {
+      width: 260px;
+      height: 260px;
+      top: 8%;
+      left: -60px;
+      background: rgba(236, 72, 153, 0.25);
+    }
+
+    .glow-2 {
+      width: 260px;
+      height: 260px;
+      top: 38%;
+      right: -70px;
+      background: rgba(34, 211, 238, 0.20);
+    }
+
+    .glow-3 {
+      width: 240px;
+      height: 240px;
+      bottom: 6%;
+      left: 10%;
+      background: rgba(139, 92, 246, 0.18);
     }
 
     nav {
@@ -65,45 +113,52 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(10, 15, 29, 0.68);
-      backdrop-filter: blur(14px);
+      background: rgba(8, 10, 28, 0.58);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
 
     .nav-container {
-      max-width: 1200px;
-      margin: auto;
+      max-width: var(--maxw);
+      margin: 0 auto;
       padding: 16px 20px;
       display: flex;
       justify-content: center;
-      gap: 14px;
       flex-wrap: wrap;
+      gap: 12px;
     }
 
     nav a {
-      color: #f3e8ff;
       font-size: 0.95rem;
-      padding: 10px 18px;
+      color: #f4eeff;
+      padding: 10px 16px;
       border-radius: 999px;
-      transition: var(--transition);
+      transition: 0.3s ease;
+      border: 1px solid transparent;
     }
 
     nav a:hover {
-      background: rgba(255,255,255,0.08);
-      color: var(--white);
+      background: rgba(255,255,255,0.06);
+      border-color: rgba(255,255,255,0.08);
+      transform: translateY(-1px);
+    }
+
+    header,
+    .section {
+      position: relative;
+      z-index: 1;
     }
 
     header {
       min-height: 100vh;
       display: flex;
       align-items: center;
-      justify-content: center;
       padding: 120px 20px 60px;
-      position: relative;
     }
 
     .hero {
-      max-width: 1200px;
+      max-width: var(--maxw);
+      margin: 0 auto;
       width: 100%;
       display: grid;
       grid-template-columns: 1.1fr 0.9fr;
@@ -111,19 +166,15 @@
       align-items: center;
     }
 
-    .hero-text {
-      animation: fadeUp 1s ease;
-    }
-
     .hero-text .hello {
       display: inline-block;
-      font-size: 0.95rem;
-      color: #f9a8d4;
-      background: rgba(236, 72, 153, 0.10);
-      border: 1px solid rgba(236, 72, 153, 0.25);
-      padding: 8px 14px;
-      border-radius: 999px;
       margin-bottom: 18px;
+      padding: 9px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, rgba(236,72,153,0.14), rgba(139,92,246,0.14));
+      border: 1px solid rgba(236,72,153,0.22);
+      color: #f9a8d4;
+      font-size: 0.95rem;
       letter-spacing: 0.3px;
     }
 
@@ -131,140 +182,138 @@
       font-size: 4.2rem;
       line-height: 1.05;
       font-weight: 800;
-      letter-spacing: 1.5px;
+      letter-spacing: 1px;
       margin-bottom: 18px;
-      color: var(--white);
-      text-shadow: 0 0 20px rgba(255,255,255,0.05);
+      text-shadow: 0 0 18px rgba(255,255,255,0.08);
     }
 
     .hero-text h2 {
-      font-size: 1.45rem;
-      font-weight: 500;
-      color: #ddd6fe;
-      margin-bottom: 12px;
-      max-width: 720px;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #ece7ff;
+      margin-bottom: 10px;
     }
 
     .hero-text h3 {
-      font-size: 1.15rem;
+      font-size: 1.1rem;
       font-weight: 400;
-      color: #c4b5fd;
-      margin-bottom: 28px;
+      color: #c9bfff;
+      margin-bottom: 24px;
     }
 
     .hero-text p {
-      font-size: 1.12rem;
-      color: #e5e7eb;
       max-width: 700px;
-      margin-bottom: 34px;
+      font-size: 1.1rem;
+      color: var(--text-soft);
+      margin-bottom: 28px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 18px;
       flex-wrap: wrap;
+      gap: 16px;
     }
 
     .btn {
-      padding: 15px 26px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 14px 24px;
       border-radius: 999px;
-      font-weight: 600;
-      transition: var(--transition);
-      font-size: 1rem;
-      display: inline-block;
+      font-weight: 700;
+      transition: 0.3s ease;
+      border: 1px solid transparent;
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, var(--purple), var(--pink));
       color: white;
-      box-shadow: 0 12px 28px rgba(236, 72, 153, 0.22);
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      box-shadow: 0 14px 30px rgba(236,72,153,0.22);
     }
 
     .btn-primary:hover {
       transform: translateY(-3px);
-      box-shadow: 0 18px 35px rgba(236, 72, 153, 0.28);
+      box-shadow: 0 18px 36px rgba(236,72,153,0.28);
     }
 
     .btn-secondary {
-      border: 1px solid rgba(196, 181, 253, 0.4);
-      color: #f5f3ff;
-      background: rgba(255,255,255,0.03);
+      color: white;
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.12);
+      backdrop-filter: blur(8px);
     }
 
     .btn-secondary:hover {
       transform: translateY(-3px);
-      background: rgba(139, 92, 246, 0.12);
-      border-color: rgba(236, 72, 153, 0.35);
+      background: rgba(255,255,255,0.07);
     }
 
     .hero-visual {
       display: flex;
-      align-items: center;
       justify-content: center;
-      min-height: 460px;
-      animation: fadeUp 1.2s ease;
+      align-items: center;
+      min-height: 470px;
     }
 
-    .it-panel {
+    .hero-panel {
       width: 100%;
-      max-width: 520px;
+      max-width: 540px;
       padding: 34px;
-      border-radius: 30px;
-      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-      border: var(--card-border);
-      box-shadow:
-        0 20px 60px rgba(0,0,0,0.35),
-        0 0 40px rgba(139, 92, 246, 0.08);
+      border-radius: var(--radius-xl);
+      background: linear-gradient(160deg, rgba(16,18,57,0.88), rgba(20,22,76,0.72));
+      border: 1px solid rgba(255,255,255,0.09);
+      box-shadow: var(--shadow);
       backdrop-filter: blur(14px);
       position: relative;
       overflow: hidden;
     }
 
-    .it-panel::before {
+    .hero-panel::before,
+    .hero-panel::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
-      top: -70px;
-      right: -70px;
-      background: rgba(236, 72, 153, 0.12);
-      filter: blur(60px);
       border-radius: 50%;
+      filter: blur(70px);
+      opacity: 0.55;
     }
 
-    .it-panel::after {
-      content: "";
-      position: absolute;
+    .hero-panel::before {
       width: 180px;
       height: 180px;
-      bottom: -60px;
-      left: -50px;
-      background: rgba(139, 92, 246, 0.12);
-      filter: blur(60px);
-      border-radius: 50%;
+      top: -50px;
+      right: -60px;
+      background: rgba(236, 72, 153, 0.28);
     }
 
-    .it-label,
-    .project-kicker {
+    .hero-panel::after {
+      width: 180px;
+      height: 180px;
+      bottom: -50px;
+      left: -50px;
+      background: rgba(34, 211, 238, 0.22);
+    }
+
+    .hero-label {
       position: relative;
       z-index: 1;
       display: inline-block;
       margin-bottom: 12px;
-      font-size: 0.85rem;
-      letter-spacing: 1.5px;
-      text-transform: uppercase;
       color: #f9a8d4;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 700;
     }
 
-    .it-panel h3 {
+    .hero-panel h3 {
       position: relative;
       z-index: 1;
       font-size: 2rem;
       margin-bottom: 24px;
-      color: var(--white);
     }
 
-    .it-grid {
+    .hero-grid {
       position: relative;
       z-index: 1;
       display: grid;
@@ -272,75 +321,94 @@
       gap: 18px;
     }
 
-    .it-card {
+    .hero-card {
       padding: 20px;
       border-radius: 22px;
-      background: rgba(255,255,255,0.04);
+      background: rgba(255,255,255,0.05);
       border: 1px solid rgba(255,255,255,0.08);
-      transition: var(--transition);
+      transition: 0.3s ease;
     }
 
-    .it-card:hover {
+    .hero-card:hover {
       transform: translateY(-6px);
-      border-color: rgba(236, 72, 153, 0.28);
-      box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+      border-color: rgba(236,72,153,0.28);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.20);
     }
 
-    .it-card h4 {
-      margin: 0 0 10px;
-      font-size: 1.1rem;
-      color: var(--white);
+    .hero-card h4 {
+      font-size: 1.08rem;
+      margin-bottom: 8px;
     }
 
-    .it-card p {
-      margin: 0;
+    .hero-card p {
+      color: var(--text-soft);
       font-size: 0.95rem;
-      color: #e5e7eb;
       line-height: 1.5;
     }
 
     .section {
-      max-width: 1200px;
-      margin: auto;
+      max-width: var(--maxw);
+      margin: 0 auto;
       padding: 100px 20px;
     }
 
+    .section-head {
+      margin-bottom: 40px;
+    }
+
+    .section-kicker {
+      display: inline-block;
+      margin-bottom: 10px;
+      font-size: 0.86rem;
+      color: var(--cyan);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 800;
+    }
+
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.7rem;
       margin-bottom: 12px;
-      color: var(--white);
     }
 
     .section-intro {
-      color: #d1d5db;
-      max-width: 760px;
-      margin-bottom: 40px;
-      font-size: 1.05rem;
+      max-width: 800px;
+      color: var(--text-soft);
+      font-size: 1.04rem;
     }
 
-    .about-card,
-    .parcours-card,
-    .info-card,
-    .problem-box,
-    .conclusion,
-    .contact-card,
-    .veille-card,
-    .infra-card {
-      background: var(--card-bg);
-      border: var(--card-border);
-      border-radius: 28px;
-      backdrop-filter: blur(10px);
+    .glass-card {
+      background: linear-gradient(160deg, rgba(13,17,52,0.82), rgba(28,18,72,0.72));
+      border: 1px solid var(--border);
+      border-radius: var(--radius-xl);
+      backdrop-filter: blur(14px);
       box-shadow: var(--shadow);
     }
 
     .about-card {
-      padding: 40px;
+      padding: 38px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .about-card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      top: -110px;
+      right: -90px;
+      border-radius: 50%;
+      background: rgba(236,72,153,0.16);
+      filter: blur(70px);
     }
 
     .about-card p {
+      position: relative;
+      z-index: 1;
       font-size: 1.08rem;
-      color: #ececf6;
-      margin-bottom: 20px;
+      color: #eef0ff;
+      margin-bottom: 18px;
     }
 
     .about-card p:last-child {
@@ -349,387 +417,547 @@
 
     .highlight {
       color: #f9a8d4;
-      font-weight: 600;
+      font-weight: 700;
     }
 
     .parcours-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 25px;
-      margin-top: 40px;
+      gap: 24px;
     }
 
     .parcours-card {
-      padding: 25px;
-      transition: var(--transition);
+      padding: 26px;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s ease;
     }
 
     .parcours-card:hover {
       transform: translateY(-8px);
-      border-color: rgba(236, 72, 153, 0.5);
-      box-shadow: 0 15px 40px rgba(236, 72, 153, 0.15);
+    }
+
+    .parcours-card:nth-child(1) {
+      background: linear-gradient(160deg, rgba(20,18,58,0.88), rgba(34,18,70,0.72));
+    }
+
+    .parcours-card:nth-child(2) {
+      background: linear-gradient(160deg, rgba(18,24,63,0.88), rgba(27,19,73,0.72));
+    }
+
+    .parcours-card:nth-child(3) {
+      background: linear-gradient(160deg, rgba(24,18,66,0.88), rgba(16,28,79,0.72));
     }
 
     .card-year {
       display: inline-block;
+      margin-bottom: 14px;
+      padding: 7px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 800;
       background: linear-gradient(90deg, var(--purple), var(--pink));
       color: white;
-      padding: 6px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      margin-bottom: 15px;
+      box-shadow: 0 10px 22px rgba(236,72,153,0.18);
     }
 
     .parcours-card h3 {
-      color: var(--white);
+      font-size: 1.25rem;
       margin-bottom: 10px;
     }
 
     .parcours-card .school {
-      color: var(--text-muted);
-      font-size: 0.9rem;
+      color: #cccfff;
       margin-bottom: 10px;
-    }
-
-    .parcours-card p {
-      color: #e5e7eb;
       font-size: 0.95rem;
     }
 
-    .exp-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 24px;
-      margin-top: 40px;
+    .parcours-card p {
+      color: var(--text-soft);
+      font-size: 0.97rem;
     }
 
-    .exp-card {
+    .exp-grid,
+    .projects-grid,
+    .veille-grid {
+      display: grid;
+      gap: 28px;
+    }
+
+    .exp-grid,
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .veille-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .wide-card {
+      grid-column: 1 / -1;
+    }
+
+    .soft-card {
       position: relative;
-      padding: 28px;
       overflow: hidden;
+      padding: 30px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.32);
+      backdrop-filter: blur(14px);
       transition: 0.35s ease;
     }
 
-    .exp-card::before {
+    .soft-card:hover {
+      transform: translateY(-10px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(0,0,0,0.38);
+    }
+
+    .soft-card::before,
+    .soft-card::after {
       content: "";
       position: absolute;
-      width: 220px;
-      height: 220px;
+      border-radius: 50%;
+      filter: blur(55px);
+      opacity: 0.75;
+    }
+
+    .soft-card::before {
+      width: 240px;
+      height: 240px;
       top: -90px;
       right: -90px;
-      border-radius: 50%;
-      background: rgba(139, 92, 246, 0.12);
-      filter: blur(55px);
     }
 
-    .exp-card::after {
-      content: "";
-      position: absolute;
+    .soft-card::after {
       width: 170px;
       height: 170px;
-      bottom: -70px;
-      left: -60px;
-      border-radius: 50%;
-      background: rgba(236, 72, 153, 0.10);
-      filter: blur(50px);
+      bottom: -60px;
+      left: -55px;
     }
 
-    .exp-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(236, 72, 153, 0.30);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.28);
-    }
-
-    .exp-card > * {
+    .soft-card > * {
       position: relative;
       z-index: 1;
     }
 
-    .exp-card.wide {
-      grid-column: 1 / -1;
+    .exp-grouped {
+      background: linear-gradient(160deg, rgba(17,19,58,0.96), rgba(23,25,72,0.92));
+    }
+
+    .exp-grouped::before {
+      background: rgba(139,92,246,0.22);
+    }
+
+    .exp-grouped::after {
+      background: rgba(236,72,153,0.18);
+    }
+
+    .it-card-nievre {
+      background: linear-gradient(160deg, rgba(12,24,54,0.96), rgba(20,33,82,0.92));
+    }
+
+    .it-card-nievre::before {
+      background: rgba(34,211,238,0.22);
+    }
+
+    .it-card-nievre::after {
+      background: rgba(59,130,246,0.22);
+    }
+
+    .it-card-filordi {
+      background: linear-gradient(160deg, rgba(36,18,48,0.96), rgba(59,27,65,0.92));
+    }
+
+    .it-card-filordi::before {
+      background: rgba(249,115,22,0.22);
+    }
+
+    .it-card-filordi::after {
+      background: rgba(236,72,153,0.20);
+    }
+
+    .project-backup {
+      background: linear-gradient(160deg, rgba(20,18,58,0.96), rgba(41,18,76,0.92));
+    }
+
+    .project-backup::before {
+      background: rgba(139,92,246,0.22);
+    }
+
+    .project-backup::after {
+      background: rgba(236,72,153,0.18);
+    }
+
+    .project-centreon {
+      background: linear-gradient(160deg, rgba(10,24,57,0.96), rgba(28,23,84,0.92));
+    }
+
+    .project-centreon::before {
+      background: rgba(34,211,238,0.20);
+    }
+
+    .project-centreon::after {
+      background: rgba(168,85,247,0.18);
+    }
+
+    .article-card {
+      background: linear-gradient(160deg, rgba(16,18,58,0.96), rgba(23,18,70,0.92));
+    }
+
+    .article-card::before {
+      background: rgba(236,72,153,0.18);
+    }
+
+    .article-card::after {
+      background: rgba(34,211,238,0.14);
+    }
+
+    .card-top-line {
+      width: 100%;
+      height: 5px;
+      border-radius: 999px;
+      margin-bottom: 22px;
+    }
+
+    .exp-grouped .card-top-line {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .it-card-nievre .card-top-line {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+
+    .it-card-filordi .card-top-line {
+      background: linear-gradient(90deg, var(--orange), var(--pink));
+    }
+
+    .project-backup .card-top-line {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .project-centreon .card-top-line {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+
+    .article-card .card-top-line {
+      background: linear-gradient(90deg, var(--pink), var(--cyan));
+    }
+
+    .card-head {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      margin-bottom: 18px;
+    }
+
+    .card-icon {
+      min-width: 64px;
+      width: 64px;
+      height: 64px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      border: 1px solid rgba(255,255,255,0.14);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+      background: linear-gradient(135deg, rgba(139,92,246,0.22), rgba(236,72,153,0.22));
+    }
+
+    .it-card-nievre .card-icon {
+      background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(59,130,246,0.22));
+    }
+
+    .it-card-filordi .card-icon {
+      background: linear-gradient(135deg, rgba(249,115,22,0.22), rgba(236,72,153,0.22));
+    }
+
+    .project-centreon .card-icon {
+      background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(139,92,246,0.22));
+    }
+
+    .card-label-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: white;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .badge-purple {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .badge-cyan {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+
+    .badge-orange {
+      background: linear-gradient(90deg, var(--orange), var(--pink));
+    }
+
+    .mini-badge {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #dbeafe;
+      font-size: 0.82rem;
+    }
+
+    .soft-card h3 {
+      font-size: 1.45rem;
+      line-height: 1.35;
+      margin-bottom: 10px;
+    }
+
+    .exp-role,
+    .card-punchline {
+      color: #d6c8ff;
+      font-weight: 600;
+      margin-bottom: 14px;
+      line-height: 1.7;
+    }
+
+    .card-text,
+    .soft-card p,
+    .soft-card li {
+      color: #edf1ff;
+    }
+
+    .card-points {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .card-points li {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.06);
+      line-height: 1.6;
+    }
+
+    .it-card-nievre .card-points li {
+      border-left: 4px solid var(--cyan);
+    }
+
+    .it-card-filordi .card-points li {
+      border-left: 4px solid var(--orange);
+    }
+
+    .project-backup .card-points li {
+      border-left: 4px solid var(--purple);
+    }
+
+    .project-centreon .card-points li {
+      border-left: 4px solid var(--cyan);
+    }
+
+    .tag-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 18px;
+    }
+
+    .tag-list span {
+      padding: 8px 13px;
+      border-radius: 999px;
+      font-size: 0.84rem;
+      font-weight: 600;
+      color: #f8f7ff;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(255,255,255,0.10);
+      transition: 0.3s ease;
+    }
+
+    .tag-list span:hover {
+      transform: translateY(-2px);
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+    }
+
+    .action-btn {
+      margin-top: 22px;
+      border: none;
+      border-radius: 16px;
+      padding: 13px 20px;
+      font-weight: 700;
+      cursor: pointer;
+      color: white;
+      background: linear-gradient(90deg, var(--cyan), var(--purple), var(--pink));
+      background-size: 200% 200%;
+      box-shadow: 0 12px 28px rgba(139, 92, 246, 0.25);
+      transition: 0.35s ease;
+    }
+
+    .action-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 18px 35px rgba(236, 72, 153, 0.28);
+      background-position: right center;
     }
 
     .exp-columns {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 24px;
+      margin-top: 16px;
     }
 
-    .exp-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
-      flex-wrap: wrap;
-    }
-
-    .exp-badge {
-      display: inline-block;
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: white;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
-    }
-
-    .exp-badge.soft {
-      background: rgba(255,255,255,0.08);
-      color: #f5d0fe;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: none;
-    }
-
-    .exp-date {
-      font-size: 0.92rem;
-      color: #d8d7e6;
-    }
-
-    .exp-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.55rem;
-      color: var(--white);
-    }
-
-    .exp-role {
-      margin-bottom: 18px;
-      color: #c4b5fd;
-      font-weight: 500;
-    }
-
-    .exp-card ul {
+    .exp-columns ul {
       padding-left: 18px;
     }
 
-    .exp-card li {
-      color: #ececf6;
-      margin-bottom: 12px;
-      line-height: 1.6;
+    .exp-columns li {
+      margin-bottom: 10px;
+      color: #eef1ff;
     }
 
-    .mission-btn,
-    .project-btn {
-      margin-top: 18px;
-      padding: 12px 22px;
-      border: none;
-      border-radius: 999px;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
-      color: white;
-      font-weight: 600;
-      cursor: pointer;
-      transition: var(--transition);
-      font-size: 0.95rem;
+    .infra-card {
+      padding: 36px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .mission-btn:hover,
-    .project-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
-    }
-
-    .infrastructure-wrapper {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 20px;
+    .infra-card::before {
+      content: "";
+      position: absolute;
+      width: 240px;
+      height: 240px;
+      right: -90px;
+      top: -90px;
+      background: rgba(34,211,238,0.15);
+      border-radius: 50%;
+      filter: blur(70px);
     }
 
     .infrastructure-text {
-      max-width: 900px;
+      position: relative;
+      z-index: 1;
+      max-width: 920px;
       margin: 0 auto 30px;
       text-align: center;
-      line-height: 1.9;
-      color: #e5e7eb;
+      color: var(--text-soft);
       font-size: 1.05rem;
+      line-height: 1.9;
     }
 
     .lan, .dmz, .ext, .firewall {
       padding: 2px 8px;
       border-radius: 6px;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     .lan { color: var(--green); }
     .dmz { color: var(--orange); }
-    .ext { color: var(--red); }
-    .firewall { color: #f43f5e; }
+    .ext { color: #f87171; }
+    .firewall { color: #fb7185; }
 
     .infra-box {
-      margin-top: 40px;
+      margin-top: 28px;
       display: flex;
       justify-content: center;
-    }
-
-    .infra-box img {
-      width: 75%;
-      max-width: 900px;
-      border-radius: 18px;
-      border: 1px solid rgba(236,72,153,0.2);
-      box-shadow: 0 15px 40px rgba(236,72,153,0.2);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(280px, 1fr));
-      gap: 24px;
-      margin-top: 10px;
-    }
-
-    .project-preview-card {
-      padding: 28px;
-      position: relative;
-      overflow: hidden;
-      transition: var(--transition);
-    }
-
-    .project-preview-card::before {
-      content: "";
-      position: absolute;
-      width: 220px;
-      height: 220px;
-      top: -90px;
-      right: -90px;
-      background: rgba(236, 72, 153, 0.10);
-      border-radius: 50%;
-      filter: blur(55px);
-    }
-
-    .project-preview-card::after {
-      content: "";
-      position: absolute;
-      width: 180px;
-      height: 180px;
-      bottom: -70px;
-      left: -70px;
-      background: rgba(139, 92, 246, 0.12);
-      border-radius: 50%;
-      filter: blur(50px);
-    }
-
-    .project-preview-card > * {
       position: relative;
       z-index: 1;
     }
 
-    .project-preview-card:hover {
-      transform: translateY(-8px);
-      border-color: rgba(236,72,153,0.3);
-      box-shadow: 0 22px 50px rgba(0,0,0,0.28);
+    .infra-box img {
+      width: 82%;
+      max-width: 920px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.35);
     }
 
-    .project-preview-badge {
-      display: inline-block;
-      margin-bottom: 16px;
-      padding: 8px 16px;
-      border-radius: 999px;
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      color: white;
-      font-size: 0.82rem;
-      font-weight: 700;
-      letter-spacing: 0.3px;
-    }
-
-    .project-preview-card h3 {
-      font-size: 1.4rem;
-      line-height: 1.4;
-      margin-bottom: 14px;
-      color: var(--white);
-    }
-
-    .project-preview-card p {
-      color: #e5e7eb;
-      margin-bottom: 18px;
-      line-height: 1.8;
-    }
-
-    .skills-tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .skills-tags span {
-      background: rgba(255,255,255,0.08);
-      border: 1px solid rgba(255,255,255,0.15);
-      padding: 8px 14px;
-      border-radius: 999px;
-      font-size: 0.85rem;
-      color: #f3e8ff;
-      transition: var(--transition);
-    }
-
-    .skills-tags span:hover {
-      background: linear-gradient(90deg, var(--purple), var(--pink));
-      color: white;
+    .problem-box,
+    .conclusion {
+      padding: 24px;
+      border-radius: 24px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.25);
+      backdrop-filter: blur(12px);
     }
 
     .problem-box {
-      margin: 24px 0 30px;
-      padding: 20px;
-      background: rgba(139,92,246,0.10);
-      border: 1px solid rgba(139,92,246,0.3);
-      color: #ececf6;
-    }
-
-    .veille-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 20px;
-    }
-
-    .veille-card {
-      padding: 22px;
-      color: white;
-      transition: var(--transition);
-      background: rgba(30,41,59,0.8);
-      border: 1px solid rgba(56,189,248,0.3);
-    }
-
-    .veille-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--cyan-2);
-    }
-
-    .veille-card h3 {
-      margin-bottom: 10px;
-      font-size: 1.05rem;
-      color: var(--white);
-    }
-
-    .veille-card p {
-      color: #dbe5f3;
-      font-size: 0.97rem;
-      line-height: 1.7;
+      margin-bottom: 28px;
+      background: linear-gradient(160deg, rgba(20,18,61,0.88), rgba(41,20,73,0.76));
+      color: #f3efff;
     }
 
     .conclusion {
-      margin-top: 40px;
-      padding: 24px;
-      background: rgba(16,185,129,0.1);
+      margin-top: 34px;
+      background: linear-gradient(160deg, rgba(12,24,54,0.88), rgba(27,18,74,0.76));
     }
 
     .conclusion h3 {
       margin-bottom: 12px;
       color: var(--white);
+      font-size: 1.2rem;
     }
 
     .conclusion p {
-      color: #e5e7eb;
-      line-height: 1.9;
+      color: var(--text-soft);
+    }
+
+    .article-link {
+      display: block;
+    }
+
+    .article-meta {
+      color: #cdcfff;
+      margin-bottom: 14px;
+      font-size: 0.95rem;
+    }
+
+    .article-summary {
+      color: var(--text-soft);
+      font-size: 1rem;
+      line-height: 1.8;
+    }
+
+    .article-card:hover .read-more {
+      transform: translateX(6px);
+    }
+
+    .read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 18px;
+      color: var(--cyan-2);
+      font-weight: 700;
+      transition: 0.3s ease;
+    }
+
+    .competence-card {
+      padding: 36px;
     }
 
     .competence-box {
-      margin-top: 40px;
+      margin-top: 34px;
       display: flex;
       justify-content: center;
     }
 
     .competence-box img {
-      width: 65%;
-      border-radius: 20px;
-      border: 1px solid rgba(236,72,153,0.2);
-      box-shadow: 0 10px 30px rgba(236,72,153,0.2);
+      width: 72%;
+      border-radius: 22px;
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 14px 32px rgba(0,0,0,0.28);
     }
 
     .download-wrap {
@@ -738,88 +966,89 @@
     }
 
     .btn-download {
-      display: inline-block;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
       padding: 14px 28px;
-      border-radius: 30px;
-      background: linear-gradient(135deg, var(--purple), var(--pink));
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
       color: white;
-      font-weight: 600;
-      transition: var(--transition);
+      font-weight: 700;
+      transition: 0.3s ease;
+      box-shadow: 0 14px 28px rgba(236,72,153,0.20);
     }
 
     .btn-download:hover {
       transform: translateY(-3px);
-      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
+      box-shadow: 0 18px 35px rgba(236,72,153,0.28);
     }
 
     .contact-container {
-      margin-top: 40px;
       display: flex;
-      gap: 20px;
+      gap: 22px;
       justify-content: center;
       flex-wrap: wrap;
+      margin-top: 34px;
     }
 
     .contact-card {
-      padding: 25px;
-      width: 260px;
+      width: 270px;
+      padding: 28px;
       text-align: center;
-      transition: var(--transition);
-      background: rgba(30,41,59,0.8);
-      border: 1px solid rgba(56,189,248,0.3);
+      border-radius: 28px;
+      background: linear-gradient(160deg, rgba(16,18,58,0.94), rgba(29,20,72,0.88));
+      border: 1px solid rgba(255,255,255,0.08);
+      box-shadow: 0 18px 45px rgba(0,0,0,0.26);
+      transition: 0.3s ease;
     }
 
     .contact-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--pink);
-      box-shadow: 0 10px 30px rgba(236,72,153,0.3);
+      transform: translateY(-8px);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.32);
     }
 
     .contact-card h3 {
       margin-bottom: 10px;
-      color: var(--white);
+      font-size: 1.2rem;
     }
 
     .contact-card p {
-      color: #dbe5f3;
+      color: var(--text-soft);
     }
 
     .btn-email,
     .linkedin-btn {
       display: inline-block;
-      margin-top: 12px;
+      margin-top: 14px;
       padding: 10px 20px;
-      border-radius: 30px;
+      border-radius: 999px;
       color: white;
-      font-weight: 600;
-      transition: var(--transition);
+      font-weight: 700;
+      transition: 0.3s ease;
     }
 
     .btn-email {
       background: linear-gradient(90deg, #3b82f6, #2563eb);
     }
 
-    .btn-email:hover {
-      background: #004182;
-      transform: translateY(-2px);
-    }
-
     .linkedin-btn {
       background: #0A66C2;
     }
 
+    .btn-email:hover,
     .linkedin-btn:hover {
-      background: #004182;
       transform: translateY(-2px);
+      filter: brightness(1.08);
     }
 
+    /* MODALES */
     .modal {
       display: none;
       position: fixed;
       inset: 0;
       z-index: 5000;
       background: rgba(5, 8, 20, 0.78);
-      backdrop-filter: blur(6px);
+      backdrop-filter: blur(8px);
       padding: 40px 20px;
       overflow-y: auto;
     }
@@ -829,129 +1058,218 @@
     }
 
     .modal-content {
-      max-width: 1100px;
+      max-width: 1180px;
       margin: 0 auto;
-      background: #171a56;
-      border: 1px solid rgba(255,255,255,0.12);
-      border-radius: 26px;
-      padding: 40px;
-      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
       position: relative;
+      padding: 42px;
+      border-radius: 28px;
+      overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.40);
+    }
+
+    .modal-content::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      border-radius: 28px 28px 0 0;
     }
 
     .modal-content h2 {
+      font-size: 2.35rem;
+      line-height: 1.25;
       margin-bottom: 28px;
-      color: var(--white);
-      font-size: 2.2rem;
-      line-height: 1.3;
-      max-width: 900px;
+      padding-right: 90px;
     }
 
+    .modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+
+    .info-card,
     .modal-section {
-      margin-bottom: 28px;
+      padding: 22px;
+      border-radius: 24px;
+      transition: 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.10);
     }
 
+    .info-card:hover,
+    .modal-section:hover {
+      transform: translateY(-4px);
+    }
+
+    .info-card h4,
     .modal-section h3 {
       margin-bottom: 12px;
-      color: var(--cyan);
       font-size: 1rem;
-      letter-spacing: 2px;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
     }
 
+    .info-card p,
     .modal-section p,
     .modal-section li {
-      color: var(--text-soft);
+      color: #eef2ff;
       line-height: 1.9;
       font-size: 1.02rem;
     }
 
+    .modal-section {
+      margin-bottom: 22px;
+    }
+
     .modal-section ul {
-      padding-left: 24px;
+      padding-left: 22px;
     }
 
     .modal-close {
       position: absolute;
       top: 22px;
       right: 22px;
-      width: 52px;
-      height: 52px;
-      border-radius: 14px;
-      border: 1px solid rgba(255,255,255,0.14);
-      background: transparent;
-      color: #c7c9f7;
+      width: 56px;
+      height: 56px;
+      border-radius: 18px;
       font-size: 2rem;
       cursor: pointer;
-      transition: var(--transition);
+      transition: 0.3s ease;
+      backdrop-filter: blur(8px);
     }
 
     .modal-close:hover {
-      background: rgba(255,255,255,0.05);
+      transform: rotate(90deg) scale(1.05);
+      color: white;
     }
 
-    .modal-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 18px;
-      margin-bottom: 24px;
+    #projectBackup .modal-content {
+      background: linear-gradient(160deg, #10133f 0%, #1c1d63 55%, #24184d 100%);
+      border: 1px solid rgba(236,72,153,0.22);
     }
 
-    .info-card {
-      padding: 18px;
-      background: rgba(255,255,255,0.03);
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.10);
-      box-shadow: none;
+    #projectBackup .modal-content::before {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
     }
 
-    .info-card h4 {
+    #projectBackup .info-card,
+    #projectBackup .modal-section {
+      background: linear-gradient(145deg, rgba(139,92,246,0.12), rgba(236,72,153,0.08));
+      border-color: rgba(236,72,153,0.18);
+    }
+
+    #projectBackup .info-card h4,
+    #projectBackup .modal-section h3 {
+      color: #f472b6;
+    }
+
+    #projectBackup .modal-close {
+      border: 1px solid rgba(236,72,153,0.35);
+      color: #f9a8d4;
+      background: rgba(236,72,153,0.08);
+    }
+
+    #projectCentreon .modal-content {
+      background: linear-gradient(160deg, #0a1839 0%, #13245c 48%, #241a56 100%);
+      border: 1px solid rgba(34,211,238,0.24);
+    }
+
+    #projectCentreon .modal-content::before {
+      background: linear-gradient(90deg, var(--cyan), var(--purple));
+    }
+
+    #projectCentreon .info-card,
+    #projectCentreon .modal-section {
+      background: linear-gradient(145deg, rgba(34,211,238,0.10), rgba(139,92,246,0.10));
+      border-color: rgba(34,211,238,0.18);
+    }
+
+    #projectCentreon .info-card h4,
+    #projectCentreon .modal-section h3 {
       color: var(--cyan);
-      margin-bottom: 10px;
-      font-size: 1rem;
-      text-transform: uppercase;
-      letter-spacing: 1px;
     }
 
-    .info-card p {
-      color: #dce4ff;
-      line-height: 1.8;
-      font-size: 0.98rem;
+    #projectCentreon .modal-close {
+      border: 1px solid rgba(34,211,238,0.35);
+      color: #67e8f9;
+      background: rgba(34,211,238,0.08);
     }
 
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(35px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+    #missionModal .modal-content {
+      background: linear-gradient(160deg, #0c1836 0%, #132452 52%, #16203f 100%);
+      border: 1px solid rgba(59,130,246,0.24);
+    }
+
+    #missionModal .modal-content::before {
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+    }
+
+    #missionModal .modal-section {
+      background: linear-gradient(145deg, rgba(34,211,238,0.10), rgba(59,130,246,0.10));
+      border-color: rgba(34,211,238,0.18);
+    }
+
+    #missionModal .modal-section h3 {
+      color: #67e8f9;
+    }
+
+    #missionModal .modal-close {
+      border: 1px solid rgba(59,130,246,0.35);
+      color: #93c5fd;
+      background: rgba(59,130,246,0.08);
+    }
+
+    #missionFilordi .modal-content {
+      background: linear-gradient(160deg, #241230 0%, #3b1b41 48%, #2a1838 100%);
+      border: 1px solid rgba(249,115,22,0.22);
+    }
+
+    #missionFilordi .modal-content::before {
+      background: linear-gradient(90deg, var(--orange), var(--pink));
+    }
+
+    #missionFilordi .modal-section {
+      background: linear-gradient(145deg, rgba(249,115,22,0.10), rgba(236,72,153,0.10));
+      border-color: rgba(249,115,22,0.18);
+    }
+
+    #missionFilordi .modal-section h3 {
+      color: #fb923c;
+    }
+
+    #missionFilordi .modal-close {
+      border: 1px solid rgba(249,115,22,0.35);
+      color: #fdba74;
+      background: rgba(249,115,22,0.08);
     }
 
     @media (max-width: 980px) {
-      .hero {
+      .hero,
+      .parcours-grid,
+      .exp-grid,
+      .projects-grid,
+      .veille-grid,
+      .modal-grid,
+      .exp-columns {
         grid-template-columns: 1fr;
+      }
+
+      .hero {
+        gap: 34px;
       }
 
       .hero-text h1 {
         font-size: 3rem;
       }
 
-      .hero-text h2 {
-        font-size: 1.2rem;
-      }
-
-      .it-grid,
-      .parcours-grid,
-      .exp-grid,
-      .projects-grid,
-      .modal-grid,
-      .exp-columns {
+      .hero-grid {
         grid-template-columns: 1fr;
       }
 
-      .exp-card.wide {
+      .wide-card {
         grid-column: auto;
       }
 
@@ -961,13 +1279,29 @@
       }
     }
 
-    @media (max-width: 640px) {
-      .hero-text h1 {
-        font-size: 2.4rem;
+    @media (max-width: 700px) {
+      nav {
+        display: none;
       }
 
-      .hero-text p {
+      header {
+        padding-top: 50px;
+      }
+
+      .hero-text h1 {
+        font-size: 2.35rem;
+      }
+
+      .hero-text h2 {
+        font-size: 1.15rem;
+      }
+
+      .hero-text h3 {
         font-size: 1rem;
+      }
+
+      .section {
+        padding: 78px 16px;
       }
 
       .section-title {
@@ -975,364 +1309,43 @@
       }
 
       .about-card,
+      .infra-card,
+      .competence-card,
       .modal-content {
-        padding: 26px;
+        padding: 24px;
+      }
+
+      .soft-card {
+        padding: 22px;
+      }
+
+      .card-head {
+        gap: 12px;
+      }
+
+      .card-icon {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        font-size: 1.5rem;
+      }
+
+      .soft-card h3 {
+        font-size: 1.2rem;
       }
 
       .modal-content h2 {
-        font-size: 1.6rem;
-      }
-
-      .project-preview-card,
-      .exp-card,
-      .parcours-card {
-        padding: 22px;
+        font-size: 1.7rem;
+        padding-right: 70px;
       }
     }
-
-    .exp-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 28px;
-  margin-top: 40px;
-}
-
-.projects-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(280px, 1fr));
-  gap: 28px;
-  margin-top: 10px;
-}
-
-.exp-card,
-.project-preview-card {
-  position: relative;
-  overflow: hidden;
-  padding: 30px;
-  border-radius: 30px;
-  background: linear-gradient(160deg, rgba(15, 18, 55, 0.96), rgba(20, 23, 72, 0.92));
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 18px 45px rgba(0,0,0,0.32);
-  transition: 0.35s ease;
-}
-
-.exp-card:hover,
-.project-preview-card:hover {
-  transform: translateY(-10px) scale(1.01);
-  box-shadow: 0 24px 60px rgba(0,0,0,0.38);
-}
-
-.exp-card::before,
-.project-preview-card::before {
-  content: "";
-  position: absolute;
-  width: 240px;
-  height: 240px;
-  top: -90px;
-  right: -90px;
-  border-radius: 50%;
-  filter: blur(55px);
-  opacity: 0.75;
-}
-
-.exp-card::after,
-.project-preview-card::after {
-  content: "";
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  bottom: -60px;
-  left: -55px;
-  border-radius: 50%;
-  filter: blur(45px);
-  opacity: 0.65;
-}
-
-.exp-card > *,
-.project-preview-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.it-card-nievre::before {
-  background: rgba(34, 211, 238, 0.22);
-}
-.it-card-nievre::after {
-  background: rgba(59, 130, 246, 0.22);
-}
-
-.it-card-filordi::before {
-  background: rgba(249, 115, 22, 0.20);
-}
-.it-card-filordi::after {
-  background: rgba(236, 72, 153, 0.20);
-}
-
-.project-backup::before {
-  background: rgba(139, 92, 246, 0.22);
-}
-.project-backup::after {
-  background: rgba(236, 72, 153, 0.18);
-}
-
-.project-centreon::before {
-  background: rgba(34, 211, 238, 0.20);
-}
-.project-centreon::after {
-  background: rgba(168, 85, 247, 0.18);
-}
-
-.card-top-line {
-  width: 100%;
-  height: 5px;
-  border-radius: 999px;
-  margin-bottom: 22px;
-}
-
-.it-card-nievre .card-top-line {
-  background: linear-gradient(90deg, #22d3ee, #3b82f6);
-}
-
-.it-card-filordi .card-top-line {
-  background: linear-gradient(90deg, #f97316, #ec4899);
-}
-
-.project-backup .card-top-line {
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-}
-
-.project-centreon .card-top-line {
-  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
-}
-
-.card-head {
-  display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  margin-bottom: 18px;
-}
-
-.card-icon {
-  min-width: 64px;
-  width: 64px;
-  height: 64px;
-  border-radius: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.8rem;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
-  border: 1px solid rgba(255,255,255,0.14);
-}
-
-.it-card-nievre .card-icon {
-  background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(59,130,246,0.22));
-}
-
-.it-card-filordi .card-icon {
-  background: linear-gradient(135deg, rgba(249,115,22,0.22), rgba(236,72,153,0.22));
-}
-
-.project-backup .card-icon {
-  background: linear-gradient(135deg, rgba(139,92,246,0.22), rgba(236,72,153,0.22));
-}
-
-.project-centreon .card-icon {
-  background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(139,92,246,0.22));
-}
-
-.card-label-row {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-bottom: 10px;
-}
-
-.exp-badge,
-.project-preview-badge {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.8rem;
-  font-weight: 800;
-  color: white;
-  letter-spacing: 0.3px;
-  text-transform: uppercase;
-}
-
-.it-card-nievre .exp-badge {
-  background: linear-gradient(90deg, #06b6d4, #3b82f6);
-}
-
-.it-card-filordi .exp-badge {
-  background: linear-gradient(90deg, #f97316, #ec4899);
-}
-
-.project-backup .project-preview-badge {
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-}
-
-.project-centreon .project-preview-badge {
-  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
-}
-
-.exp-date,
-.card-side-tag {
-  padding: 7px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.06);
-  border: 1px solid rgba(255,255,255,0.08);
-  color: #dbeafe;
-  font-size: 0.82rem;
-}
-
-.exp-card h3,
-.project-preview-card h3 {
-  font-size: 1.45rem;
-  line-height: 1.35;
-  color: #ffffff;
-  margin-bottom: 10px;
-  text-shadow: 0 0 12px rgba(255,255,255,0.03);
-}
-
-.exp-role,
-.card-punchline {
-  color: #c4b5fd;
-  font-weight: 600;
-  margin-bottom: 14px;
-  line-height: 1.7;
-}
-
-.project-preview-card p {
-  color: #e5e7eb;
-  line-height: 1.85;
-  margin-bottom: 18px;
-}
-
-.card-points {
-  list-style: none;
-  padding: 0;
-  margin: 20px 0 0;
-  display: grid;
-  gap: 12px;
-}
-
-.card-points li {
-  padding: 12px 14px;
-  border-radius: 16px;
-  background: rgba(255,255,255,0.045);
-  border: 1px solid rgba(255,255,255,0.06);
-  color: #eef2ff;
-  line-height: 1.6;
-}
-
-.it-card-nievre .card-points li {
-  border-left: 4px solid #22d3ee;
-}
-
-.it-card-filordi .card-points li {
-  border-left: 4px solid #f97316;
-}
-
-.project-backup .card-points li {
-  border-left: 4px solid #8b5cf6;
-}
-
-.project-centreon .card-points li {
-  border-left: 4px solid #22d3ee;
-}
-
-.card-mini-tags,
-.skills-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 18px;
-}
-
-.card-mini-tags span,
-.skills-tags span {
-  padding: 8px 13px;
-  border-radius: 999px;
-  font-size: 0.84rem;
-  font-weight: 600;
-  color: #f8f7ff;
-  background: rgba(255,255,255,0.07);
-  border: 1px solid rgba(255,255,255,0.10);
-  transition: 0.3s ease;
-}
-
-.card-mini-tags span:hover,
-.skills-tags span:hover {
-  transform: translateY(-2px);
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  color: white;
-}
-
-.mission-btn,
-.project-btn {
-  margin-top: 22px;
-  border: none;
-  border-radius: 16px;
-  padding: 13px 20px;
-  font-weight: 700;
-  cursor: pointer;
-  color: #ffffff;
-  background: linear-gradient(90deg, #22d3ee, #8b5cf6, #ec4899);
-  background-size: 200% 200%;
-  box-shadow: 0 12px 28px rgba(139, 92, 246, 0.25);
-  transition: 0.35s ease;
-}
-
-.mission-btn:hover,
-.project-btn:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 18px 35px rgba(236, 72, 153, 0.28);
-  background-position: right center;
-}
-
-.exp-card.wide {
-  grid-column: 1 / -1;
-}
-
-@media (max-width: 980px) {
-  .exp-grid,
-  .projects-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .exp-card.wide {
-    grid-column: auto;
-  }
-}
-
-@media (max-width: 640px) {
-  .exp-card,
-  .project-preview-card {
-    padding: 22px;
-  }
-
-  .card-head {
-    gap: 12px;
-  }
-
-  .card-icon {
-    width: 56px;
-    height: 56px;
-    min-width: 56px;
-    font-size: 1.5rem;
-  }
-
-  .exp-card h3,
-  .project-preview-card h3 {
-    font-size: 1.2rem;
-  }
-}
-    
   </style>
 </head>
 <body>
+  <div class="grid-overlay"></div>
+  <div class="glow-orb glow-1"></div>
+  <div class="glow-orb glow-2"></div>
+  <div class="glow-orb glow-3"></div>
 
   <nav>
     <div class="nav-container">
@@ -1358,34 +1371,31 @@
         <p>À la recherche d’une alternance en systèmes, réseaux et cybersécurité.</p>
 
         <div class="hero-buttons">
-          <a href="#apropos" class="btn btn-primary">À propos de moi</a>
-          <a href="#parcours" class="btn btn-secondary">Voir mon parcours</a>
+          <a href="#apropos" class="btn btn-primary">✨ À propos de moi</a>
+          <a href="#parcours" class="btn btn-secondary">💫 Voir mon parcours</a>
         </div>
       </div>
 
       <div class="hero-visual">
-        <div class="it-panel">
-          <p class="it-label">Mon univers IT</p>
+        <div class="hero-panel">
+          <span class="hero-label">Mon univers IT</span>
           <h3>Domaines techniques</h3>
 
-          <div class="it-grid">
-            <div class="it-card">
-              <h4>Systèmes</h4>
+          <div class="hero-grid">
+            <div class="hero-card">
+              <h4>🖥️ Systèmes</h4>
               <p>Windows Server • Linux • Active Directory</p>
             </div>
-
-            <div class="it-card">
-              <h4>Réseaux</h4>
+            <div class="hero-card">
+              <h4>🌐 Réseaux</h4>
               <p>TCP/IP • DHCP • VLAN • VPN</p>
             </div>
-
-            <div class="it-card">
-              <h4>Cybersécurité</h4>
+            <div class="hero-card">
+              <h4>🛡️ Cybersécurité</h4>
               <p>Firewall • Sauvegardes • Gestion des incidents</p>
             </div>
-
-            <div class="it-card">
-              <h4>Virtualisation</h4>
+            <div class="hero-card">
+              <h4>💻 Virtualisation</h4>
               <p>Proxmox • VirtualBox • Machines virtuelles</p>
             </div>
           </div>
@@ -1395,12 +1405,15 @@
   </header>
 
   <section id="apropos" class="section">
-    <h2 class="section-title">À propos de moi</h2>
-    <p class="section-intro">
-      Cette section présente mon profil, mes centres d’intérêt techniques et mes objectifs professionnels.
-    </p>
+    <div class="section-head">
+      <span class="section-kicker">À propos</span>
+      <h2 class="section-title">À propos de moi</h2>
+      <p class="section-intro">
+        Cette section présente mon profil, mes centres d’intérêt techniques et mes objectifs professionnels.
+      </p>
+    </div>
 
-    <div class="about-card">
+    <div class="about-card glass-card">
       <p>
         Actuellement en <span class="highlight">2ᵉ année de BTS Services Informatiques aux Organisations</span>,
         option <span class="highlight">Solutions d’Infrastructure, Systèmes et Réseaux (SISR)</span> au lycée Jacques Brel,
@@ -1423,13 +1436,16 @@
   </section>
 
   <section id="parcours" class="section">
-    <h2 class="section-title">Mon parcours</h2>
-    <p class="section-intro">
-      Mon parcours académique et les étapes importantes de ma formation.
-    </p>
+    <div class="section-head">
+      <span class="section-kicker">Parcours</span>
+      <h2 class="section-title">Mon parcours</h2>
+      <p class="section-intro">
+        Mon parcours académique et les étapes importantes de ma formation.
+      </p>
+    </div>
 
     <div class="parcours-grid">
-      <div class="parcours-card">
+      <div class="parcours-card glass-card">
         <div class="card-year">2019 - 2020</div>
         <h3>Baccalauréat Sciences Physiques et Chimie</h3>
         <p class="school">Lycée Akenssos, Essaouira</p>
@@ -1438,7 +1454,7 @@
         </p>
       </div>
 
-      <div class="parcours-card">
+      <div class="parcours-card glass-card">
         <div class="card-year">2021 – 2023</div>
         <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
         <p class="school">École Supérieure de Technologie, Essaouira</p>
@@ -1447,7 +1463,7 @@
         </p>
       </div>
 
-      <div class="parcours-card">
+      <div class="parcours-card glass-card">
         <div class="card-year">2024 – 2026</div>
         <h3>BTS SIO (SISR)</h3>
         <p class="school">Lycée Jacques Brel, Vénissieux</p>
@@ -1460,19 +1476,29 @@
   </section>
 
   <section id="experiences" class="section">
-    <h2 class="section-title">Mes expériences professionnelles</h2>
-    <p class="section-intro">
-      Mes stages en systèmes et réseaux ainsi que mes expériences commerciales et aéroportuaires.
-    </p>
+    <div class="section-head">
+      <span class="section-kicker">Expériences</span>
+      <h2 class="section-title">Mes expériences professionnelles</h2>
+      <p class="section-intro">
+        Mes stages en systèmes et réseaux ainsi que mes expériences commerciales et aéroportuaires.
+      </p>
+    </div>
 
     <div class="exp-grid">
-      <article class="exp-card wide">
-        <div class="exp-top">
-          <span class="exp-badge soft">Expérience regroupée</span>
-          <span class="exp-date">2022 – 2023</span>
+      <article class="soft-card exp-grouped wide-card">
+        <div class="card-top-line"></div>
+
+        <div class="card-head">
+          <div class="card-icon">🌍</div>
+          <div>
+            <div class="card-label-row">
+              <span class="badge badge-purple">Expérience regroupée</span>
+              <span class="mini-badge">2022 – 2023</span>
+            </div>
+            <h3>Expériences commerciales & aéroportuaires</h3>
+            <p class="exp-role">GIFI (France) | Royal Air Maroc & ONDA – Essaouira, Maroc</p>
+          </div>
         </div>
-        <h3>Expériences commerciales & aéroportuaires</h3>
-        <p class="exp-role">GIFI (France) | Royal Air Maroc & ONDA – Essaouira, Maroc</p>
 
         <div class="exp-columns">
           <ul>
@@ -1481,7 +1507,6 @@
             <li>Utilisation de logiciels de réservation et d’enregistrement</li>
             <li>Participation aux activités commerciales et à l’organisation du point de vente</li>
           </ul>
-
           <ul>
             <li>Contribution à la fluidité des opérations et à la qualité du service client</li>
             <li>Développement de compétences en relation client, organisation et gestion du stress</li>
@@ -1489,81 +1514,79 @@
         </div>
       </article>
 
-<article class="exp-card it-card-nievre">
-  <div class="card-top-line"></div>
+      <article class="soft-card it-card-nievre">
+        <div class="card-top-line"></div>
 
-  <div class="card-head">
-    <div class="card-icon">🖧</div>
+        <div class="card-head">
+          <div class="card-icon">🖧</div>
+          <div>
+            <div class="card-label-row">
+              <span class="badge badge-cyan">Stage IT</span>
+              <span class="mini-badge">Juin – Juil. 2025</span>
+            </div>
+            <h3>Conseil Départemental de la Nièvre</h3>
+            <p class="exp-role">Technicienne systèmes et réseaux • environnement collège</p>
+          </div>
+        </div>
 
-    <div>
-      <div class="card-label-row">
-        <span class="exp-badge">Stage IT</span>
-        <span class="exp-date">Juin – Juil. 2025</span>
-      </div>
+        <ul class="card-points">
+          <li>Préparation, remplacement et mise en service de switchs dans plusieurs collèges</li>
+          <li>Recâblage réseau et organisation des baies pour améliorer la lisibilité de l’infrastructure</li>
+          <li>Configuration initiale et utilisation de GLPI pour le suivi et le support</li>
+        </ul>
 
-      <h3>Conseil Départemental de la Nièvre</h3>
-      <p class="exp-role">Technicienne systèmes et réseaux • environnement collège</p>
-    </div>
-  </div>
+        <div class="tag-list">
+          <span>Switchs</span>
+          <span>VLAN</span>
+          <span>GLPI</span>
+          <span>Recâblage</span>
+          <span>Support IT</span>
+        </div>
 
-  <ul class="card-points">
-    <li>Préparation, remplacement et mise en service de switchs dans plusieurs collèges</li>
-    <li>Recâblage réseau et organisation des baies pour améliorer la lisibilité de l’infrastructure</li>
-    <li>Configuration initiale et utilisation de GLPI pour le suivi et le support</li>
-  </ul>
+        <button class="action-btn" data-modal="missionModal">✨ Voir une mission</button>
+      </article>
 
-  <div class="card-mini-tags">
-    <span>Switchs</span>
-    <span>VLAN</span>
-    <span>GLPI</span>
-    <span>Recâblage</span>
-    <span>Support IT</span>
-  </div>
+      <article class="soft-card it-card-filordi">
+        <div class="card-top-line"></div>
 
-  <button class="mission-btn" data-modal="missionModal">✨ Voir une mission</button>
-</article>
+        <div class="card-head">
+          <div class="card-icon">💻</div>
+          <div>
+            <div class="card-label-row">
+              <span class="badge badge-orange">Stage IT</span>
+              <span class="mini-badge">Janv. – Févr. 2026</span>
+            </div>
+            <h3>FILORDI</h3>
+            <p class="exp-role">Technicienne systèmes et réseaux • proximité et maintenance</p>
+          </div>
+        </div>
 
-<article class="exp-card it-card-filordi">
-  <div class="card-top-line"></div>
+        <ul class="card-points">
+          <li>Assistance informatique pour professionnels et particuliers sur des besoins concrets</li>
+          <li>Installation, configuration et remise en service de postes de travail Windows</li>
+          <li>Support utilisateurs, diagnostic simple de pannes et conseils techniques</li>
+        </ul>
 
-  <div class="card-head">
-    <div class="card-icon">💻</div>
+        <div class="tag-list">
+          <span>Windows</span>
+          <span>Support</span>
+          <span>Maintenance</span>
+          <span>Installation</span>
+          <span>Dépannage</span>
+        </div>
 
-    <div>
-      <div class="card-label-row">
-        <span class="exp-badge">Stage IT</span>
-        <span class="exp-date">Janv. – Févr. 2026</span>
-      </div>
-
-      <h3>FILORDI</h3>
-      <p class="exp-role">Technicienne systèmes et réseaux • proximité et maintenance</p>
-    </div>
-  </div>
-
-  <ul class="card-points">
-    <li>Assistance informatique pour professionnels et particuliers sur des besoins concrets</li>
-    <li>Installation, configuration et remise en service de postes de travail Windows</li>
-    <li>Support utilisateurs, diagnostic simple de pannes et conseils techniques</li>
-  </ul>
-
-  <div class="card-mini-tags">
-    <span>Windows</span>
-    <span>Support</span>
-    <span>Maintenance</span>
-    <span>Installation</span>
-    <span>Dépannage</span>
-  </div>
-
-  <button class="mission-btn" data-modal="missionFilordi">🔥 Voir une mission</button>
-</article>
-      
+        <button class="action-btn" data-modal="missionFilordi">🔥 Voir une mission</button>
+      </article>
     </div>
   </section>
 
   <section id="infrastructure" class="section">
-    <div class="infrastructure-wrapper">
+    <div class="section-head">
+      <span class="section-kicker">Infrastructure</span>
       <h2 class="section-title">Infrastructure réseau sécurisée et segmentée</h2>
+    </div>
 
+    <div class="infra-card glass-card">
       <p class="infrastructure-text">
         Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones.
         Le <span class="lan">LAN</span> regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision.
@@ -1579,20 +1602,44 @@
   </section>
 
   <section id="projets" class="section">
-    <h2 class="section-title">Mes projets</h2>
-    <p class="section-intro">
-      Projets réalisés dans le cadre de ma formation en systèmes, réseaux et cybersécurité.
-    </p>
+    <div class="section-head">
+      <span class="section-kicker">Projets</span>
+      <h2 class="section-title">Mes projets</h2>
+      <p class="section-intro">
+        Projets réalisés dans le cadre de ma formation en systèmes, réseaux et cybersécurité.
+      </p>
+    </div>
 
     <div class="projects-grid">
-      <article class="project-preview-card">
-        <span class="project-preview-badge">Projet 1</span>
-        <h3>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais</h3>
-        <p>
-          Déploiement d’une solution de sauvegarde automatisée pour protéger la base de données et les fichiers du site,
-          avec script Bash, archivage, transfert sécurisé et segmentation réseau.
+      <article class="soft-card project-backup">
+        <div class="card-top-line"></div>
+
+        <div class="card-head">
+          <div class="card-icon">🛡️</div>
+          <div>
+            <div class="card-label-row">
+              <span class="badge badge-purple">Projet 1</span>
+              <span class="mini-badge">Sauvegarde sécurisée</span>
+            </div>
+
+            <h3>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais</h3>
+            <p class="card-punchline">Automatiser, protéger et fiabiliser les données d’une application web.</p>
+          </div>
+        </div>
+
+        <p class="card-text">
+          J’ai conçu une solution complète de sauvegarde pour un serveur web LAMP, avec export de base
+          de données, archivage des fichiers du site, transfert sécurisé vers un serveur distant et
+          planification automatique des tâches.
         </p>
-        <div class="skills-tags">
+
+        <ul class="card-points">
+          <li>Script Bash pour automatiser les sauvegardes et limiter les actions manuelles</li>
+          <li>Utilisation de <strong>mysqldump</strong>, <strong>tar</strong> et <strong>SFTP</strong></li>
+          <li>Architecture segmentée <strong>LAN / DMZ</strong> avec filtrage via <strong>IPFire</strong></li>
+        </ul>
+
+        <div class="tag-list">
           <span>Linux</span>
           <span>Bash</span>
           <span>mysqldump</span>
@@ -1600,17 +1647,38 @@
           <span>cron</span>
           <span>IPFire</span>
         </div>
-        <button class="project-btn" data-modal="projectBackup">Voir le projet</button>
+
+        <button class="action-btn" data-modal="projectBackup">🚀 Voir le projet</button>
       </article>
 
-      <article class="project-preview-card">
-        <span class="project-preview-badge">Projet 2</span>
-        <h3>Déploiement d’une solution de supervision sécurisée avec Centreon</h3>
-        <p>
-          Mise en place d’une plateforme de supervision sur Debian 12 pour surveiller des hôtes Linux, Windows
-          et des équipements réseau, avec sécurisation par HTTPS et SNMPv3.
+      <article class="soft-card project-centreon">
+        <div class="card-top-line"></div>
+
+        <div class="card-head">
+          <div class="card-icon">📡</div>
+          <div>
+            <div class="card-label-row">
+              <span class="badge badge-cyan">Projet 2</span>
+              <span class="mini-badge">Monitoring sécurisé</span>
+            </div>
+
+            <h3>Déploiement d’une solution de supervision sécurisée avec Centreon</h3>
+            <p class="card-punchline">Surveiller l’infrastructure et détecter les incidents plus rapidement.</p>
+          </div>
+        </div>
+
+        <p class="card-text">
+          J’ai mis en place une plateforme de supervision sur Debian 12 avec Centreon pour suivre
+          l’état d’hôtes Linux, Windows et d’équipements réseau, tout en sécurisant les accès et les échanges.
         </p>
-        <div class="skills-tags">
+
+        <ul class="card-points">
+          <li>Installation de <strong>Centreon</strong> et sécurisation de <strong>MariaDB</strong></li>
+          <li>Mise en place du <strong>HTTPS</strong> et de <strong>SNMPv3</strong></li>
+          <li>Suivi de la disponibilité, CPU, mémoire, disque et tests d’alertes</li>
+        </ul>
+
+        <div class="tag-list">
           <span>Centreon</span>
           <span>Debian 12</span>
           <span>SNMPv3</span>
@@ -1618,81 +1686,146 @@
           <span>MariaDB</span>
           <span>Monitoring</span>
         </div>
-        <button class="project-btn" data-modal="projectCentreon">Voir le projet</button>
+
+        <button class="action-btn" data-modal="projectCentreon">⚡ Voir le projet</button>
       </article>
     </div>
   </section>
 
   <section id="veille" class="section">
-    <h2 class="section-title">Veille technologique — Sécurité dans le Cloud</h2>
+    <div class="section-head">
+      <span class="section-kicker">Veille techno</span>
+      <h2 class="section-title">Veille technologique — IA générative et cybersécurité</h2>
+      <p class="section-intro">
+        Cette veille met en avant l’impact de l’IA générative sur la cybersécurité, les risques émergents pour les entreprises
+        et les nouveaux défis rencontrés par les RSSI.
+      </p>
+    </div>
 
     <div class="problem-box">
-      Dans quelle mesure les environnements cloud, devenus essentiels pour les entreprises,
-      peuvent-ils garantir la sécurité des données face à l’évolution des cybermenaces ?
+      Dans quelle mesure l’essor de l’IA générative transforme-t-il les risques cybersécurité pour les entreprises
+      et les pratiques de gouvernance des RSSI ?
     </div>
 
     <div class="veille-grid">
-      <a href="https://www.ssi.gouv.fr/" target="_blank" class="veille-card">
-        <h3>🔐 Sécurité du cloud : menaces 2025</h3>
-        <p>Ransomware, erreurs de configuration et fuites de données représentent les principaux risques pour les entreprises.</p>
+      <a class="article-link" href="https://www.lemondeinformatique.fr/actualites/lire-les-impacts-d-anthropic-claude-mythos-sur-les-rssi-99924.html" target="_blank">
+        <article class="soft-card article-card">
+          <div class="card-top-line"></div>
+          <div class="card-head">
+            <div class="card-icon">🤖</div>
+            <div>
+              <h3>L’impact de Mythos d’Anthropic sur les RSSI</h3>
+              <p class="article-meta">Le Monde Informatique · 14 avril 2026</p>
+            </div>
+          </div>
+          <p class="article-summary">
+            L’arrivée d’une IA spécialisée en cybersécurité pousse les RSSI à repenser la gouvernance,
+            les usages autorisés et la maîtrise des risques associés à ces nouveaux outils.
+          </p>
+          <span class="read-more">Lire l’article →</span>
+        </article>
       </a>
 
-      <a href="https://learn.microsoft.com/security" target="_blank" class="veille-card">
-        <h3>⚠️ Erreurs de configuration</h3>
-        <p>Une mauvaise configuration des services cloud peut exposer des données sensibles publiquement.</p>
+      <a class="article-link" href="https://www.zdnet.fr/actualites/un-rssi-sur-deux-declare-ne-pas-etre-pret-a-faire-face-aux-attaques-basees-sur-lia-4-mesures-a-prendre-des-maintenant-492482.htm" target="_blank">
+        <article class="soft-card article-card">
+          <div class="card-top-line"></div>
+          <div class="card-head">
+            <div class="card-icon">🧠</div>
+            <div>
+              <h3>Un RSSI sur deux n’est pas prêt face aux attaques basées sur l’IA</h3>
+              <p class="article-meta">ZDNet France · 24 mars 2026</p>
+            </div>
+          </div>
+          <p class="article-summary">
+            Les entreprises jugent ces menaces critiques, mais beaucoup manquent encore de budget,
+            de stratégie claire et de gouvernance adaptée pour y répondre efficacement.
+          </p>
+          <span class="read-more">Lire l’article →</span>
+        </article>
       </a>
 
-      <a href="https://cloud.google.com/security" target="_blank" class="veille-card">
-        <h3>🔑 Authentification MFA</h3>
-        <p>Le MFA renforce la sécurité des accès et réduit les risques de piratage.</p>
+      <a class="article-link" href="https://www.lemondeinformatique.fr/actualites/lire-les-rssi-face-au-defi-titanesque-de-la-securite-des-agents-ia-99271.html" target="_blank">
+        <article class="soft-card article-card">
+          <div class="card-top-line"></div>
+          <div class="card-head">
+            <div class="card-icon">🔐</div>
+            <div>
+              <h3>Les RSSI face au défi de la sécurité des agents IA</h3>
+              <p class="article-meta">Le Monde Informatique · 5 février 2026</p>
+            </div>
+          </div>
+          <p class="article-summary">
+            Les agents IA introduisent de nouveaux risques liés aux identités, aux droits d’accès
+            et aux actions automatiques dans le système d’information.
+          </p>
+          <span class="read-more">Lire l’article →</span>
+        </article>
       </a>
 
-      <a href="https://www.ibm.com/security" target="_blank" class="veille-card">
-        <h3>🛡️ Zero Trust</h3>
-        <p>Une approche moderne qui consiste à vérifier chaque accès pour sécuriser les environnements cloud.</p>
+      <a class="article-link" href="https://www.usine-digitale.fr/article/ia-generative-cybercrime-et-virtualisation-les-nouveaux-risques-cyber-que-les-entreprises-ne-peuvent-plus-ignorer.N2240806" target="_blank">
+        <article class="soft-card article-card">
+          <div class="card-top-line"></div>
+          <div class="card-head">
+            <div class="card-icon">📊</div>
+            <div>
+              <h3>IA générative, cybercrime et virtualisation : les nouveaux risques cyber</h3>
+              <p class="article-meta">L’Usine Digitale · 4 novembre 2025</p>
+            </div>
+          </div>
+          <p class="article-summary">
+            L’IA devient un outil offensif pour les attaquants et impose aux entreprises une gouvernance
+            plus stricte des usages internes et des nouveaux agents numériques.
+          </p>
+          <span class="read-more">Lire l’article →</span>
+        </article>
       </a>
     </div>
 
     <div class="conclusion">
       <h3>Conclusion</h3>
       <p>
-        Aujourd’hui, le cloud est devenu indispensable pour les entreprises, notamment pour le stockage et l’accès aux données à distance.
-        Il offre de nombreux avantages en termes de flexibilité, de performance et de collaboration. Cependant, cette évolution s’accompagne
-        de nouveaux risques liés à la cybersécurité. Les principales menaces proviennent souvent d’erreurs humaines, de mauvaises configurations
-        ou d’un manque de contrôle des accès. Face à ces risques, les entreprises doivent mettre en place des solutions adaptées comme
-        l’authentification multi-facteurs, le chiffrement des données ou encore des modèles de sécurité comme le Zero Trust.
-        Ainsi, la sécurité dans le cloud repose sur une combinaison de bonnes pratiques techniques et organisationnelles.
+        Aujourd’hui, l’IA générative représente à la fois une opportunité et un nouveau risque pour les entreprises.
+        Elle peut améliorer l’analyse, la détection et l’automatisation, mais elle peut aussi être utilisée par des attaquants
+        pour produire des contenus trompeurs, accélérer le phishing, contourner certaines protections ou créer de nouveaux usages non contrôlés.
+        Les RSSI doivent donc adapter leur gouvernance, renforcer la sensibilisation, encadrer les usages internes
+        et intégrer cette évolution dans leur stratégie cybersécurité.
       </p>
     </div>
   </section>
 
   <section id="tableau-competences" class="section">
-    <h2 class="section-title">Tableau de compétences</h2>
-    <p class="section-intro">
-      Ce tableau présente l’ensemble des compétences développées au cours de ma formation,
-      à travers mes projets et mes expériences professionnelles.
-    </p>
-
-    <h3 style="margin-top:10px; text-align:center; font-weight:700;">
-      Tableau de synthèse des réalisations professionnelles
-    </h3>
-
-    <div class="competence-box">
-      <img src="tableau1.png" alt="Tableau de compétences">
+    <div class="section-head">
+      <span class="section-kicker">Compétences</span>
+      <h2 class="section-title">Tableau de compétences</h2>
+      <p class="section-intro">
+        Ce tableau présente l’ensemble des compétences développées au cours de ma formation,
+        à travers mes projets et mes expériences professionnelles.
+      </p>
     </div>
 
-    <div class="download-wrap">
-      <a href="Tableau de Compétence.xlsx" download class="btn-download">
-        Télécharger le tableau
-      </a>
+    <div class="competence-card glass-card">
+      <h3 style="text-align:center; font-weight:800; font-size:1.3rem; margin-bottom:10px;">
+        Tableau de synthèse des réalisations professionnelles
+      </h3>
+
+      <div class="competence-box">
+        <img src="tableau1.png" alt="Tableau de compétences">
+      </div>
+
+      <div class="download-wrap">
+        <a href="Tableau de Compétence.xlsx" download class="btn-download">📥 Télécharger le tableau</a>
+      </div>
     </div>
   </section>
 
   <section id="contact" class="section">
-    <h2 class="section-title">Contact</h2>
-    <p class="section-intro">
-      N’hésitez pas à me contacter pour toute opportunité d’alternance ou pour échanger sur mon profil.
-    </p>
+    <div class="section-head">
+      <span class="section-kicker">Contact</span>
+      <h2 class="section-title">Contact</h2>
+      <p class="section-intro">
+        N’hésitez pas à me contacter pour toute opportunité d’alternance ou pour échanger sur mon profil.
+      </p>
+    </div>
 
     <div class="contact-container">
       <div class="contact-card">
@@ -1709,9 +1842,7 @@
       <div class="contact-card">
         <h3>💼 LinkedIn</h3>
         <p>Consultez mon profil professionnel</p>
-        <a href="https://www.linkedin.com/in/khawla-janati-8b5a79249/" target="_blank" class="linkedin-btn">
-          Voir mon profil
-        </a>
+        <a href="https://www.linkedin.com/in/khawla-janati-8b5a79249/" target="_blank" class="linkedin-btn">Voir mon profil</a>
       </div>
     </div>
   </section>
@@ -1896,7 +2027,7 @@
 
       <div class="modal-section">
         <h3>Compétences développées</h3>
-        <div class="skills-tags">
+        <div class="tag-list">
           <span>Administration Linux</span>
           <span>Automatisation</span>
           <span>Gestion des sauvegardes</span>
@@ -1965,7 +2096,7 @@
 
       <div class="modal-section">
         <h3>Compétences développées</h3>
-        <div class="skills-tags">
+        <div class="tag-list">
           <span>Centreon</span>
           <span>Administration Linux</span>
           <span>MariaDB</span>
@@ -1989,7 +2120,6 @@
       button.addEventListener("click", () => {
         const modalId = button.getAttribute("data-modal");
         const modal = document.getElementById(modalId);
-
         if (modal) {
           modal.classList.add("active");
           document.body.style.overflow = "hidden";
@@ -2001,7 +2131,6 @@
       button.addEventListener("click", () => {
         const modalId = button.getAttribute("data-close");
         const modal = document.getElementById(modalId);
-
         if (modal) {
           modal.classList.remove("active");
           document.body.style.overflow = "";
