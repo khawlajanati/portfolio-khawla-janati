@@ -4,67 +4,40 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portfolio - Khawla Janati</title>
+
   <style>
+    :root {
+      --bg-1: #0b1020;
+      --bg-2: #11162a;
+      --bg-3: #0a0f1d;
+      --text: #f8f7ff;
+      --text-soft: #d8dcf0;
+      --text-muted: #c7c9d3;
+      --white: #ffffff;
+      --cyan: #22d3ee;
+      --cyan-2: #38bdf8;
+      --purple: #8b5cf6;
+      --pink: #ec4899;
+      --green: #22c55e;
+      --orange: #f97316;
+      --red: #ef4444;
+      --card-bg: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      --card-border: 1px solid rgba(255,255,255,0.08);
+      --shadow: 0 16px 40px rgba(0,0,0,0.24);
+      --radius-xl: 32px;
+      --radius-lg: 24px;
+      --radius-md: 18px;
+      --transition: 0.3s ease;
+    }
+
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
-      .parcours-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 25px;
-  margin-top: 40px;
-}
-
-.parcours-card {
-  background: linear-gradient(145deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
-  border-radius: 25px;
-  padding: 25px;
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: 0.3s;
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-}
-
-.parcours-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(236, 72, 153, 0.5);
-  box-shadow: 0 15px 40px rgba(236, 72, 153, 0.15);
-}
-
-.card-year {
-  display: inline-block;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  color: white;
-  padding: 6px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  margin-bottom: 15px;
-}
-
-.parcours-card h3 {
-  color: white;
-  margin-bottom: 10px;
-}
-
-.parcours-card .school {
-  color: #c7c9d3;
-  font-size: 0.9rem;
-  margin-bottom: 10px;
-}
-
-.parcours-card p {
-  color: #e5e7eb;
-  font-size: 0.95rem;
-}
-
-/* Responsive */
-@media (max-width: 900px) {
-  .parcours-grid {
-    grid-template-columns: 1fr;
-  }
-}
     }
 
     body {
@@ -72,10 +45,19 @@
       background:
         radial-gradient(circle at top left, rgba(168, 85, 247, 0.20), transparent 30%),
         radial-gradient(circle at bottom right, rgba(236, 72, 153, 0.15), transparent 30%),
-        linear-gradient(135deg, #0b1020, #11162a 45%, #0a0f1d);
-      color: #f8f7ff;
+        linear-gradient(135deg, var(--bg-1), var(--bg-2) 45%, var(--bg-3));
+      color: var(--text);
       line-height: 1.7;
       overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     nav {
@@ -83,7 +65,7 @@
       top: 0;
       width: 100%;
       z-index: 1000;
-      background: rgba(10, 15, 29, 0.65);
+      background: rgba(10, 15, 29, 0.68);
       backdrop-filter: blur(14px);
       border-bottom: 1px solid rgba(255,255,255,0.08);
     }
@@ -94,22 +76,21 @@
       padding: 16px 20px;
       display: flex;
       justify-content: center;
-      gap: 16px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     nav a {
       color: #f3e8ff;
-      text-decoration: none;
       font-size: 0.95rem;
       padding: 10px 18px;
       border-radius: 999px;
-      transition: all 0.3s ease;
+      transition: var(--transition);
     }
 
     nav a:hover {
       background: rgba(255,255,255,0.08);
-      color: #ffffff;
+      color: var(--white);
     }
 
     header {
@@ -152,7 +133,7 @@
       font-weight: 800;
       letter-spacing: 1.5px;
       margin-bottom: 18px;
-      color: #ffffff;
+      color: var(--white);
       text-shadow: 0 0 20px rgba(255,255,255,0.05);
     }
 
@@ -185,17 +166,16 @@
     }
 
     .btn {
-      text-decoration: none;
       padding: 15px 26px;
       border-radius: 999px;
       font-weight: 600;
-      transition: all 0.3s ease;
+      transition: var(--transition);
       font-size: 1rem;
       display: inline-block;
     }
 
     .btn-primary {
-      background: linear-gradient(90deg, #8b5cf6, #ec4899);
+      background: linear-gradient(90deg, var(--purple), var(--pink));
       color: white;
       box-shadow: 0 12px 28px rgba(236, 72, 153, 0.22);
     }
@@ -218,142 +198,105 @@
     }
 
     .hero-visual {
-      position: relative;
-      min-height: 420px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 460px;
       animation: fadeUp 1.2s ease;
     }
 
-.hero-visual {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 460px;
-}
-
-.it-panel {
-  width: 100%;
-  max-width: 520px;
-  padding: 34px;
-  border-radius: 30px;
-  background:
-    linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.35),
-    0 0 40px rgba(139, 92, 246, 0.08);
-  backdrop-filter: blur(14px);
-  position: relative;
-  overflow: hidden;
-}
-
-.it-panel::before {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  top: -70px;
-  right: -70px;
-  background: rgba(236, 72, 153, 0.12);
-  filter: blur(60px);
-  border-radius: 50%;
-}
-
-.it-panel::after {
-  content: "";
-  position: absolute;
-  width: 180px;
-  height: 180px;
-  bottom: -60px;
-  left: -50px;
-  background: rgba(139, 92, 246, 0.12);
-  filter: blur(60px);
-  border-radius: 50%;
-}
-
-.it-label {
-  position: relative;
-  z-index: 1;
-  display: inline-block;
-  margin-bottom: 12px;
-  font-size: 0.85rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: #f9a8d4;
-}
-
-.it-panel h3 {
-  position: relative;
-  z-index: 1;
-  font-size: 2rem;
-  margin-bottom: 24px;
-  color: #ffffff;
-}
-
-.it-grid {
-  position: relative;
-  z-index: 1;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 18px;
-}
-
-.it-card {
-  padding: 20px;
-  border-radius: 22px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-  transition: 0.3s ease;
-}
-
-.it-card:hover {
-  transform: translateY(-6px);
-  border-color: rgba(236, 72, 153, 0.28);
-  box-shadow: 0 14px 30px rgba(0,0,0,0.22);
-}
-
-.it-number {
-  display: inline-block;
-  margin-bottom: 10px;
-  font-size: 0.8rem;
-  font-weight: 700;
-  color: #c4b5fd;
-}
-
-.it-card h4 {
-  margin: 0 0 10px;
-  font-size: 1.1rem;
-  color: #ffffff;
-}
-
-.it-card p {
-  margin: 0;
-  font-size: 0.95rem;
-  color: #e5e7eb;
-  line-height: 1.5;
-}
-
-@media (max-width: 980px) {
-  .it-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .it-panel {
-    max-width: 100%;
-  }
-}
-
-    .floating-box span {
-      display: block;
-      font-size: 0.85rem;
-      color: #f9a8d4;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-      letter-spacing: 1px;
+    .it-panel {
+      width: 100%;
+      max-width: 520px;
+      padding: 34px;
+      border-radius: 30px;
+      background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: var(--card-border);
+      box-shadow:
+        0 20px 60px rgba(0,0,0,0.35),
+        0 0 40px rgba(139, 92, 246, 0.08);
+      backdrop-filter: blur(14px);
+      position: relative;
+      overflow: hidden;
     }
 
-    .floating-box strong {
+    .it-panel::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: -70px;
+      right: -70px;
+      background: rgba(236, 72, 153, 0.12);
+      filter: blur(60px);
+      border-radius: 50%;
+    }
+
+    .it-panel::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      bottom: -60px;
+      left: -50px;
+      background: rgba(139, 92, 246, 0.12);
+      filter: blur(60px);
+      border-radius: 50%;
+    }
+
+    .it-label,
+    .project-kicker {
+      position: relative;
+      z-index: 1;
+      display: inline-block;
+      margin-bottom: 12px;
+      font-size: 0.85rem;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: #f9a8d4;
+    }
+
+    .it-panel h3 {
+      position: relative;
+      z-index: 1;
+      font-size: 2rem;
+      margin-bottom: 24px;
+      color: var(--white);
+    }
+
+    .it-grid {
+      position: relative;
+      z-index: 1;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+    }
+
+    .it-card {
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      transition: var(--transition);
+    }
+
+    .it-card:hover {
+      transform: translateY(-6px);
+      border-color: rgba(236, 72, 153, 0.28);
+      box-shadow: 0 14px 30px rgba(0,0,0,0.22);
+    }
+
+    .it-card h4 {
+      margin: 0 0 10px;
       font-size: 1.1rem;
-      color: #ffffff;
+      color: var(--white);
+    }
+
+    .it-card p {
+      margin: 0;
+      font-size: 0.95rem;
+      color: #e5e7eb;
+      line-height: 1.5;
     }
 
     .section {
@@ -365,7 +308,7 @@
     .section-title {
       font-size: 2.5rem;
       margin-bottom: 12px;
-      color: #ffffff;
+      color: var(--white);
     }
 
     .section-intro {
@@ -375,13 +318,25 @@
       font-size: 1.05rem;
     }
 
-    .about-card {
-      background: rgba(255,255,255,0.04);
-      border: 1px solid rgba(255,255,255,0.08);
+    .about-card,
+    .parcours-card,
+    .exp-card,
+    .project-preview-card,
+    .info-card,
+    .problem-box,
+    .conclusion,
+    .contact-card,
+    .veille-card,
+    .infra-card {
+      background: var(--card-bg);
+      border: var(--card-border);
       border-radius: 28px;
-      padding: 40px;
       backdrop-filter: blur(10px);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.22);
+      box-shadow: var(--shadow);
+    }
+
+    .about-card {
+      padding: 40px;
     }
 
     .about-card p {
@@ -397,6 +352,572 @@
     .highlight {
       color: #f9a8d4;
       font-weight: 600;
+    }
+
+    .parcours-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .parcours-card {
+      padding: 25px;
+      transition: var(--transition);
+    }
+
+    .parcours-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(236, 72, 153, 0.5);
+      box-shadow: 0 15px 40px rgba(236, 72, 153, 0.15);
+    }
+
+    .card-year {
+      display: inline-block;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      color: white;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      margin-bottom: 15px;
+    }
+
+    .parcours-card h3 {
+      color: var(--white);
+      margin-bottom: 10px;
+    }
+
+    .parcours-card .school {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin-bottom: 10px;
+    }
+
+    .parcours-card p {
+      color: #e5e7eb;
+      font-size: 0.95rem;
+    }
+
+    .exp-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-top: 40px;
+    }
+
+    .exp-card {
+      position: relative;
+      padding: 28px;
+      overflow: hidden;
+      transition: 0.35s ease;
+    }
+
+    .exp-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: -90px;
+      right: -90px;
+      border-radius: 50%;
+      background: rgba(139, 92, 246, 0.12);
+      filter: blur(55px);
+    }
+
+    .exp-card::after {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      bottom: -70px;
+      left: -60px;
+      border-radius: 50%;
+      background: rgba(236, 72, 153, 0.10);
+      filter: blur(50px);
+    }
+
+    .exp-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(236, 72, 153, 0.30);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.28);
+    }
+
+    .exp-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .exp-card.wide {
+      grid-column: 1 / -1;
+    }
+
+    .exp-columns {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+    }
+
+    .exp-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 18px;
+      flex-wrap: wrap;
+    }
+
+    .exp-badge {
+      display: inline-block;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: white;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
+    }
+
+    .exp-badge.soft {
+      background: rgba(255,255,255,0.08);
+      color: #f5d0fe;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: none;
+    }
+
+    .exp-date {
+      font-size: 0.92rem;
+      color: #d8d7e6;
+    }
+
+    .exp-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.55rem;
+      color: var(--white);
+    }
+
+    .exp-role {
+      margin-bottom: 18px;
+      color: #c4b5fd;
+      font-weight: 500;
+    }
+
+    .exp-card ul {
+      padding-left: 18px;
+    }
+
+    .exp-card li {
+      color: #ececf6;
+      margin-bottom: 12px;
+      line-height: 1.6;
+    }
+
+    .mission-btn,
+    .project-btn {
+      margin-top: 18px;
+      padding: 12px 22px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: white;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+      font-size: 0.95rem;
+    }
+
+    .mission-btn:hover,
+    .project-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
+    }
+
+    .infrastructure-wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+    }
+
+    .infrastructure-text {
+      max-width: 900px;
+      margin: 0 auto 30px;
+      text-align: center;
+      line-height: 1.9;
+      color: #e5e7eb;
+      font-size: 1.05rem;
+    }
+
+    .lan, .dmz, .ext, .firewall {
+      padding: 2px 8px;
+      border-radius: 6px;
+      font-weight: 700;
+    }
+
+    .lan { color: var(--green); }
+    .dmz { color: var(--orange); }
+    .ext { color: var(--red); }
+    .firewall { color: #f43f5e; }
+
+    .infra-box {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .infra-box img {
+      width: 75%;
+      max-width: 900px;
+      border-radius: 18px;
+      border: 1px solid rgba(236,72,153,0.2);
+      box-shadow: 0 15px 40px rgba(236,72,153,0.2);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 10px;
+    }
+
+    .project-preview-card {
+      padding: 28px;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .project-preview-card::before {
+      content: "";
+      position: absolute;
+      width: 220px;
+      height: 220px;
+      top: -90px;
+      right: -90px;
+      background: rgba(236, 72, 153, 0.10);
+      border-radius: 50%;
+      filter: blur(55px);
+    }
+
+    .project-preview-card::after {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      bottom: -70px;
+      left: -70px;
+      background: rgba(139, 92, 246, 0.12);
+      border-radius: 50%;
+      filter: blur(50px);
+    }
+
+    .project-preview-card > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .project-preview-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(236,72,153,0.3);
+      box-shadow: 0 22px 50px rgba(0,0,0,0.28);
+    }
+
+    .project-preview-badge {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 8px 16px;
+      border-radius: 999px;
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      color: white;
+      font-size: 0.82rem;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+
+    .project-preview-card h3 {
+      font-size: 1.4rem;
+      line-height: 1.4;
+      margin-bottom: 14px;
+      color: var(--white);
+    }
+
+    .project-preview-card p {
+      color: #e5e7eb;
+      margin-bottom: 18px;
+      line-height: 1.8;
+    }
+
+    .skills-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .skills-tags span {
+      background: rgba(255,255,255,0.08);
+      border: 1px solid rgba(255,255,255,0.15);
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: #f3e8ff;
+      transition: var(--transition);
+    }
+
+    .skills-tags span:hover {
+      background: linear-gradient(90deg, var(--purple), var(--pink));
+      color: white;
+    }
+
+    .problem-box {
+      margin: 24px 0 30px;
+      padding: 20px;
+      background: rgba(139,92,246,0.10);
+      border: 1px solid rgba(139,92,246,0.3);
+      color: #ececf6;
+    }
+
+    .veille-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 20px;
+    }
+
+    .veille-card {
+      padding: 22px;
+      color: white;
+      transition: var(--transition);
+      background: rgba(30,41,59,0.8);
+      border: 1px solid rgba(56,189,248,0.3);
+    }
+
+    .veille-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--cyan-2);
+    }
+
+    .veille-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.05rem;
+      color: var(--white);
+    }
+
+    .veille-card p {
+      color: #dbe5f3;
+      font-size: 0.97rem;
+      line-height: 1.7;
+    }
+
+    .conclusion {
+      margin-top: 40px;
+      padding: 24px;
+      background: rgba(16,185,129,0.1);
+    }
+
+    .conclusion h3 {
+      margin-bottom: 12px;
+      color: var(--white);
+    }
+
+    .conclusion p {
+      color: #e5e7eb;
+      line-height: 1.9;
+    }
+
+    .competence-box {
+      margin-top: 40px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .competence-box img {
+      width: 65%;
+      border-radius: 20px;
+      border: 1px solid rgba(236,72,153,0.2);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.2);
+    }
+
+    .download-wrap {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .btn-download {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 30px;
+      background: linear-gradient(135deg, var(--purple), var(--pink));
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-download:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.4);
+    }
+
+    .contact-container {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .contact-card {
+      padding: 25px;
+      width: 260px;
+      text-align: center;
+      transition: var(--transition);
+      background: rgba(30,41,59,0.8);
+      border: 1px solid rgba(56,189,248,0.3);
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      border-color: var(--pink);
+      box-shadow: 0 10px 30px rgba(236,72,153,0.3);
+    }
+
+    .contact-card h3 {
+      margin-bottom: 10px;
+      color: var(--white);
+    }
+
+    .contact-card p {
+      color: #dbe5f3;
+    }
+
+    .btn-email,
+    .linkedin-btn {
+      display: inline-block;
+      margin-top: 12px;
+      padding: 10px 20px;
+      border-radius: 30px;
+      color: white;
+      font-weight: 600;
+      transition: var(--transition);
+    }
+
+    .btn-email {
+      background: linear-gradient(90deg, #3b82f6, #2563eb);
+    }
+
+    .btn-email:hover {
+      background: #004182;
+      transform: translateY(-2px);
+    }
+
+    .linkedin-btn {
+      background: #0A66C2;
+    }
+
+    .linkedin-btn:hover {
+      background: #004182;
+      transform: translateY(-2px);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 5000;
+      background: rgba(5, 8, 20, 0.78);
+      backdrop-filter: blur(6px);
+      padding: 40px 20px;
+      overflow-y: auto;
+    }
+
+    .modal.active {
+      display: block;
+    }
+
+    .modal-content {
+      max-width: 1100px;
+      margin: 0 auto;
+      background: #171a56;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 26px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .modal-content h2 {
+      margin-bottom: 28px;
+      color: var(--white);
+      font-size: 2.2rem;
+      line-height: 1.3;
+      max-width: 900px;
+    }
+
+    .modal-section {
+      margin-bottom: 28px;
+    }
+
+    .modal-section h3 {
+      margin-bottom: 12px;
+      color: var(--cyan);
+      font-size: 1rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .modal-section p,
+    .modal-section li {
+      color: var(--text-soft);
+      line-height: 1.9;
+      font-size: 1.02rem;
+    }
+
+    .modal-section ul {
+      padding-left: 24px;
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 22px;
+      right: 22px;
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: transparent;
+      color: #c7c9f7;
+      font-size: 2rem;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .modal-close:hover {
+      background: rgba(255,255,255,0.05);
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      margin-bottom: 24px;
+    }
+
+    .info-card {
+      padding: 18px;
+      background: rgba(255,255,255,0.03);
+      border-radius: 18px;
+      border: 1px solid rgba(255,255,255,0.10);
+      box-shadow: none;
+    }
+
+    .info-card h4 {
+      color: var(--cyan);
+      margin-bottom: 10px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .info-card p {
+      color: #dce4ff;
+      line-height: 1.8;
+      font-size: 0.98rem;
     }
 
     @keyframes fadeUp {
@@ -423,27 +944,22 @@
         font-size: 1.2rem;
       }
 
-      .hero-visual {
-        min-height: 360px;
+      .it-grid,
+      .parcours-grid,
+      .exp-grid,
+      .projects-grid,
+      .modal-grid,
+      .exp-columns {
+        grid-template-columns: 1fr;
       }
 
-      .box-one, .box-two, .box-three {
-        width: auto;
-        left: 20px;
-        right: 20px;
-        position: absolute;
+      .exp-card.wide {
+        grid-column: auto;
       }
 
-      .box-one {
-        top: 25px;
-      }
-
-      .box-two {
-        top: 135px;
-      }
-
-      .box-three {
-        bottom: 25px;
+      .infra-box img,
+      .competence-box img {
+        width: 100%;
       }
     }
 
@@ -460,628 +976,24 @@
         font-size: 2rem;
       }
 
-      .about-card {
+      .about-card,
+      .modal-content {
         padding: 26px;
       }
+
+      .modal-content h2 {
+        font-size: 1.6rem;
+      }
+
+      .project-preview-card,
+      .exp-card,
+      .parcours-card {
+        padding: 22px;
+      }
     }
-
-  .exp-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  margin-top: 40px;
-}
-
-.exp-card {
-  position: relative;
-  padding: 28px;
-  border-radius: 28px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 16px 40px rgba(0,0,0,0.22);
-  backdrop-filter: blur(10px);
-  transition: 0.35s ease;
-  overflow: hidden;
-}
-
-.exp-card::before {
-  content: "";
-  position: absolute;
-  width: 220px;
-  height: 220px;
-  top: -90px;
-  right: -90px;
-  border-radius: 50%;
-  background: rgba(139, 92, 246, 0.12);
-  filter: blur(55px);
-}
-
-.exp-card::after {
-  content: "";
-  position: absolute;
-  width: 170px;
-  height: 170px;
-  bottom: -70px;
-  left: -60px;
-  border-radius: 50%;
-  background: rgba(236, 72, 153, 0.10);
-  filter: blur(50px);
-}
-
-.exp-card:hover {
-  transform: translateY(-8px);
-  border-color: rgba(236, 72, 153, 0.30);
-  box-shadow: 0 22px 50px rgba(0,0,0,0.28);
-}
-
-.exp-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.exp-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 18px;
-  flex-wrap: wrap;
-}
-
-.exp-badge {
-  display: inline-block;
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.82rem;
-  font-weight: 700;
-  color: white;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  box-shadow: 0 8px 20px rgba(236, 72, 153, 0.18);
-}
-
-.exp-badge.soft {
-  background: rgba(255,255,255,0.08);
-  color: #f5d0fe;
-  border: 1px solid rgba(255,255,255,0.10);
-  box-shadow: none;
-}
-
-.exp-date {
-  font-size: 0.92rem;
-  color: #d8d7e6;
-}
-
-.exp-card h3 {
-  margin: 0 0 10px;
-  font-size: 1.55rem;
-  color: #ffffff;
-}
-
-.exp-role {
-  margin-bottom: 18px;
-  color: #c4b5fd;
-  font-weight: 500;
-}
-
-.exp-card ul {
-  margin: 0;
-  padding-left: 18px;
-}
-
-.exp-card li {
-  color: #ececf6;
-  margin-bottom: 12px;
-  line-height: 1.6;
-}
-
-.exp-card li:last-child {
-  margin-bottom: 0;
-}
-
-.exp-card.wide {
-  grid-column: 1 / -1;
-}
-
-.exp-columns {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-}
-
-@media (max-width: 900px) {
-  .exp-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .exp-card.wide {
-    grid-column: auto;
-  }
-
-  .exp-columns {
-    grid-template-columns: 1fr;
-  }
-}
-    .project-main-card {
-  margin-top: 40px;
-  padding: 40px;
-  border-radius: 35px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.35),
-    0 0 40px rgba(139, 92, 246, 0.1);
-  position: relative;
-  overflow: hidden;
-}
-
-/* effet glow */
-.project-main-card::before {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: -120px;
-  right: -100px;
-  background: rgba(236, 72, 153, 0.15);
-  border-radius: 50%;
-  filter: blur(80px);
-}
-
-.project-main-card::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  bottom: -100px;
-  left: -80px;
-  background: rgba(139, 92, 246, 0.15);
-  border-radius: 50%;
-  filter: blur(80px);
-}
-
-/* garder le contenu au-dessus */
-.project-main-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-    .project-main-card {
-  margin-top: 40px;
-  padding: 45px;
-  border-radius: 35px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(12px);
-  box-shadow:
-    0 20px 60px rgba(0,0,0,0.35),
-    0 0 40px rgba(139, 92, 246, 0.10);
-  position: relative;
-  overflow: hidden;
-}
-
-.project-main-card::before {
-  content: "";
-  position: absolute;
-  width: 300px;
-  height: 300px;
-  top: -120px;
-  right: -100px;
-  background: rgba(236, 72, 153, 0.15);
-  border-radius: 50%;
-  filter: blur(80px);
-}
-
-.project-main-card::after {
-  content: "";
-  position: absolute;
-  width: 250px;
-  height: 250px;
-  bottom: -100px;
-  left: -80px;
-  background: rgba(139, 92, 246, 0.15);
-  border-radius: 50%;
-  filter: blur(80px);
-}
-
-.project-main-card > * {
-  position: relative;
-  z-index: 1;
-}
-
-.project-title-box {
-  text-align: center;
-  margin-bottom: 40px;
-  padding: 25px 20px 30px;
-  border-radius: 25px;
-  background: rgba(255,255,255,0.04);
-  border: 1px solid rgba(255,255,255,0.08);
-}
-
-.project-mini-label {
-  display: inline-block;
-  margin-bottom: 14px;
-  padding: 8px 16px;
-  border-radius: 999px;
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  color: white;
-  font-size: 0.82rem;
-  font-weight: 700;
-  letter-spacing: 0.5px;
-}
-
-.project-main-title {
-  margin: 0;
-  font-size: 2rem;
-  line-height: 1.4;
-  font-weight: 800;
-  color: #ffffff;
-  max-width: 900px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.project-container {
-  display: grid;
-  gap: 30px;
-  margin-top: 10px;
-}
-
-.project-block {
-  padding: 30px;
-  border-radius: 25px;
-  background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-  border: 1px solid rgba(255,255,255,0.08);
-  backdrop-filter: blur(10px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.25);
-  transition: 0.3s;
-}
-
-.project-block:hover {
-  transform: translateY(-5px);
-  border-color: rgba(236, 72, 153, 0.35);
-}
-
-.project-block h3 {
-  margin-bottom: 18px;
-  color: #ffffff;
-  font-size: 1.2rem;
-}
-
-.project-block p {
-  color: #e5e7eb;
-  line-height: 1.9;
-  margin-bottom: 16px;
-}
-
-.project-block p:last-child {
-  margin-bottom: 0;
-}
-
-.skills-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 5px;
-}
-
-.skills-tags span {
-  background: rgba(255,255,255,0.08);
-  border: 1px solid rgba(255,255,255,0.15);
-  padding: 8px 14px;
-  border-radius: 999px;
-  font-size: 0.85rem;
-  color: #f3e8ff;
-  transition: 0.3s;
-}
-
-.skills-tags span:hover {
-  background: linear-gradient(90deg, #8b5cf6, #ec4899);
-  color: white;
-}
-
-@media (max-width: 768px) {
-  .project-main-card {
-    padding: 25px;
-  }
-
-  .project-main-title {
-    font-size: 1.45rem;
-  }
-
-  .project-title-box {
-    padding: 20px 15px 24px;
-  }
-}
-
-  .competence-box {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.competence-box img {
-  width: 65%;
-  border-radius: 20px;
-  border: 1px solid rgba(236,72,153,0.2);
-  box-shadow: 0 10px 30px rgba(236,72,153,0.2);
-}
-
-/* bouton */
-.btn-download {
-  padding: 14px 28px;
-  border-radius: 30px;
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn-download:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 10px 30px rgba(236,72,153,0.4);
-}
-
-    .infrastructure-text {
-  max-width: 100%;
-  width: 100%;
-}
-    .introduction-a-la-section {
-  text-align: center;
-  margin: 0 auto;
-  max-width: 850px;
-  line-height: 1.8;
-  font-size: 18px;
-}
-   .récipient {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-    .lan {
-  color: #22c55e; /* vert */
-  font-weight: bold;
-}
-
-.dmz {
-  color: #f97316; /* orange */
-  font-weight: bold;
-}
-
-   .ext {
-  color: #ef4444; /* rouge */
-  font-weight: bold;
-}
-    .firewall {
-  color: #f43f5e; /* rouge différent */
-  font-weight: bold;
-}
-    .lan, .dmz, .ext, .firewall {
-  padding: 2px 6px;
-  border-radius: 6px;
-}
-    
-    .infra-box {
-  margin-top: 40px;
-  display: flex;
-  justify-content: center;
-}
-
-.infra-box img {
-  width: 75%;
-  max-width: 900px;
-  border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.08);
-  box-shadow: 0 20px 60px rgba(0,0,0,0.5);
-}
-
-    .infra-box img {
-  border: 1px solid rgba(236,72,153,0.2);
-  box-shadow: 0 15px 40px rgba(236,72,153,0.2);
-}
-    html {
-  scroll-behavior: smooth;
-}
-   
-
-    .problematique {
-  margin: 30px 0;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(139,92,246,0.1);
-  border: 1px solid rgba(139,92,246,0.3);
-}
-
-.veille-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.veille-card {
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(30,41,59,0.8);
-  border: 1px solid rgba(56,189,248,0.3);
-  text-decoration: none;
-  color: white;
-  transition: 0.3s;
-}
-
-.veille-card:hover {
-  transform: translateY(-5px);
-  border-color: #38bdf8;
-}
-
-.conclusion {
-  margin-top: 40px;
-  padding: 20px;
-  border-radius: 15px;
-  background: rgba(16,185,129,0.1);
-}
-.contact-container {
-  margin-top: 40px;
-  display: flex;
-  gap: 20px;
-  justify-content: center;
-  flex-wrap: wrap;
-}
-
-.contact-card {
-  padding: 25px;
-  width: 250px;
-  border-radius: 20px;
- background: rgba(30,41,59,0.8);
- border: 1px solid rgba(56,189,248,0.3);
-  text-align: center;
-  transition: 0.3s;
-}
-
-.contact-card:hover {
-  transform: translateY(-5px);
-  border-color: #ec4899;
-  box-shadow: 0 10px 30px rgba(236,72,153,0.3);
-}
-
-.contact-card h3 {
-  margin-bottom: 10px;
-}
-
-.contact-card a {
-  color: #ec4899;
-  text-decoration: none;
-}
-
-
-.btn-email {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border-radius: 30px; /* ✅ bouton arrondi comme LinkedIn */
-  background: linear-gradient(90deg, #3b82f6, #2563eb);
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-.btn-email:hover {
-  background: #004182;
-  transform: translateY(-2px);
-}
-
-.linkedin-btn {
-  display: inline-block;
-  margin-top: 10px;
-  padding: 10px 20px;
-  border-radius: 25px;
-  background: #0A66C2; /* couleur LinkedIn */
-  color: white;
-  text-decoration: none;
-  font-weight: 600;
-  transition: 0.3s;
-}
-
-
-.linkedin-btn:hover {
-  background: #004182;
-  transform: translateY(-2px);
-}
-
-    .mission-btn {
-  margin-top: 18px;
-  padding: 12px 22px;
-  border: none;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #8b5cf6, #ec4899);
-  color: white;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.mission-btn:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 10px 25px rgba(236, 72, 153, 0.25);
-}
-
-.mission-modal {
-  display: none;
-  position: fixed;
-  z-index: 5000;
-  inset: 0;
-  background: rgba(5, 8, 20, 0.78);
-  backdrop-filter: blur(6px);
-  padding: 40px 20px;
-  overflow-y: auto;
-}
-
-.mission-modal-content {
-  max-width: 1100px;
-  margin: 0 auto;
-  background: #171a56;
-  border: 1px solid rgba(255,255,255,0.12);
-  border-radius: 26px;
-  padding: 40px;
-  box-shadow: 0 20px 60px rgba(0,0,0,0.35);
-  position: relative;
-}
-
-.mission-modal-content h2 {
-  margin-bottom: 28px;
-  color: #ffffff;
-  font-size: 2.2rem;
-}
-
-.mission-section {
-  margin-bottom: 28px;
-}
-
-.mission-section h3 {
-  margin-bottom: 12px;
-  color: #22d3ee;
-  font-size: 1rem;
-  letter-spacing: 2px;
-  text-transform: uppercase;
-}
-
-.mission-section p,
-.mission-section li {
-  color: #d8dcf0;
-  line-height: 1.9;
-  font-size: 1.02rem;
-}
-
-.mission-section ul {
-  padding-left: 24px;
-}
-
-.mission-close {
-  position: absolute;
-  top: 22px;
-  right: 22px;
-  width: 52px;
-  height: 52px;
-  border-radius: 14px;
-  border: 1px solid rgba(255,255,255,0.14);
-  background: transparent;
-  color: #c7c9f7;
-  font-size: 2rem;
-  cursor: pointer;
-}
-
-.mission-close:hover {
-  background: rgba(255,255,255,0.05);
-}
-    
   </style>
 </head>
 <body>
-  
-
-
 
   <nav>
     <div class="nav-container">
@@ -1113,38 +1025,35 @@
       </div>
 
       <div class="hero-visual">
-  <div class="it-panel">
-    <p class="it-label">Mon univers IT</p>
-    <h3>Domaines techniques</h3>
+        <div class="it-panel">
+          <p class="it-label">Mon univers IT</p>
+          <h3>Domaines techniques</h3>
 
-    <div class="it-grid">
-      <div class="it-card">
-        
-        <h4>Systèmes</h4>
-        <p>Windows Server • Linux • Active Directory</p>
-      </div>
+          <div class="it-grid">
+            <div class="it-card">
+              <h4>Systèmes</h4>
+              <p>Windows Server • Linux • Active Directory</p>
+            </div>
 
-      <div class="it-card">
-        
-        <h4>Réseaux</h4>
-        <p>TCP/IP • DHCP • VLAN • VPN</p>
-      </div>
+            <div class="it-card">
+              <h4>Réseaux</h4>
+              <p>TCP/IP • DHCP • VLAN • VPN</p>
+            </div>
 
-      <div class="it-card">
-       
-        <h4>Cybersécurité</h4>
-        <p>Firewall • Sauvegardes • Gestion des incidents</p>
-      </div>
+            <div class="it-card">
+              <h4>Cybersécurité</h4>
+              <p>Firewall • Sauvegardes • Gestion des incidents</p>
+            </div>
 
-      <div class="it-card">
-       
-        <h4>Virtualisation</h4>
-        <p>Proxmox • VirtualBox • Machines virtuelles</p>
+            <div class="it-card">
+              <h4>Virtualisation</h4>
+              <p>Proxmox • VirtualBox • Machines virtuelles</p>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-</header>
+  </header>
 
   <section id="apropos" class="section">
     <h2 class="section-title">À propos de moi</h2>
@@ -1173,198 +1082,443 @@
       </p>
     </div>
   </section>
-<section id="parcours" class="section">
-  <h2 class="section-title">Mon parcours</h2>
-  <p class="section-intro">
-    Mon parcours académique et les étapes importantes de ma formation.
-  </p>
 
-  <div class="parcours-grid">
+  <section id="parcours" class="section">
+    <h2 class="section-title">Mon parcours</h2>
+    <p class="section-intro">
+      Mon parcours académique et les étapes importantes de ma formation.
+    </p>
 
-     <!-- BAC -->
-    <div class="parcours-card">
-      <div class="card-year">2019 - 2020</div>
-      <h3>Baccalauréat Sciences Physiques et Chimie</h3>
-      <p class="school">Lycée Akenssos, Essaouira</p>
-      <p>
-        Acquisition de bases scientifiques solides, utiles pour l’analyse et la logique technique.
-      </p>
-    </div>
-
-    <!-- DUT -->
-    <div class="parcours-card">
-      <div class="card-year">2021 – 2023</div>
-      <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
-      <p class="school">École Supérieure de Technologie, Essaouira</p>
-      <p>
-        Développement de compétences en organisation, communication et travail en équipe.
-      </p>
-    </div>
-
-     <!-- BTS -->
-    <div class="parcours-card">
-      <div class="card-year">2024 – 2026</div>
-      <h3>BTS SIO (SISR)</h3>
-      <p class="school">Lycée Jacques Brel, Vénissieux</p>
-      <p>
-        Spécialisation en administration des systèmes et des réseaux :
-        gestion des infrastructures, virtualisation et sécurisation des environnements informatiques.
-      </p>
-    </div>
-
-  </div>
-</section>
-
-<section id="experiences" class="section">
-  <h2 class="section-title">Mes expériences professionnelles</h2>
-  <p class="section-intro">
-    Mes stages en systèmes et réseaux ainsi que mes expériences commerciales et aéroportuaires.
-  </p>
-
-  <div class="exp-grid">
-
-     <article class="exp-card wide">
-      <div class="exp-top">
-        <span class="exp-badge soft">Expérience regroupée</span>
-        <span class="exp-date">2022 – 2023</span>
+    <div class="parcours-grid">
+      <div class="parcours-card">
+        <div class="card-year">2019 - 2020</div>
+        <h3>Baccalauréat Sciences Physiques et Chimie</h3>
+        <p class="school">Lycée Akenssos, Essaouira</p>
+        <p>
+          Acquisition de bases scientifiques solides, utiles pour l’analyse et la logique technique.
+        </p>
       </div>
-      <h3>Expériences commerciales & aéroportuaires</h3>
-      <p class="exp-role">GIFI (France) | Royal Air Maroc & ONDA – Essaouira, Maroc</p>
 
-      <div class="exp-columns">
+      <div class="parcours-card">
+        <div class="card-year">2021 – 2023</div>
+        <h3>DUT Gestion des Organisations et des Destinations Touristiques</h3>
+        <p class="school">École Supérieure de Technologie, Essaouira</p>
+        <p>
+          Développement de compétences en organisation, communication et travail en équipe.
+        </p>
+      </div>
+
+      <div class="parcours-card">
+        <div class="card-year">2024 – 2026</div>
+        <h3>BTS SIO (SISR)</h3>
+        <p class="school">Lycée Jacques Brel, Vénissieux</p>
+        <p>
+          Spécialisation en administration des systèmes et des réseaux :
+          gestion des infrastructures, virtualisation et sécurisation des environnements informatiques.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section id="experiences" class="section">
+    <h2 class="section-title">Mes expériences professionnelles</h2>
+    <p class="section-intro">
+      Mes stages en systèmes et réseaux ainsi que mes expériences commerciales et aéroportuaires.
+    </p>
+
+    <div class="exp-grid">
+      <article class="exp-card wide">
+        <div class="exp-top">
+          <span class="exp-badge soft">Expérience regroupée</span>
+          <span class="exp-date">2022 – 2023</span>
+        </div>
+        <h3>Expériences commerciales & aéroportuaires</h3>
+        <p class="exp-role">GIFI (France) | Royal Air Maroc & ONDA – Essaouira, Maroc</p>
+
+        <div class="exp-columns">
+          <ul>
+            <li>Accueil, conseil et accompagnement des clients et passagers</li>
+            <li>Gestion des opérations d’enregistrement et d’embarquement</li>
+            <li>Utilisation de logiciels de réservation et d’enregistrement</li>
+            <li>Participation aux activités commerciales et à l’organisation du point de vente</li>
+          </ul>
+
+          <ul>
+            <li>Contribution à la fluidité des opérations et à la qualité du service client</li>
+            <li>Développement de compétences en relation client, organisation et gestion du stress</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="exp-card">
+        <div class="exp-top">
+          <span class="exp-badge">Stage IT</span>
+          <span class="exp-date">Juin – Juil. 2025</span>
+        </div>
+        <h3>Conseil Départemental de la Nièvre</h3>
+        <p class="exp-role">Stage technicienne systèmes et réseaux</p>
         <ul>
-          <li>Accueil, conseil et accompagnement des clients et passagers</li>
-          <li>Gestion des opérations d’enregistrement et d’embarquement</li>
-          <li>Utilisation de logiciels de réservation et d’enregistrement</li>
-          <li>Participation aux activités commerciales et à l’organisation du point de vente</li>
+          <li>Préparation et remplacement de switchs dans des collèges</li>
+          <li>Réalisation de recâblage réseau</li>
+          <li>Utilisation de GLPI pour la gestion des tickets et le support utilisateurs</li>
+          <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
         </ul>
+        <button class="mission-btn" data-modal="missionModal">Voir une mission</button>
+      </article>
 
+      <article class="exp-card">
+        <div class="exp-top">
+          <span class="exp-badge">Stage IT</span>
+          <span class="exp-date">Janv. – Févr. 2026</span>
+        </div>
+        <h3>FILORDI</h3>
+        <p class="exp-role">Stage technicienne systèmes et réseaux</p>
         <ul>
-          <li>Contribution à la fluidité des opérations et à la qualité du service client</li>
-          <li>Développement de compétences en relation client, organisation et gestion du stress</li>
+          <li>Assistance et dépannage informatique pour professionnels et particuliers</li>
+          <li>Installation et configuration de postes de travail</li>
+          <li>Support aux utilisateurs et conseils techniques</li>
         </ul>
+        <button class="mission-btn" data-modal="missionFilordi">Voir une mission</button>
+      </article>
+    </div>
+  </section>
+
+  <section id="infrastructure" class="section">
+    <div class="infrastructure-wrapper">
+      <h2 class="section-title">Infrastructure réseau sécurisée et segmentée</h2>
+
+      <p class="infrastructure-text">
+        Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones.
+        Le <span class="lan">LAN</span> regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision.
+        La <span class="dmz">DMZ</span> héberge les services exposés comme les serveurs web, afin de limiter les risques pour le réseau interne.
+        La zone <span class="ext">EXT</span> permet l’accès depuis l’extérieur.
+        L’ensemble est sécurisé par un pare-feu <span class="firewall">IPFire</span> assurant le filtrage et le contrôle des flux entre les différentes zones.
+      </p>
+
+      <div class="infra-box">
+        <img src="infra.png" alt="Infrastructure réseau sécurisée">
       </div>
-    </article>
+    </div>
+  </section>
 
-     <article class="exp-card featured">
-      <div class="exp-top">
-        <span class="exp-badge">Stage IT</span>
-        <span class="exp-date">Juin – Juil. 2025</span>
-      </div>
-      <h3>Conseil Départemental de la Nièvre</h3>
-      <p class="exp-role">Stage technicienne systèmes et réseaux</p>
-      <ul>
-        <li>Préparation et remplacement de switchs dans des collèges</li>
-        <li>Réalisation de recâblage réseau</li>
-        <li>Utilisation de GLPI pour la gestion des tickets et le support utilisateurs</li>
-        <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
-      </ul>
-      <button class="mission-btn" onclick="openMissionModal()">
-  Voir une mission
-</button>   
-    </article>
-    
-    
-    <article class="exp-card featured">
-      <div class="exp-top">
-        <span class="exp-badge">Stage IT</span>
-        <span class="exp-date">Janv. – Févr. 2026</span>
-      </div>
-      <h3>FILORDI</h3>
-      <p class="exp-role">Stage technicienne systèmes et réseaux</p>
-      <ul>
-        <li>Assistance et dépannage informatique pour professionnels et particuliers</li>
-        <li>Installation et configuration de postes de travail</li>
-        <li>Support aux utilisateurs et conseils techniques</li>
-      </ul>
-      <button class="mission-btn" onclick="openMissionFilordi()">
-  Voir une mission
-</button>
-    </article>
+  <section id="projets" class="section">
+    <h2 class="section-title">Mes projets</h2>
+    <p class="section-intro">
+      Projets réalisés dans le cadre de ma formation en systèmes, réseaux et cybersécurité.
+    </p>
 
-    
-  </div>
-</section>
+    <div class="projects-grid">
+      <article class="project-preview-card">
+        <span class="project-preview-badge">Projet 1</span>
+        <h3>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais</h3>
+        <p>
+          Déploiement d’une solution de sauvegarde automatisée pour protéger la base de données et les fichiers du site,
+          avec script Bash, archivage, transfert sécurisé et segmentation réseau.
+        </p>
+        <div class="skills-tags">
+          <span>Linux</span>
+          <span>Bash</span>
+          <span>mysqldump</span>
+          <span>SFTP</span>
+          <span>cron</span>
+          <span>IPFire</span>
+        </div>
+        <button class="project-btn" data-modal="projectBackup">Voir le projet</button>
+      </article>
 
+      <article class="project-preview-card">
+        <span class="project-preview-badge">Projet 2</span>
+        <h3>Déploiement d’une solution de supervision sécurisée avec Centreon</h3>
+        <p>
+          Mise en place d’une plateforme de supervision sur Debian 12 pour surveiller des hôtes Linux, Windows
+          et des équipements réseau, avec sécurisation par HTTPS et SNMPv3.
+        </p>
+        <div class="skills-tags">
+          <span>Centreon</span>
+          <span>Debian 12</span>
+          <span>SNMPv3</span>
+          <span>HTTPS</span>
+          <span>MariaDB</span>
+          <span>Monitoring</span>
+        </div>
+        <button class="project-btn" data-modal="projectCentreon">Voir le projet</button>
+      </article>
+    </div>
+  </section>
 
-<section id="infrastructure" class="section">
-<section id="infrastructure">
-  <div class="récipient">
-  <h2 class="section-title">Infrastructure réseau sécurisée et segmentée</h2>
+  <section id="veille" class="section">
+    <h2 class="section-title">Veille technologique — Sécurité dans le Cloud</h2>
 
-  <p class="introduction-a-la-section">
-Dans le cadre de ma formation en BTS SIO, j’ai conçu une infrastructure réseau segmentée en trois zones.
-
-Le <span class="lan">LAN</span> regroupe les services internes critiques tels que l’Active Directory, le stockage et les outils de supervision.
-
-La <span class="dmz">DMZ</span> héberge les services exposés comme les serveurs web, afin de limiter les risques pour le réseau interne.
-
-La zone <span class="ext">EXT</span> permet l’accès depuis l’extérieur.
-
-L’ensemble est sécurisé par un pare-feu <span class="firewall">IPFire</span> assurant le filtrage et le contrôle des flux entre les différentes zones.
-  </p>
-
-  <!-- IMAGE -->
-  <div class="infra-box">
-    <img src="infra.png" alt="Infrastructure réseau">
-  </div>
-
-</section>
-
-
-<section id="projets" class="section">
-  <h2 class="section-title">Mes projets</h2>
-  <p class="section-intro">
-    Projets réalisés dans le cadre de ma formation en systèmes, réseaux et cybersécurité.
-  </p>
-
-  <div class="project-main-card">
-
-    <div class="project-title-box">
-      <span class="project-mini-label">Projet 1</span>
-      <h3 class="project-main-title">
-        Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais
-      </h3>
+    <div class="problem-box">
+      Dans quelle mesure les environnements cloud, devenus essentiels pour les entreprises,
+      peuvent-ils garantir la sécurité des données face à l’évolution des cybermenaces ?
     </div>
 
-    <div class="project-container">
+    <div class="veille-grid">
+      <a href="https://www.ssi.gouv.fr/" target="_blank" class="veille-card">
+        <h3>🔐 Sécurité du cloud : menaces 2025</h3>
+        <p>Ransomware, erreurs de configuration et fuites de données représentent les principaux risques pour les entreprises.</p>
+      </a>
 
-      <div class="project-block">
-        <h3>🎯 Objectif</h3>
+      <a href="https://learn.microsoft.com/security" target="_blank" class="veille-card">
+        <h3>⚠️ Erreurs de configuration</h3>
+        <p>Une mauvaise configuration des services cloud peut exposer des données sensibles publiquement.</p>
+      </a>
+
+      <a href="https://cloud.google.com/security" target="_blank" class="veille-card">
+        <h3>🔑 Authentification MFA</h3>
+        <p>Le MFA renforce la sécurité des accès et réduit les risques de piratage.</p>
+      </a>
+
+      <a href="https://www.ibm.com/security" target="_blank" class="veille-card">
+        <h3>🛡️ Zero Trust</h3>
+        <p>Une approche moderne qui consiste à vérifier chaque accès pour sécuriser les environnements cloud.</p>
+      </a>
+    </div>
+
+    <div class="conclusion">
+      <h3>Conclusion</h3>
+      <p>
+        Aujourd’hui, le cloud est devenu indispensable pour les entreprises, notamment pour le stockage et l’accès aux données à distance.
+        Il offre de nombreux avantages en termes de flexibilité, de performance et de collaboration. Cependant, cette évolution s’accompagne
+        de nouveaux risques liés à la cybersécurité. Les principales menaces proviennent souvent d’erreurs humaines, de mauvaises configurations
+        ou d’un manque de contrôle des accès. Face à ces risques, les entreprises doivent mettre en place des solutions adaptées comme
+        l’authentification multi-facteurs, le chiffrement des données ou encore des modèles de sécurité comme le Zero Trust.
+        Ainsi, la sécurité dans le cloud repose sur une combinaison de bonnes pratiques techniques et organisationnelles.
+      </p>
+    </div>
+  </section>
+
+  <section id="tableau-competences" class="section">
+    <h2 class="section-title">Tableau de compétences</h2>
+    <p class="section-intro">
+      Ce tableau présente l’ensemble des compétences développées au cours de ma formation,
+      à travers mes projets et mes expériences professionnelles.
+    </p>
+
+    <h3 style="margin-top:10px; text-align:center; font-weight:700;">
+      Tableau de synthèse des réalisations professionnelles
+    </h3>
+
+    <div class="competence-box">
+      <img src="tableau1.png" alt="Tableau de compétences">
+    </div>
+
+    <div class="download-wrap">
+      <a href="Tableau de Compétence.xlsx" download class="btn-download">
+        Télécharger le tableau
+      </a>
+    </div>
+  </section>
+
+  <section id="contact" class="section">
+    <h2 class="section-title">Contact</h2>
+    <p class="section-intro">
+      N’hésitez pas à me contacter pour toute opportunité d’alternance ou pour échanger sur mon profil.
+    </p>
+
+    <div class="contact-container">
+      <div class="contact-card">
+        <h3>📧 Email</h3>
+        <p>khawlajanati2003@email.com</p>
+        <a href="mailto:khawlajanati2003@email.com" class="btn-email">Envoyer un email</a>
+      </div>
+
+      <div class="contact-card">
+        <h3>📱 Téléphone</h3>
+        <p>06 65 12 73 16</p>
+      </div>
+
+      <div class="contact-card">
+        <h3>💼 LinkedIn</h3>
+        <p>Consultez mon profil professionnel</p>
+        <a href="https://www.linkedin.com/in/khawla-janati-8b5a79249/" target="_blank" class="linkedin-btn">
+          Voir mon profil
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODAL MISSION NIEVRE -->
+  <div id="missionModal" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="missionModal">×</button>
+      <h2>Remplacement et préparation de switchs dans des collèges</h2>
+
+      <div class="modal-section">
+        <h3>Contexte</h3>
         <p>
-                   L’objectif de ce projet était de mettre en place une solution de sauvegarde automatisée pour un serveur web LAMP afin de protéger à la fois la base de données et les fichiers du site. Cette solution devait permettre d’assurer la continuité de service, limiter les risques de perte de données et renforcer la fiabilité de l’infrastructure.
+          Dans le cadre de mon stage au Conseil Départemental de la Nièvre, j’ai participé à des
+          interventions techniques dans plusieurs collèges afin d’assurer le remplacement et la
+          préparation d’équipements réseau.
         </p>
       </div>
 
-      <div class="project-block">
-        <h3>⚙️ Réalisation</h3>
+      <div class="modal-section">
+        <h3>Mission réalisée</h3>
         <p>
-                   Un serveur LAMP hébergeant l’application GSB Frais a d’abord été mis en place, puis un second serveur Linux a été configuré comme serveur de sauvegarde. Un script Bash a ensuite été développé pour automatiser l’ensemble du processus : extraction de la base de données avec <strong>mysqldump</strong>, archivage des fichiers du site avec <strong>tar</strong>, puis transfert des sauvegardes vers le serveur distant via <strong>SFTP</strong>.
-
+          Ma mission a consisté à remplacer plusieurs switchs dans différents emplacements d’un établissement :
+          un switch dans le bureau de l’administrateur, trois switchs dans une salle de classe et deux switchs
+          dans une autre salle. Après chaque remplacement, j’ai effectué le recâblage des baies informatiques
+          afin d’assurer un fonctionnement optimal du réseau et une meilleure organisation des câbles.
         </p>
-       
+        <p>
+          En parallèle, j’ai également préparé des switchs destinés à être installés dans d’autres collèges du
+          département. Cette préparation comprenait le déballage, la vérification du matériel et la configuration
+          de base avant déploiement.
+        </p>
       </div>
 
-      <div class="project-block">
-        <h3>🔐 Sécurité & Architecture</h3>
+      <div class="modal-section">
+        <h3>Réalisations techniques</h3>
         <p>
-                   Dans une logique de sécurisation, l’infrastructure a été segmentée entre <strong>LAN</strong> et <strong>DMZ</strong>. Le serveur web a été placé en DMZ tandis que le serveur de sauvegarde est resté en LAN. Le pare-feu <strong>IPFire</strong> a été configuré pour n’autoriser que les flux nécessaires, notamment <strong>SSH (port 22)</strong> pour le transfert des sauvegardes et <strong>ICMP</strong> pour les tests réseau.
-
+          J’ai réalisé la connexion aux switchs via l’interface console avec PuTTY pour effectuer la configuration initiale.
+          J’ai ensuite accédé à l’interface de gestion Aruba afin de configurer les VLAN, les adresses IP et les ports réseau
+          selon les besoins de l’établissement.
         </p>
-       
+        <p>
+          J’ai également participé à la création et à la configuration des VLAN en fonction des plans réseau et des usages,
+          comme les VLAN administratifs, pédagogiques ou Wi-Fi. Une adresse IP a été attribuée aux switchs, avec ajout
+          d’une route par défaut, puis la configuration a été sauvegardée afin d’assurer sa conservation après redémarrage.
+        </p>
+        <p>
+          Enfin, j’ai participé à la préparation des câbles réseau ainsi qu’à leur étiquetage avant l’installation des switchs.
+        </p>
       </div>
 
-      <div class="project-block">
-        <h3>🧪 Résultats</h3>
-        <p>
-                    Les sauvegardes sont exécutées automatiquement chaque jour grâce à <strong>cron</strong>. Les fichiers générés comprennent des sauvegardes de base de données au format <strong>.sql</strong> ainsi que des archives du site web au format <strong>.tar.gz</strong>. Les tests réalisés ont permis de valider le bon fonctionnement du script, du transfert sécurisé et de l’architecture réseau mise en place.
-
-        </p>
-       
+      <div class="modal-section">
+        <h3>Compétences développées</h3>
+        <ul>
+          <li>Remplacement et installation de switchs</li>
+          <li>Recâblage de baies informatiques</li>
+          <li>Configuration initiale via console</li>
+          <li>Paramétrage VLAN et adressage IP</li>
+          <li>Préparation de matériel réseau</li>
+          <li>Organisation et étiquetage des câbles</li>
+        </ul>
       </div>
 
-      <div class="project-block">
-        <h3>🛠️ Compétences développées</h3>
+      <div class="modal-section">
+        <h3>Bilan</h3>
+        <p>
+          Cette mission m’a permis de manipuler des équipements réseau dans un environnement réel,
+          de mieux comprendre la logique de segmentation d’un réseau et de participer concrètement
+          à la préparation et au déploiement d’infrastructures dans des établissements scolaires.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL MISSION FILORDI -->
+  <div id="missionFilordi" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="missionFilordi">×</button>
+      <h2>Préparation et remise en service d’un parc informatique</h2>
+
+      <div class="modal-section">
+        <h3>Contexte</h3>
+        <p>
+          Dans le cadre de mon stage chez Filordi, j’ai participé à une intervention technique visant
+          à réorganiser et remettre en service le matériel informatique d’une entreprise. Cette mission
+          avait pour objectif d’assurer le bon fonctionnement des équipements et d’améliorer l’organisation
+          de l’infrastructure.
+        </p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Mission réalisée</h3>
+        <p>
+          Au cours de cette intervention, j’ai participé au remplacement et au déplacement de plusieurs
+          équipements informatiques. Cette opération a consisté à déconnecter l’ensemble du matériel,
+          puis à le réinstaller dans un nouvel espace en réalisant un recâblage complet.
+        </p>
+        <p>
+          J’ai également assisté à la préparation d’ordinateurs destinés à être remis en service,
+          notamment par l’installation du système d’exploitation Windows et la configuration des logiciels nécessaires.
+        </p>
+      </div>
+
+      <div class="modal-section">
+        <h3>Activités réalisées</h3>
+        <ul>
+          <li>Débranchement et déplacement du matériel informatique</li>
+          <li>Recâblage des postes et organisation des connexions</li>
+          <li>Installation du système d’exploitation Windows</li>
+          <li>Installation de logiciels de base</li>
+          <li>Nettoyage et optimisation des ordinateurs</li>
+          <li>Vérification du bon fonctionnement des équipements</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Compétences développées</h3>
+        <ul>
+          <li>Installation et configuration de postes informatiques</li>
+          <li>Organisation et gestion du matériel</li>
+          <li>Diagnostic simple de pannes</li>
+          <li>Méthodologie d’intervention technique</li>
+          <li>Travail en équipe</li>
+        </ul>
+      </div>
+
+      <div class="modal-section">
+        <h3>Bilan</h3>
+        <p>
+          Cette mission m’a permis de participer à une intervention concrète en entreprise et de mieux
+          comprendre les étapes nécessaires à la remise en service d’un parc informatique. Elle m’a également
+          permis de développer mes compétences techniques de base ainsi que mon sens de l’organisation.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL PROJET 1 -->
+  <div id="projectBackup" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="projectBackup">×</button>
+      <h2>Mise en place d’une solution de sauvegarde automatisée du site et des données GSB Frais</h2>
+
+      <div class="modal-grid">
+        <div class="info-card">
+          <h4>Objectif</h4>
+          <p>
+            Mettre en place une solution de sauvegarde automatisée pour un serveur web LAMP afin de protéger
+            la base de données et les fichiers du site, assurer la continuité de service et limiter les risques
+            de perte de données.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h4>Réalisation</h4>
+          <p>
+            Un serveur LAMP hébergeant l’application GSB Frais a été mis en place, puis un second serveur Linux
+            a été configuré comme serveur de sauvegarde. Un script Bash a automatisé l’extraction de la base de
+            données avec mysqldump, l’archivage du site avec tar et le transfert des sauvegardes vers le serveur
+            distant via SFTP.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h4>Sécurité & architecture</h4>
+          <p>
+            L’infrastructure a été segmentée entre LAN et DMZ. Le serveur web a été placé en DMZ tandis que le
+            serveur de sauvegarde est resté en LAN. Le pare-feu IPFire a été configuré pour n’autoriser que les
+            flux nécessaires, notamment SSH pour le transfert des sauvegardes et ICMP pour les tests réseau.
+          </p>
+        </div>
+
+        <div class="info-card">
+          <h4>Résultats</h4>
+          <p>
+            Les sauvegardes sont exécutées automatiquement chaque jour grâce à cron. Les fichiers générés comprennent
+            des sauvegardes de base de données au format .sql ainsi que des archives du site web au format .tar.gz.
+            Les tests ont validé le bon fonctionnement du script, du transfert sécurisé et de l’architecture réseau.
+          </p>
+        </div>
+      </div>
+
+      <div class="modal-section">
+        <h3>Compétences développées</h3>
         <div class="skills-tags">
           <span>Administration Linux</span>
           <span>Automatisation</span>
@@ -1374,276 +1528,125 @@ L’ensemble est sécurisé par un pare-feu <span class="firewall">IPFire</span>
           <span>Cybersécurité</span>
         </div>
       </div>
-
-    </div>
-
-  </div>
-</section>
-
-
-    <section id="veille" class="section">
-
-  <h2 class="section-title">Veille technologique — Sécurité dans le Cloud</h2>
-
-  <div class="problematique">
-    Dans quelle mesure les environnements cloud, devenus essentiels pour les entreprises,
-    peuvent-ils garantir la sécurité des données face à l’évolution des cybermenaces ?
-  </div>
-
-  <div class="veille-grid">
-
-    <a href="https://www.ssi.gouv.fr/" target="_blank" class="veille-card">
-      <h3>🔐 Sécurité du cloud : menaces 2025</h3>
-      <p>Ransomware, erreurs de configuration et fuites de données représentent les principaux risques pour les entreprises.</p>
-    </a>
-
-    <a href="https://learn.microsoft.com/security" target="_blank" class="veille-card">
-      <h3>⚠️ Erreurs de configuration</h3>
-      <p>Une mauvaise configuration des services cloud peut exposer des données sensibles publiquement.</p>
-    </a>
-
-    <a href="https://cloud.google.com/security" target="_blank" class="veille-card">
-      <h3>🔑 Authentification MFA</h3>
-      <p>Le MFA renforce la sécurité des accès et réduit les risques de piratage.</p>
-    </a>
-
-    <a href="https://www.ibm.com/security" target="_blank" class="veille-card">
-      <h3>🛡️ Zero Trust</h3>
-      <p>Une approche moderne qui consiste à vérifier chaque accès pour sécuriser les environnements cloud.</p>
-    </a>
-
-  </div>
-
-  <div class="conclusion">
-    <h3>Conclusion</h3>
-    <p>
-      Aujourd’hui, le cloud est devenu indispensable pour les entreprises, notamment pour le stockage et l’accès aux données à distance. Il offre de nombreux avantages en termes de flexibilité, de performance et de collaboration. Cependant, cette évolution s’accompagne de nouveaux risques liés à la cybersécurité.
-      Les principales menaces proviennent souvent d’erreurs humaines, de mauvaises configurations ou d’un manque de contrôle des accès. Face à ces risques, les entreprises doivent mettre en place des solutions adaptées comme l’authentification multi-facteurs, le chiffrement des données ou encore des modèles de sécurité comme le Zero Trust.
-      Ainsi, la sécurité dans le cloud repose sur une combinaison de bonnes pratiques techniques et organisationnelles. Elle est aujourd’hui un enjeu majeur pour garantir la protection des données et la continuité des activités.
-    </p>
-  </div>
-
-</section>
-
-
-  
-<section id="tableau-competences" class="section">
-  <h2 class="section-title">Tableau de compétences</h2>
-
-  <p class="section-intro">
-    Ce tableau présente l’ensemble des compétences développées au cours de ma formation,
-    à travers mes projets et mes expériences professionnelles.
-  </p>
-
-
-
-  <h3 style="margin-top:10px; text-align:center; font-weight:700;">
-    Tableau de synthèse des réalisations professionnelles
-  </h3>
-
-<div class="competence-box">
-  <img src="tableau1.png" alt="Tableau de compétences">
-</div>
-  
-  <!-- BOUTON TELECHARGER -->
-  <div style="text-align:center; margin-top:30px;">
-    <a href="Tableau de Compétence.xlsx" download class="btn-download">
-      Télécharger le tableau
-    </a>
-  </div>
-
-</section>
-
-  <section id="contact" class="section">
-
-  <h2 class="section-title">Contact</h2>
-
-  <p class="section-intro">
-    N’hésitez pas à me contacter pour toute opportunité d’alternance ou pour échanger sur mon profil.
-  </p>
-
-  <div class="contact-container">
-
-    <div class="contact-card">
-      <h3>📧 Email</h3>
-      <p>khawlajanati2003@email.com</p>
-      <a href="mailto:khawlajanati2003@email.com" class="btn-email">Envoyer un email</a>
-    </div>
-
-    <div class="contact-card">
-      <h3>📱 Téléphone</h3>
-      <p>06 65 12 73 16</p>
-    </div>
-
-  <div class="contact-card">
-  <h3>💼 LinkedIn</h3>
-  <p>Consultez mon profil professionnel</p>
-
-  <a href="https://www.linkedin.com/in/khawla-janati-8b5a79249/" 
-     target="_blank" 
-     class="linkedin-btn">
-     Voir mon profil
-  </a>
-</div>
-
-  </div>
-
-</section>
-<div id="missionModal" class="mission-modal">
-  <div class="mission-modal-content">
-    <button class="mission-close" onclick="closeMissionModal()">×</button>
-
-    <h2>Remplacement et préparation de switchs dans des collèges</h2>
-
-    <div class="mission-section">
-      <h3>Contexte</h3>
-      <p>
-        Dans le cadre de mon stage au Conseil Départemental de la Nièvre, j’ai participé à des
-        interventions techniques dans plusieurs collèges afin d’assurer le remplacement et la
-        préparation d’équipements réseau.
-      </p>
-    </div>
-
-    <div class="mission-section">
-      <h3>Mission réalisée</h3>
-      <p>
-        Ma première mission a consisté à remplacer plusieurs switchs dans différents emplacements
-        d’un établissement : un switch dans le bureau de l’administrateur, trois switchs dans une
-        salle de classe et deux switchs dans une autre salle. Après chaque remplacement, j’ai
-        effectué le recâblage des baies informatiques afin d’assurer un fonctionnement optimal du
-        réseau et une meilleure organisation des câbles.
-      </p>
-      <p>
-        En parallèle, j’ai également préparé des switchs destinés à être installés dans d’autres
-        collèges du département. Cette préparation comprenait le déballage, la vérification du
-        matériel et la configuration de base avant déploiement.
-      </p>
-    </div>
-
-    <div class="mission-section">
-      <h3>Réalisations techniques</h3>
-      <p>
-        J’ai réalisé la connexion aux switchs via l’interface console avec PuTTY pour effectuer la
-        configuration initiale. J’ai ensuite accédé à l’interface de gestion Aruba afin de configurer
-        les VLAN, les adresses IP et les ports réseau selon les besoins de l’établissement.
-      </p>
-      <p>
-        J’ai également participé à la création et à la configuration des VLAN en fonction des plans
-        réseau et des usages, comme les VLAN administratifs, pédagogiques ou Wi-Fi. Une adresse IP
-        a été attribuée aux switchs, avec ajout d’une route par défaut, puis la configuration a été
-        sauvegardée afin d’assurer sa conservation après redémarrage.
-      </p>
-      <p>
-        Enfin, j’ai participé à la préparation des câbles réseau ainsi qu’à leur étiquetage avant
-        l’installation des switchs dans les établissements.
-      </p>
-    </div>
-
-    <div class="mission-section">
-      <h3>Compétences développées</h3>
-      <ul>
-        <li>Remplacement et installation de switchs</li>
-        <li>Recâblage de baies informatiques</li>
-        <li>Configuration initiale via console</li>
-        <li>Paramétrage VLAN et adressage IP</li>
-        <li>Préparation de matériel réseau</li>
-        <li>Organisation et étiquetage des câbles</li>
-      </ul>
-    </div>
-
-    <div class="mission-section">
-      <h3>Bilan</h3>
-      <p>
-        Cette mission m’a permis de manipuler des équipements réseau dans un environnement réel,
-        de mieux comprendre la logique de segmentation d’un réseau et de participer concrètement à
-        la préparation et au déploiement d’infrastructures dans des établissements scolaires.
-      </p>
     </div>
   </div>
-</div>
 
-  <div id="missionFilordi" class="mission-modal">
-  <div class="mission-modal-content">
-    <button class="mission-close" onclick="closeMissionFilordi()">×</button>
+  <!-- MODAL PROJET 2 -->
+  <div id="projectCentreon" class="modal">
+    <div class="modal-content">
+      <button class="modal-close" data-close="projectCentreon">×</button>
+      <h2>Déploiement d’une solution de supervision sécurisée avec Centreon</h2>
 
-    <h2>Préparation et remise en service d’un parc informatique</h2>
+      <div class="modal-grid">
+        <div class="info-card">
+          <h4>Objectif</h4>
+          <p>
+            Mettre en place une plateforme de supervision centralisée afin de surveiller l’état et les performances
+            d’une infrastructure composée de systèmes Linux, Windows et d’équipements réseau, tout en renforçant
+            la sécurité des échanges et des accès.
+          </p>
+        </div>
 
-    <div class="mission-section">
-      <h3>Contexte</h3>
-      <p>
-        Dans le cadre de mon stage chez Filordi, j’ai participé à une intervention technique visant
-        à réorganiser et remettre en service le matériel informatique d’une entreprise. Cette mission
-        avait pour objectif d’assurer le bon fonctionnement des équipements et d’améliorer
-        l’organisation de l’infrastructure.
-      </p>
-    </div>
+        <div class="info-card">
+          <h4>Déploiement</h4>
+          <p>
+            J’ai installé Centreon sur une machine virtuelle Debian 12 puis configuré les composants nécessaires
+            à son fonctionnement. La base de données MariaDB a été sécurisée et l’environnement a été préparé
+            pour permettre une administration fiable de la plateforme.
+          </p>
+        </div>
 
-    <div class="mission-section">
-      <h3>Mission réalisée</h3>
-      <p>
-        Au cours de cette intervention, j’ai participé au remplacement et au déplacement de plusieurs
-        équipements informatiques. Cette opération a consisté à déconnecter l’ensemble du matériel,
-        puis à le réinstaller dans un nouvel espace en réalisant un recâblage complet.
-      </p>
-      <p>
-        J’ai également assisté à la préparation d’ordinateurs destinés à être remis en service,
-        notamment par l’installation du système d’exploitation Windows et la configuration des
-        logiciels nécessaires.
-      </p>
-    </div>
+        <div class="info-card">
+          <h4>Sécurisation</h4>
+          <p>
+            J’ai mis en place l’accès en HTTPS afin de protéger les connexions à l’interface web. J’ai également
+            renforcé l’accès administrateur et configuré SNMPv3 pour sécuriser les échanges entre la plateforme
+            de supervision et les équipements supervisés.
+          </p>
+        </div>
 
-    <div class="mission-section">
-      <h3>Activités réalisées</h3>
-      <ul>
-        <li>Débranchement et déplacement du matériel informatique</li>
-        <li>Recâblage des postes et organisation des connexions</li>
-        <li>Installation du système d’exploitation Windows</li>
-        <li>Installation de logiciels de base</li>
-        <li>Nettoyage et optimisation des ordinateurs</li>
-        <li>Vérification du bon fonctionnement des équipements</li>
-      </ul>
-    </div>
+        <div class="info-card">
+          <h4>Supervision & validation</h4>
+          <p>
+            J’ai ajouté des hôtes Linux et Windows ainsi que les connecteurs nécessaires pour remonter les
+            informations de supervision. La solution permettait de suivre la disponibilité des machines,
+            la charge CPU, la mémoire et l’espace disque. Des tests fonctionnels ont été réalisés pour
+            vérifier la remontée correcte des alertes.
+          </p>
+        </div>
+      </div>
 
-    <div class="mission-section">
-      <h3>Compétences développées</h3>
-      <ul>
-        <li>Installation et configuration de postes informatiques</li>
-        <li>Organisation et gestion du matériel</li>
-        <li>Diagnostic simple de pannes</li>
-        <li>Méthodologie d’intervention technique</li>
-        <li>Travail en équipe</li>
-      </ul>
-    </div>
+      <div class="modal-section">
+        <h3>Bilan</h3>
+        <p>
+          Ce projet m’a permis de mettre en œuvre une démarche complète : installation, configuration,
+          sécurisation, ajout des hôtes et validation par tests. Il m’a aussi permis de développer une
+          vision concrète de la supervision d’infrastructure, à la fois sur la partie monitoring et sur
+          la protection des accès et des échanges.
+        </p>
+      </div>
 
-    <div class="mission-section">
-      <h3>Bilan</h3>
-      <p>
-        Cette mission m’a permis de participer à une intervention concrète en entreprise et de mieux
-        comprendre les étapes nécessaires à la remise en service d’un parc informatique. Elle m’a
-        également permis de développer mes compétences techniques de base ainsi que mon sens de
-        l’organisation.
-      </p>
+      <div class="modal-section">
+        <h3>Compétences développées</h3>
+        <div class="skills-tags">
+          <span>Centreon</span>
+          <span>Administration Linux</span>
+          <span>MariaDB</span>
+          <span>SNMPv3</span>
+          <span>HTTPS / TLS</span>
+          <span>Supervision système</span>
+          <span>Monitoring Linux / Windows</span>
+          <span>Alerting</span>
+          <span>Tests fonctionnels</span>
+        </div>
+      </div>
     </div>
   </div>
-</div>
 
   <script>
-  function openMissionModal() {
-    document.getElementById("missionModal").style.display = "block";
-  }
+    const openButtons = document.querySelectorAll("[data-modal]");
+    const closeButtons = document.querySelectorAll("[data-close]");
+    const modals = document.querySelectorAll(".modal");
 
-  function closeMissionModal() {
-    document.getElementById("missionModal").style.display = "none";
-  }
+    openButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modalId = button.getAttribute("data-modal");
+        const modal = document.getElementById(modalId);
 
-     function openMissionFilordi() {
-    document.getElementById("missionFilordi").style.display = "block";
-  }
+        if (modal) {
+          modal.classList.add("active");
+          document.body.style.overflow = "hidden";
+        }
+      });
+    });
 
-  function closeMissionFilordi() {
-    document.getElementById("missionFilordi").style.display = "none";
-  }
-</script>
+    closeButtons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const modalId = button.getAttribute("data-close");
+        const modal = document.getElementById(modalId);
 
+        if (modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+
+    modals.forEach((modal) => {
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) {
+          modal.classList.remove("active");
+          document.body.style.overflow = "";
+        }
+      });
+    });
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "Escape") {
+        modals.forEach((modal) => modal.classList.remove("active"));
+        document.body.style.overflow = "";
+      }
+    });
+  </script>
 </body>
 </html>
