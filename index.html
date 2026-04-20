@@ -320,8 +320,6 @@
 
     .about-card,
     .parcours-card,
-    .exp-card,
-    .project-preview-card,
     .info-card,
     .problem-box,
     .conclusion,
@@ -991,6 +989,347 @@
         padding: 22px;
       }
     }
+
+    .exp-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 40px;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(280px, 1fr));
+  gap: 28px;
+  margin-top: 10px;
+}
+
+.exp-card,
+.project-preview-card {
+  position: relative;
+  overflow: hidden;
+  padding: 30px;
+  border-radius: 30px;
+  background: linear-gradient(160deg, rgba(15, 18, 55, 0.96), rgba(20, 23, 72, 0.92));
+  border: 1px solid rgba(255,255,255,0.08);
+  box-shadow: 0 18px 45px rgba(0,0,0,0.32);
+  transition: 0.35s ease;
+}
+
+.exp-card:hover,
+.project-preview-card:hover {
+  transform: translateY(-10px) scale(1.01);
+  box-shadow: 0 24px 60px rgba(0,0,0,0.38);
+}
+
+.exp-card::before,
+.project-preview-card::before {
+  content: "";
+  position: absolute;
+  width: 240px;
+  height: 240px;
+  top: -90px;
+  right: -90px;
+  border-radius: 50%;
+  filter: blur(55px);
+  opacity: 0.75;
+}
+
+.exp-card::after,
+.project-preview-card::after {
+  content: "";
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  bottom: -60px;
+  left: -55px;
+  border-radius: 50%;
+  filter: blur(45px);
+  opacity: 0.65;
+}
+
+.exp-card > *,
+.project-preview-card > * {
+  position: relative;
+  z-index: 1;
+}
+
+.it-card-nievre::before {
+  background: rgba(34, 211, 238, 0.22);
+}
+.it-card-nievre::after {
+  background: rgba(59, 130, 246, 0.22);
+}
+
+.it-card-filordi::before {
+  background: rgba(249, 115, 22, 0.20);
+}
+.it-card-filordi::after {
+  background: rgba(236, 72, 153, 0.20);
+}
+
+.project-backup::before {
+  background: rgba(139, 92, 246, 0.22);
+}
+.project-backup::after {
+  background: rgba(236, 72, 153, 0.18);
+}
+
+.project-centreon::before {
+  background: rgba(34, 211, 238, 0.20);
+}
+.project-centreon::after {
+  background: rgba(168, 85, 247, 0.18);
+}
+
+.card-top-line {
+  width: 100%;
+  height: 5px;
+  border-radius: 999px;
+  margin-bottom: 22px;
+}
+
+.it-card-nievre .card-top-line {
+  background: linear-gradient(90deg, #22d3ee, #3b82f6);
+}
+
+.it-card-filordi .card-top-line {
+  background: linear-gradient(90deg, #f97316, #ec4899);
+}
+
+.project-backup .card-top-line {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+}
+
+.project-centreon .card-top-line {
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+}
+
+.card-head {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.card-icon {
+  min-width: 64px;
+  width: 64px;
+  height: 64px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.22);
+  border: 1px solid rgba(255,255,255,0.14);
+}
+
+.it-card-nievre .card-icon {
+  background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(59,130,246,0.22));
+}
+
+.it-card-filordi .card-icon {
+  background: linear-gradient(135deg, rgba(249,115,22,0.22), rgba(236,72,153,0.22));
+}
+
+.project-backup .card-icon {
+  background: linear-gradient(135deg, rgba(139,92,246,0.22), rgba(236,72,153,0.22));
+}
+
+.project-centreon .card-icon {
+  background: linear-gradient(135deg, rgba(34,211,238,0.22), rgba(139,92,246,0.22));
+}
+
+.card-label-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+}
+
+.exp-badge,
+.project-preview-badge {
+  display: inline-block;
+  padding: 8px 14px;
+  border-radius: 999px;
+  font-size: 0.8rem;
+  font-weight: 800;
+  color: white;
+  letter-spacing: 0.3px;
+  text-transform: uppercase;
+}
+
+.it-card-nievre .exp-badge {
+  background: linear-gradient(90deg, #06b6d4, #3b82f6);
+}
+
+.it-card-filordi .exp-badge {
+  background: linear-gradient(90deg, #f97316, #ec4899);
+}
+
+.project-backup .project-preview-badge {
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+}
+
+.project-centreon .project-preview-badge {
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6);
+}
+
+.exp-date,
+.card-side-tag {
+  padding: 7px 12px;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.08);
+  color: #dbeafe;
+  font-size: 0.82rem;
+}
+
+.exp-card h3,
+.project-preview-card h3 {
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: #ffffff;
+  margin-bottom: 10px;
+  text-shadow: 0 0 12px rgba(255,255,255,0.03);
+}
+
+.exp-role,
+.card-punchline {
+  color: #c4b5fd;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 1.7;
+}
+
+.project-preview-card p {
+  color: #e5e7eb;
+  line-height: 1.85;
+  margin-bottom: 18px;
+}
+
+.card-points {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: grid;
+  gap: 12px;
+}
+
+.card-points li {
+  padding: 12px 14px;
+  border-radius: 16px;
+  background: rgba(255,255,255,0.045);
+  border: 1px solid rgba(255,255,255,0.06);
+  color: #eef2ff;
+  line-height: 1.6;
+}
+
+.it-card-nievre .card-points li {
+  border-left: 4px solid #22d3ee;
+}
+
+.it-card-filordi .card-points li {
+  border-left: 4px solid #f97316;
+}
+
+.project-backup .card-points li {
+  border-left: 4px solid #8b5cf6;
+}
+
+.project-centreon .card-points li {
+  border-left: 4px solid #22d3ee;
+}
+
+.card-mini-tags,
+.skills-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.card-mini-tags span,
+.skills-tags span {
+  padding: 8px 13px;
+  border-radius: 999px;
+  font-size: 0.84rem;
+  font-weight: 600;
+  color: #f8f7ff;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.10);
+  transition: 0.3s ease;
+}
+
+.card-mini-tags span:hover,
+.skills-tags span:hover {
+  transform: translateY(-2px);
+  background: linear-gradient(90deg, #8b5cf6, #ec4899);
+  color: white;
+}
+
+.mission-btn,
+.project-btn {
+  margin-top: 22px;
+  border: none;
+  border-radius: 16px;
+  padding: 13px 20px;
+  font-weight: 700;
+  cursor: pointer;
+  color: #ffffff;
+  background: linear-gradient(90deg, #22d3ee, #8b5cf6, #ec4899);
+  background-size: 200% 200%;
+  box-shadow: 0 12px 28px rgba(139, 92, 246, 0.25);
+  transition: 0.35s ease;
+}
+
+.mission-btn:hover,
+.project-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 18px 35px rgba(236, 72, 153, 0.28);
+  background-position: right center;
+}
+
+.exp-card.wide {
+  grid-column: 1 / -1;
+}
+
+@media (max-width: 980px) {
+  .exp-grid,
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .exp-card.wide {
+    grid-column: auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .exp-card,
+  .project-preview-card {
+    padding: 22px;
+  }
+
+  .card-head {
+    gap: 12px;
+  }
+
+  .card-icon {
+    width: 56px;
+    height: 56px;
+    min-width: 56px;
+    font-size: 1.5rem;
+  }
+
+  .exp-card h3,
+  .project-preview-card h3 {
+    font-size: 1.2rem;
+  }
+}
+    
   </style>
 </head>
 <body>
@@ -1150,36 +1489,74 @@
         </div>
       </article>
 
-      <article class="exp-card">
-        <div class="exp-top">
-          <span class="exp-badge">Stage IT</span>
-          <span class="exp-date">Juin – Juil. 2025</span>
-        </div>
-        <h3>Conseil Départemental de la Nièvre</h3>
-        <p class="exp-role">Stage technicienne systèmes et réseaux</p>
-        <ul>
-          <li>Préparation et remplacement de switchs dans des collèges</li>
-          <li>Réalisation de recâblage réseau</li>
-          <li>Utilisation de GLPI pour la gestion des tickets et le support utilisateurs</li>
-          <li>Contribution à la sécurisation et à l’optimisation de l’infrastructure réseau</li>
-        </ul>
-        <button class="mission-btn" data-modal="missionModal">Voir une mission</button>
-      </article>
+<article class="exp-card it-card-nievre">
+  <div class="card-top-line"></div>
 
-      <article class="exp-card">
-        <div class="exp-top">
-          <span class="exp-badge">Stage IT</span>
-          <span class="exp-date">Janv. – Févr. 2026</span>
-        </div>
-        <h3>FILORDI</h3>
-        <p class="exp-role">Stage technicienne systèmes et réseaux</p>
-        <ul>
-          <li>Assistance et dépannage informatique pour professionnels et particuliers</li>
-          <li>Installation et configuration de postes de travail</li>
-          <li>Support aux utilisateurs et conseils techniques</li>
-        </ul>
-        <button class="mission-btn" data-modal="missionFilordi">Voir une mission</button>
-      </article>
+  <div class="card-head">
+    <div class="card-icon">🖧</div>
+
+    <div>
+      <div class="card-label-row">
+        <span class="exp-badge">Stage IT</span>
+        <span class="exp-date">Juin – Juil. 2025</span>
+      </div>
+
+      <h3>Conseil Départemental de la Nièvre</h3>
+      <p class="exp-role">Technicienne systèmes et réseaux • environnement collège</p>
+    </div>
+  </div>
+
+  <ul class="card-points">
+    <li>Préparation, remplacement et mise en service de switchs dans plusieurs collèges</li>
+    <li>Recâblage réseau et organisation des baies pour améliorer la lisibilité de l’infrastructure</li>
+    <li>Configuration initiale et utilisation de GLPI pour le suivi et le support</li>
+  </ul>
+
+  <div class="card-mini-tags">
+    <span>Switchs</span>
+    <span>VLAN</span>
+    <span>GLPI</span>
+    <span>Recâblage</span>
+    <span>Support IT</span>
+  </div>
+
+  <button class="mission-btn" data-modal="missionModal">✨ Voir une mission</button>
+</article>
+
+<article class="exp-card it-card-filordi">
+  <div class="card-top-line"></div>
+
+  <div class="card-head">
+    <div class="card-icon">💻</div>
+
+    <div>
+      <div class="card-label-row">
+        <span class="exp-badge">Stage IT</span>
+        <span class="exp-date">Janv. – Févr. 2026</span>
+      </div>
+
+      <h3>FILORDI</h3>
+      <p class="exp-role">Technicienne systèmes et réseaux • proximité et maintenance</p>
+    </div>
+  </div>
+
+  <ul class="card-points">
+    <li>Assistance informatique pour professionnels et particuliers sur des besoins concrets</li>
+    <li>Installation, configuration et remise en service de postes de travail Windows</li>
+    <li>Support utilisateurs, diagnostic simple de pannes et conseils techniques</li>
+  </ul>
+
+  <div class="card-mini-tags">
+    <span>Windows</span>
+    <span>Support</span>
+    <span>Maintenance</span>
+    <span>Installation</span>
+    <span>Dépannage</span>
+  </div>
+
+  <button class="mission-btn" data-modal="missionFilordi">🔥 Voir une mission</button>
+</article>
+      
     </div>
   </section>
 
